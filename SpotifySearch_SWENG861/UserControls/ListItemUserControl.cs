@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace SpotifySearch_SWENG861
 {
-    public partial class ListItem : UserControl
+    public partial class ListItemUserControl : UserControl
     {
-        public ListItem()
+        public ListItemUserControl()
         {
             InitializeComponent();
         }

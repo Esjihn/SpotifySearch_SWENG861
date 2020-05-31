@@ -1,6 +1,6 @@
 ﻿namespace SpotifySearch_SWENG861
 {
-    partial class ListItem
+    partial class ListItemUserControl
     {
         /// <summary> 
         /// Required designer variable.

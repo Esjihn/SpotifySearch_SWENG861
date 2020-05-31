@@ -1,6 +1,6 @@
 ﻿namespace SpotifySearch_SWENG861
 {
-    partial class Form1
+    partial class SpotifySearchView
     {
         /// <summary>
         /// Required designer variable.
