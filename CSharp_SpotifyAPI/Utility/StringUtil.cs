@@ -84,7 +84,7 @@ namespace CSharp_SpotifyAPI
         {
             string jsonString = json.ToString();
 
-            return jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+            return jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
         }
 
     }

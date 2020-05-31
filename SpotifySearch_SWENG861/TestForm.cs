@@ -61,43 +61,11 @@ namespace SpotifySearch_SWENG861
         private void button1_Click(object sender, EventArgs e)
         {
             string searchQuery = this.richTextBox2.Text;
-            string json = api.Search($"{searchQuery}", SearchType.artist, 1, 0);
+            string artistsJson = api.Search($"{searchQuery}", SearchType.artist, 1, 0);
+            string tracksJson = api.Search($"{searchQuery}", SearchType.track, 1, 0);
 
-            Artists desArtist = JsonConvert.DeserializeObject<Artists>(json);
-            var here = desArtist.items;
-
-            // send over to presenter
-            using (JsonTextReader reader = new JsonTextReader(new StringReader(json)))
-            {
-                while (reader.Read())
-                {
-                    if (reader.Value != null)
-                    {
-                        
-                        JObject obj = JObject.Load(reader);
-                        this.richTextBox1.Text += obj["name"].ToString();
-                        this.richTextBox1.Text += obj["href"].ToString();
-                        this.richTextBox1.Text += obj["name"].ToString();
-
-                        
-                        
-                        // if reader.value = "artists"
-                        // reader.value = href
-                    }
-                    else
-                    {
-                    }
-                }
-            }
+            SearchArtists desArtist = JsonConvert.DeserializeObject<SearchArtists>(artistsJson);
+            SearchSongs searchSongs = JsonConvert.DeserializeObject<SearchSongs>(tracksJson);
         }
-
-            //JToken token = JObject.Parse(json);
-
-            //Artist artistObject = new Artist
-            //{
-            //    Name = (string) token.SelectToken("name"),
-            //    Href = (string) token.SelectToken("href")
-            //};
-
     }
 }
