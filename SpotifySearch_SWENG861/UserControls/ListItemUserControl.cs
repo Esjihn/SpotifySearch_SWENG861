@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace SpotifySearch_SWENG861
 {
-    public partial class ListItemUserControl : UserControl
+    public partial class ucSearchResultItem : UserControl
     {
-        public ListItemUserControl()
+        public ucSearchResultItem()
         {
             InitializeComponent();
         }
@@ -33,12 +33,12 @@ namespace SpotifySearch_SWENG861
         {
             get
             {
-                return this.panel1.BackColor;
+                return this.pnlListenOnSpotify.BackColor;
             }
             set
             {
                 if (value != null)
-                    this.panel1.BackColor = value;
+                    this.pnlListenOnSpotify.BackColor = value;
             }
         }
 
@@ -61,12 +61,12 @@ namespace SpotifySearch_SWENG861
         {
             get
             {
-                return this.pictureBox1.Image;
+                return this.picListenOnSpotify.Image;
             }
             set
             {
                 if (value != null)
-                    this.pictureBox1.Image = value;
+                    this.picListenOnSpotify.Image = value;
             }
         }
 

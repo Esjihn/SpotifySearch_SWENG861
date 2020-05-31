@@ -23,24 +23,24 @@ namespace SpotifySearch_SWENG861
         private void PopulateItems()
         {
             // populate it here
-            ListItemUserControl[] listItems  = new ListItemUserControl[20];
+            ucSearchResultItem[] listItems  = new ucSearchResultItem[20];
             // loop through each item
             for (int i = 0; i < listItems.Length; i++)
             {
-                listItems[i] = new ListItemUserControl();
-                listItems[i].Width = flowLayoutPanel2.Width;
+                listItems[i] = new ucSearchResultItem();
+                listItems[i].Width = flwSearchResultsFlowPanel.Width;
                 listItems[i].Icon = Resources.spotify_icon_01;
                 listItems[i].IconBackGround = Color.Black;
                 listItems[i].Title = "Get Data For Title";
                 listItems[i].Message = "Get Data For Message";
 
 
-                if (flowLayoutPanel2.Controls.Count < 0)
+                if (flwSearchResultsFlowPanel.Controls.Count < 0)
                 {
-                    flowLayoutPanel2.Controls.Clear();
+                    flwSearchResultsFlowPanel.Controls.Clear();
                 }
                 else
-                    this.flowLayoutPanel2.Controls.Add(listItems[i]);
+                    this.flwSearchResultsFlowPanel.Controls.Add(listItems[i]);
             }
         }
 
