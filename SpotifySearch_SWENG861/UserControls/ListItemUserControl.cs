@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using SpotifySearch_SWENG861.Views;
 
 namespace SpotifySearch_SWENG861
 {
@@ -105,27 +106,47 @@ namespace SpotifySearch_SWENG861
         private void ListItem_MouseClick(object sender, MouseEventArgs e)
         {
             // todo listitem,title, message should all trigger a single method with result meta data.
+            // todo either replace message box with new view that displays all object meta data or show it inside of the message box.
+            // user may want to copy this information so i will probably go with a new simple text that can with readonly text that can be copied.
             MessageBox.Show("More data here");
         }
 
         private void lblTitle_MouseClick(object sender, MouseEventArgs e)
         {
             // todo listitem,title, message should all trigger a single method with result meta data.
+            // todo either replace message box with new view that displays all object meta data or show it inside of the message box.
+            // user may want to copy this information so i will probably go with a new simple text that can with readonly text that can be copied.
             MessageBox.Show("More data here");
         }
 
         private void lblMessage_Click(object sender, EventArgs e)
         {
             // todo listitem,title, message should all trigger a single method with result meta data.
+            // todo either replace message box with new view that displays all object meta data or show it inside of the message box.
+            // user may want to copy this information so i will probably go with a new simple text that can with readonly text that can be copied.
             MessageBox.Show("More data here");
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void picListenOnSpotify_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            // todo test internal i.e. browser with spotify's sample uri 
+            // if i.e. is not up to the task I may need to add another api that will open a newer browser like edge chromium, chrome, firefox. 
             WebBrowser wb = new WebBrowser();
-            //Form2 form2 = new Form2();
-            //form2.WebBrowser.Url = new Uri("https://www.google.com");
-            //form2.Show();
+            // todo setup ListenOnSpotifyView
+            ListenOnSpotifyView listenView = new ListenOnSpotifyView();
+            listenView.WebBrowser.Url = new Uri("https://www.google.com");
+            listenView.Show();
+        }
+
+        private void lblDoubleClick_Click(object sender, EventArgs e)
+        {
+            // todo test internal i.e. browser with spotify's sample uri 
+            // if i.e. is not up to the task I may need to add another api that will open a newer browser like edge chromium, chrome, firefox. 
+            WebBrowser wb = new WebBrowser();
+            // todo setup ListenOnSpotifyView
+            ListenOnSpotifyView listenView = new ListenOnSpotifyView();
+            listenView.WebBrowser.Url = new Uri("https://www.google.com");
+            listenView.Show();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListenOnSpotifyView));
             this.webListenOnSpotify = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
@@ -46,8 +47,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 304);
             this.Controls.Add(this.webListenOnSpotify);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListenOnSpotifyView";
-            this.Text = "ListenOnSpotifyView";
+            this.Text = "Listen On Spotify!";
             this.ResumeLayout(false);
 
         }

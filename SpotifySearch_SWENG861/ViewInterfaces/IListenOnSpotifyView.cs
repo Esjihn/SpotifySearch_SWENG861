@@ -8,5 +8,6 @@ namespace SpotifySearch_SWENG861.ViewInterfaces
 {
     public interface IListenOnSpotifyView
     {
+        // todo complete interface
     }
 }

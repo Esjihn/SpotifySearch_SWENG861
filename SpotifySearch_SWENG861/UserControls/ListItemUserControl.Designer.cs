@@ -33,6 +33,7 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.pnlListenOnSpotify = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblDoubleClick = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picListenOnSpotify)).BeginInit();
             this.pnlListenOnSpotify.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +46,7 @@
             this.picListenOnSpotify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picListenOnSpotify.TabIndex = 0;
             this.picListenOnSpotify.TabStop = false;
-            this.picListenOnSpotify.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.picListenOnSpotify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.picListenOnSpotify_MouseDoubleClick);
             // 
             // lblTitle
             // 
@@ -73,6 +74,7 @@
             // pnlListenOnSpotify
             // 
             this.pnlListenOnSpotify.BackColor = System.Drawing.Color.Teal;
+            this.pnlListenOnSpotify.Controls.Add(this.lblDoubleClick);
             this.pnlListenOnSpotify.Controls.Add(this.picListenOnSpotify);
             this.pnlListenOnSpotify.Location = new System.Drawing.Point(3, 3);
             this.pnlListenOnSpotify.Name = "pnlListenOnSpotify";
@@ -90,7 +92,18 @@
             this.panel2.Size = new System.Drawing.Size(1048, 10);
             this.panel2.TabIndex = 4;
             // 
-            // ucSearchResultItem
+            // lblDoubleClick
+            // 
+            this.lblDoubleClick.AutoSize = true;
+            this.lblDoubleClick.ForeColor = System.Drawing.Color.White;
+            this.lblDoubleClick.Location = new System.Drawing.Point(10, 179);
+            this.lblDoubleClick.Name = "lblDoubleClick";
+            this.lblDoubleClick.Size = new System.Drawing.Size(214, 25);
+            this.lblDoubleClick.TabIndex = 1;
+            this.lblDoubleClick.Text = "Double Click To Listen!";
+            this.lblDoubleClick.Click += new System.EventHandler(this.lblDoubleClick_Click);
+            // 
+            // UcSearchResultItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -105,6 +118,7 @@
             this.MouseLeave += new System.EventHandler(this.ListItem_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.picListenOnSpotify)).EndInit();
             this.pnlListenOnSpotify.ResumeLayout(false);
+            this.pnlListenOnSpotify.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -116,5 +130,6 @@
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Panel pnlListenOnSpotify;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblDoubleClick;
     }
 }

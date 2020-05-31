@@ -8,6 +8,6 @@ namespace SpotifySearch_SWENG861.ViewInterfaces
 {
     public interface IListItemUserControl
     {
-
+        // todo complete interface
     }
 }
