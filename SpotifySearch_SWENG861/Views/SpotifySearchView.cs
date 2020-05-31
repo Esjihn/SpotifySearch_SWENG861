@@ -12,22 +12,20 @@ namespace SpotifySearch_SWENG861
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        
+        private void SpotifySearchView_Load(object sender, EventArgs e)
         {
-            // Create your items
             PopulateItems();
-
         }
 
         private void PopulateItems()
         {
             // populate it here
-            ucSearchResultItem[] listItems  = new ucSearchResultItem[20];
+            UcSearchResultItem[] listItems  = new UcSearchResultItem[20];
             // loop through each item
             for (int i = 0; i < listItems.Length; i++)
             {
-                listItems[i] = new ucSearchResultItem();
+                listItems[i] = new UcSearchResultItem();
                 listItems[i].Width = flwSearchResultsFlowPanel.Width;
                 listItems[i].Icon = Resources.spotify_icon_01;
                 listItems[i].IconBackGround = Color.Black;
@@ -42,11 +40,6 @@ namespace SpotifySearch_SWENG861
                 else
                     this.flwSearchResultsFlowPanel.Controls.Add(listItems[i]);
             }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

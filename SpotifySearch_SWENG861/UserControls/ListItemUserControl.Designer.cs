@@ -1,6 +1,6 @@
 ﻿namespace SpotifySearch_SWENG861
 {
-    partial class ucSearchResultItem
+    partial class UcSearchResultItem
     {
         /// <summary> 
         /// Required designer variable.
@@ -98,7 +98,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pnlListenOnSpotify);
-            this.Name = "ucSearchResultItem";
+            this.Name = "UcSearchResultItem";
             this.Size = new System.Drawing.Size(1047, 224);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListItem_MouseClick);
             this.MouseEnter += new System.EventHandler(this.ListItem_MouseEnter);

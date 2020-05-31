@@ -71,7 +71,6 @@
             this.pnlSpotifySearch.Name = "pnlSpotifySearch";
             this.pnlSpotifySearch.Size = new System.Drawing.Size(364, 918);
             this.pnlSpotifySearch.TabIndex = 3;
-            this.pnlSpotifySearch.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnSearch
             // 
@@ -183,7 +182,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SpotifySearchView";
             this.Text = "Spotify Search";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.SpotifySearchView_Load);
             this.pnlSpotifySearch.ResumeLayout(false);
             this.pnlSpotifySearch.PerformLayout();
             this.ResumeLayout(false);

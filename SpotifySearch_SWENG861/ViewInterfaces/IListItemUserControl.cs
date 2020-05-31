@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpotifySearch_SWENG861.Presenters
+namespace SpotifySearch_SWENG861.ViewInterfaces
 {
-    public class SpotifySearchPresenter
+    public interface IListItemUserControl
     {
+
     }
 }

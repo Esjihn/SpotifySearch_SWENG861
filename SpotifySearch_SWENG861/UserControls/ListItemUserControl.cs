@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace SpotifySearch_SWENG861
 {
-    public partial class ucSearchResultItem : UserControl
+    public partial class UcSearchResultItem : UserControl
     {
-        public ucSearchResultItem()
+        public UcSearchResultItem()
         {
             InitializeComponent();
         }
@@ -104,16 +104,19 @@ namespace SpotifySearch_SWENG861
 
         private void ListItem_MouseClick(object sender, MouseEventArgs e)
         {
+            // todo listitem,title, message should all trigger a single method with result meta data.
             MessageBox.Show("More data here");
         }
 
         private void lblTitle_MouseClick(object sender, MouseEventArgs e)
         {
+            // todo listitem,title, message should all trigger a single method with result meta data.
             MessageBox.Show("More data here");
         }
 
         private void lblMessage_Click(object sender, EventArgs e)
         {
+            // todo listitem,title, message should all trigger a single method with result meta data.
             MessageBox.Show("More data here");
         }
 
