@@ -1,14 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using SpotifySearch_SWENG861.ViewInterfaces;
 using SpotifySearch_SWENG861.Views;
 
 namespace SpotifySearch_SWENG861
 {
-    public partial class UcSearchResultItem : UserControl
+    public partial class ListItemUserControl : UserControl, IListItemUserControl
     {
-        public UcSearchResultItem()
+        public ListItemUserControl()
         {
             InitializeComponent();
         }
@@ -131,21 +133,38 @@ namespace SpotifySearch_SWENG861
         {
             // todo test internal i.e. browser with spotify's sample uri 
             // if i.e. is not up to the task I may need to add another api that will open a newer browser like edge chromium, chrome, firefox. 
-            WebBrowser wb = new WebBrowser();
-            // todo setup ListenOnSpotifyView
-            ListenOnSpotifyView listenView = new ListenOnSpotifyView();
-            listenView.WebBrowser.Url = new Uri("https://www.google.com");
-            listenView.Show();
+            FindSelectedUserControlIndexAndPlayTrackSample();
         }
 
         private void lblDoubleClick_Click(object sender, EventArgs e)
         {
             // todo test internal i.e. browser with spotify's sample uri 
             // if i.e. is not up to the task I may need to add another api that will open a newer browser like edge chromium, chrome, firefox. 
-            WebBrowser wb = new WebBrowser();
-            // todo setup ListenOnSpotifyView
+            //
+            FindSelectedUserControlIndexAndPlayTrackSample();
+        }
+
+        /// <summary>
+        /// Matches current selected control index in flow panel to track sample play index.
+        /// </summary>
+        public void FindSelectedUserControlIndexAndPlayTrackSample()
+        {
+            SpotifySearchView view = this.Parent.Parent as SpotifySearchView;
+            string currentTitle = this.Title;
+
+            ControlCollection controls = view.FlowPanelObject.Controls;
+            int selectedIndex = 0;
+            for (int i = 0; i < controls.Count; i++)
+            {
+                ListItemUserControl cnt = controls[i] as ListItemUserControl;
+                if (cnt.Title == currentTitle)
+                {
+                    selectedIndex = i;
+                }
+            }
+
             ListenOnSpotifyView listenView = new ListenOnSpotifyView();
-            listenView.WebBrowser.Url = new Uri("https://www.google.com");
+            listenView.WebBrowser.Url = new Uri(view.TracksResults.Tracks.Items[selectedIndex].Preview_url);
             listenView.Show();
         }
     }

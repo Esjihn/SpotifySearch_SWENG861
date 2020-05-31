@@ -1,6 +1,6 @@
 ﻿namespace SpotifySearch_SWENG861
 {
-    partial class UcSearchResultItem
+    partial class ListItemUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -32,8 +32,8 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblMessage = new System.Windows.Forms.Label();
             this.pnlListenOnSpotify = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.lblDoubleClick = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picListenOnSpotify)).BeginInit();
             this.pnlListenOnSpotify.SuspendLayout();
             this.SuspendLayout();
@@ -81,17 +81,6 @@
             this.pnlListenOnSpotify.Size = new System.Drawing.Size(236, 220);
             this.pnlListenOnSpotify.TabIndex = 3;
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.DarkGray;
-            this.panel2.Location = new System.Drawing.Point(-1, 214);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1048, 10);
-            this.panel2.TabIndex = 4;
-            // 
             // lblDoubleClick
             // 
             this.lblDoubleClick.AutoSize = true;
@@ -103,7 +92,18 @@
             this.lblDoubleClick.Text = "Double Click To Listen!";
             this.lblDoubleClick.Click += new System.EventHandler(this.lblDoubleClick_Click);
             // 
-            // UcSearchResultItem
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.DarkGray;
+            this.panel2.Location = new System.Drawing.Point(-1, 214);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1048, 10);
+            this.panel2.TabIndex = 4;
+            // 
+            // ListItemUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -111,7 +111,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pnlListenOnSpotify);
-            this.Name = "UcSearchResultItem";
+            this.Name = "ListItemUserControl";
             this.Size = new System.Drawing.Size(1047, 224);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListItem_MouseClick);
             this.MouseEnter += new System.EventHandler(this.ListItem_MouseEnter);

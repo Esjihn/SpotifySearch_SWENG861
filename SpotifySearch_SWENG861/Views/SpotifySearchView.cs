@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
@@ -41,6 +42,26 @@ namespace SpotifySearch_SWENG861
             AuthenticateAndStartService();
             
         }
+
+        #region Properties
+
+        /// <summary>
+        /// Flow Layout Panel in SpotifySearchView
+        /// </summary>
+        public FlowLayoutPanel FlowPanelObject
+        {
+            get
+            {
+                return this.flwSearchResultsFlowPanel;
+            }
+            set
+            {
+                if (value != null)
+                    this.flwSearchResultsFlowPanel = value;
+            }
+        }
+
+        #endregion
 
         #region ISpotifySearchView Properties
         /// <summary>
@@ -142,20 +163,20 @@ namespace SpotifySearch_SWENG861
             }
 
             // Populate UI with result user control list.
-            UcSearchResultItem[] listItems = new UcSearchResultItem[] { };
+            ListItemUserControl[] listItems = new ListItemUserControl[] { };
             if (searchType == SearchType.artist)
             {
-                listItems = new UcSearchResultItem[ArtistsResults.Artists.Items.Count];
+                listItems = new ListItemUserControl[ArtistsResults.Artists.Items.Count];
             }
 
             if (searchType == SearchType.track)
             {
-                listItems = new UcSearchResultItem[TracksResults.Tracks.Items.Count];
+                listItems = new ListItemUserControl[TracksResults.Tracks.Items.Count];
             }
 
             for (int i = 0; i < listItems.Length; i++)
             {
-                listItems[i] = new UcSearchResultItem();
+                listItems[i] = new ListItemUserControl();
                 listItems[i].Width = flwSearchResultsFlowPanel.Width;
                 listItems[i].Icon = Resources.spotify_icon_01;
                 listItems[i].IconBackGround = Color.Black;
