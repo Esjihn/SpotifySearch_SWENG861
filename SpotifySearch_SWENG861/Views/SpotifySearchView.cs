@@ -130,6 +130,7 @@ namespace SpotifySearch_SWENG861
                 this.flwSearchResultsFlowPanel.Controls.Clear();
 
             // Search query from user
+            // todo find out what is not allowed in spotify search (test using UI)
             string searchQuery = this.txtArtistSongEntry.Text;
 
             // SearchType.* from user
@@ -144,6 +145,7 @@ namespace SpotifySearch_SWENG861
             }
 
             // Search Limit from user // todo add search restrictions between 0-50
+            // todo add restrictions to only be able to type in numbers preferably inside of Form
             int searchLimit = Convert.ToInt16(txtMaxSearch.Text);
 
             string artistsJson = api.Search($"{searchQuery}", searchType, searchLimit, 0);

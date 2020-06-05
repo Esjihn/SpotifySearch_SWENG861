@@ -74,6 +74,7 @@ namespace SpotifySearch_SWENG861.UserControls
 
         #endregion
 
+        #region EventHandlers
         private void ListItem_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = Color.Silver;
@@ -143,6 +144,10 @@ namespace SpotifySearch_SWENG861.UserControls
             FindSelectedUserControlIndexAndPlayTrackSample();
         }
 
+        #endregion
+
+        #region IListItemUserControl Methods
+
         /// <summary>
         /// Matches current selected control index in flow panel to track sample play index.
         /// </summary>
@@ -170,5 +175,7 @@ namespace SpotifySearch_SWENG861.UserControls
                 listenView.Show();
             }
         }
+
+        #endregion
     }
 }
