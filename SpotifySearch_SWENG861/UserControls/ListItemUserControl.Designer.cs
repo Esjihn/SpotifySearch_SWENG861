@@ -1,4 +1,4 @@
-﻿namespace SpotifySearch_SWENG861
+﻿namespace SpotifySearch_SWENG861.UserControls
 {
     partial class ListItemUserControl
     {
@@ -46,7 +46,7 @@
             this.picListenOnSpotify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picListenOnSpotify.TabIndex = 0;
             this.picListenOnSpotify.TabStop = false;
-            this.picListenOnSpotify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.picListenOnSpotify_MouseDoubleClick);
+            this.picListenOnSpotify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.PicListenOnSpotify_MouseDoubleClick);
             // 
             // lblTitle
             // 
@@ -56,9 +56,9 @@
             this.lblTitle.Size = new System.Drawing.Size(788, 32);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Title";
-            this.lblTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseClick);
-            this.lblTitle.MouseEnter += new System.EventHandler(this.lblTitle_MouseEnter);
-            this.lblTitle.MouseLeave += new System.EventHandler(this.lblTitle_MouseLeave);
+            this.lblTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LblTitle_MouseClick);
+            this.lblTitle.MouseEnter += new System.EventHandler(this.LblTitle_MouseEnter);
+            this.lblTitle.MouseLeave += new System.EventHandler(this.LblTitle_MouseLeave);
             // 
             // lblMessage
             // 
@@ -67,9 +67,9 @@
             this.lblMessage.Size = new System.Drawing.Size(760, 132);
             this.lblMessage.TabIndex = 2;
             this.lblMessage.Text = "Lorem ipsum - some text here";
-            this.lblMessage.Click += new System.EventHandler(this.lblMessage_Click);
-            this.lblMessage.MouseEnter += new System.EventHandler(this.lblMessage_MouseEnter);
-            this.lblMessage.MouseLeave += new System.EventHandler(this.lblMessage_MouseLeave);
+            this.lblMessage.Click += new System.EventHandler(this.LblMessage_Click);
+            this.lblMessage.MouseEnter += new System.EventHandler(this.LblMessage_MouseEnter);
+            this.lblMessage.MouseLeave += new System.EventHandler(this.LblMessage_MouseLeave);
             // 
             // pnlListenOnSpotify
             // 
@@ -90,7 +90,7 @@
             this.lblDoubleClick.Size = new System.Drawing.Size(214, 25);
             this.lblDoubleClick.TabIndex = 1;
             this.lblDoubleClick.Text = "Double Click To Listen!";
-            this.lblDoubleClick.Click += new System.EventHandler(this.lblDoubleClick_Click);
+            this.lblDoubleClick.Click += new System.EventHandler(this.LblDoubleClick_Click);
             // 
             // panel2
             // 

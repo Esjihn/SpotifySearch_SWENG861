@@ -10,6 +10,7 @@ using CSharp_SpotifyAPI.Enums;
 using CSharp_SpotifyAPI.Models;
 using SpotifySearch_SWENG861.Presenters;
 using SpotifySearch_SWENG861.Properties;
+using SpotifySearch_SWENG861.UserControls;
 using SpotifySearch_SWENG861.ViewInterfaces;
 
 namespace SpotifySearch_SWENG861
@@ -81,7 +82,7 @@ namespace SpotifySearch_SWENG861
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void BtnSearch_Click(object sender, EventArgs e)
         {
             LoadResults();
         }
@@ -176,11 +177,12 @@ namespace SpotifySearch_SWENG861
 
             for (int i = 0; i < listItems.Length; i++)
             {
-                listItems[i] = new ListItemUserControl();
-                listItems[i].Width = flwSearchResultsFlowPanel.Width;
-                listItems[i].Icon = Resources.spotify_icon_01;
-                listItems[i].IconBackGround = Color.Black;
-
+                listItems[i] = new ListItemUserControl
+                {
+                    Width = flwSearchResultsFlowPanel.Width,
+                    Icon = Resources.spotify_icon_01,
+                    IconBackGround = Color.Black
+                };
 
                 switch (searchType)
                 {
