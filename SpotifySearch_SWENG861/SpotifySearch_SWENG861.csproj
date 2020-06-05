@@ -53,7 +53,14 @@
     <Compile Include="Presenters\SpotifySearchPresenter.cs" />
     <Compile Include="ViewInterfaces\IListenOnSpotifyView.cs" />
     <Compile Include="ViewInterfaces\IListItemUserControl.cs" />
+    <Compile Include="ViewInterfaces\IAdditionalMetaDataView.cs" />
     <Compile Include="ViewInterfaces\ISpotifySearchView.cs" />
+    <Compile Include="Views\AdditionalMetaDataView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdditionalMetaDataView.Designer.cs">
+      <DependentUpon>AdditionalMetaDataView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListenOnSpotifyView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +87,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Views\AdditionalMetaDataView.resx">
+      <DependentUpon>AdditionalMetaDataView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ListenOnSpotifyView.resx">
       <DependentUpon>ListenOnSpotifyView.cs</DependentUpon>
     </EmbeddedResource>

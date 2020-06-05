@@ -10,7 +10,7 @@ using SpotifySearch_SWENG861.ViewInterfaces;
 namespace SpotifySearch_SWENG861.Presenters
 {
     /// <summary>
-    /// Presenter for ListenOnSpotifyView, SpotifySearchView and ListenItemUserControl
+    /// Presenter for ListenOnSpotifyView, SpotifySearchView, ListenItemUserControl, and AdditionalMetaDataView
     /// </summary>
     public class SpotifySearchPresenter
     {
@@ -19,6 +19,7 @@ namespace SpotifySearch_SWENG861.Presenters
         private ISpotifySearchView _viewMain;
         private IListenOnSpotifyView _viewWeb;
         private IListItemUserControl _userControl;
+        private IAdditionalMetaDataView _viewMetalData;
 
         #endregion
 
@@ -57,6 +58,16 @@ namespace SpotifySearch_SWENG861.Presenters
         {
             this._userControl = userControl;
         }
+
+        /// <summary>
+        /// IAdditionalMetaDataView constructor
+        /// </summary>
+        /// <param name="viewMetaData"></param>
+        public SpotifySearchPresenter(IAdditionalMetaDataView viewMetaData)
+        {
+            this._viewMetalData = viewMetaData;
+        }
+
         #endregion
 
         #region Methods
