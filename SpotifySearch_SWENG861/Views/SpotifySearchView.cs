@@ -40,7 +40,8 @@ namespace SpotifySearch_SWENG861
         public SpotifySearchView()
         {
             InitializeComponent();
-            AuthenticateAndStartService();
+            // TODO keep disabled until closer to completion
+            //AuthenticateAndStartService();
             
         }
 
@@ -77,6 +78,46 @@ namespace SpotifySearch_SWENG861
         #endregion
 
         #region Event Handlers
+
+        /// <summary>
+        /// Key Down event handler for artist/song entry text box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtArtistSongEntry_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        /// <summary>
+        /// SpotifySearchView's On Load Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpotifySearchView_Load(object sender, EventArgs e)
+        {
+            PopulateMaxSearchComboBox();
+        }
+
+        /// <summary>
+        /// Populates max search combo box on form load
+        /// </summary>
+        private void PopulateMaxSearchComboBox()
+        {
+            if (string.IsNullOrEmpty(this.cbxMaxSearch.Text))
+            {
+                List<string> data = new List<string>
+                {
+                    "1", "2", "3", "4", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50"
+                };
+
+                this.cbxMaxSearch.DataSource = data;
+            }
+        }
+
         /// <summary>
         /// btnSearch click event.
         /// </summary>
@@ -84,6 +125,9 @@ namespace SpotifySearch_SWENG861
         /// <param name="e"></param>
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            // TODO place logic in here to go into an offline mode state where the search button is disabled
+            // but the user can import songs via xml that have been exported.
+
             LoadResults();
         }
         
@@ -146,7 +190,7 @@ namespace SpotifySearch_SWENG861
 
             // Search Limit from user // todo add search restrictions between 0-50
             // todo add restrictions to only be able to type in numbers preferably inside of Form
-            int searchLimit = Convert.ToInt16(txtMaxSearch.Text);
+            int searchLimit = Convert.ToInt16(cbxMaxSearch.SelectedValue);
 
             string artistsJson = api.Search($"{searchQuery}", searchType, searchLimit, 0);
 
@@ -211,5 +255,6 @@ namespace SpotifySearch_SWENG861
             }
         }
         #endregion
+
     }
 }
