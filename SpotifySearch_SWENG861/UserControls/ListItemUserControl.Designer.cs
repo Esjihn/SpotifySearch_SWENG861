@@ -53,7 +53,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(245, 31);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(788, 32);
+            this.lblTitle.Size = new System.Drawing.Size(788, 54);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Title";
             this.lblTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LblTitle_MouseClick);
@@ -62,9 +62,9 @@
             // 
             // lblMessage
             // 
-            this.lblMessage.Location = new System.Drawing.Point(273, 75);
+            this.lblMessage.Location = new System.Drawing.Point(273, 102);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(760, 132);
+            this.lblMessage.Size = new System.Drawing.Size(760, 105);
             this.lblMessage.TabIndex = 2;
             this.lblMessage.Text = "Lorem ipsum - some text here";
             this.lblMessage.Click += new System.EventHandler(this.LblMessage_Click);

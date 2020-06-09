@@ -39,8 +39,7 @@ namespace SpotifySearch_SWENG861.Views
         {
             InitializeComponent();
             // TODO keep disabled until closer to completion
-            //AuthenticateAndStartService();
-            
+            AuthenticateAndStartService();
         }
 
         #region Properties
@@ -134,6 +133,7 @@ namespace SpotifySearch_SWENG861.Views
         private void SpotifySearchView_Load(object sender, EventArgs e)
         {
             PopulateMaxSearchComboBox();
+            this.rtxtImportExportLocation.Enabled = false;
             HideAdvancedOptionsOnLoad();
         }
 
@@ -218,14 +218,14 @@ namespace SpotifySearch_SWENG861.Views
         private void LoadResults()
         {
             // todo get user selections and call presenter to process results and send us result objects.
-            // todo add regex to remove special characters? research unique artist and album names
-            // todo that spotify allows.
+            // todo regex the rtxtArtistSongEntry text box. Special characters will not be allowed. 
             // Clear panel for each subsequent search.
             if(this.flwSearchResultsFlowPanel.Controls.Count > 0 ) 
                 this.flwSearchResultsFlowPanel.Controls.Clear();
 
             // Search query from user
             // todo find out what is not allowed in spotify search (test using UI)
+            // also use app to type in illegal strings
             string searchQuery = this.rtxtArtistSongEntry.Text;
 
             // SearchType.* from user
@@ -239,8 +239,7 @@ namespace SpotifySearch_SWENG861.Views
                 searchType = SearchType.track;
             }
 
-            // Search Limit from user // todo add search restrictions between 0-50
-            // todo add restrictions to only be able to type in numbers preferably inside of Form
+            // Search Limit from user
             int searchLimit = Convert.ToInt16(cbxMaxSearch.SelectedValue);
 
             string artistsJson = api.Search($"{searchQuery}", searchType, searchLimit, 0);

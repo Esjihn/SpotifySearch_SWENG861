@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpotifySearchView));
             this.flwSearchResultsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlSpotifySearch = new System.Windows.Forms.Panel();
+            this.lblImportExport = new System.Windows.Forms.Label();
+            this.btnImportDirectory = new System.Windows.Forms.Button();
             this.rtxtImportExportLocation = new System.Windows.Forms.RichTextBox();
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnExportSearch = new System.Windows.Forms.Button();
@@ -44,8 +46,6 @@
             this.lblArtistSongEntry = new System.Windows.Forms.Label();
             this.lblMaxSearch = new System.Windows.Forms.Label();
             this.lblAppHeader = new System.Windows.Forms.Label();
-            this.btnImportDirectory = new System.Windows.Forms.Button();
-            this.lblImportExport = new System.Windows.Forms.Label();
             this.pnlSpotifySearch.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@
             this.flwSearchResultsFlowPanel.AutoScroll = true;
             this.flwSearchResultsFlowPanel.Location = new System.Drawing.Point(370, 0);
             this.flwSearchResultsFlowPanel.Name = "flwSearchResultsFlowPanel";
-            this.flwSearchResultsFlowPanel.Size = new System.Drawing.Size(1123, 918);
+            this.flwSearchResultsFlowPanel.Size = new System.Drawing.Size(1131, 918);
             this.flwSearchResultsFlowPanel.TabIndex = 2;
             // 
             // pnlSpotifySearch
@@ -83,6 +83,30 @@
             this.pnlSpotifySearch.Name = "pnlSpotifySearch";
             this.pnlSpotifySearch.Size = new System.Drawing.Size(364, 918);
             this.pnlSpotifySearch.TabIndex = 3;
+            // 
+            // lblImportExport
+            // 
+            this.lblImportExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblImportExport.AutoSize = true;
+            this.lblImportExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImportExport.ForeColor = System.Drawing.Color.White;
+            this.lblImportExport.Location = new System.Drawing.Point(11, 553);
+            this.lblImportExport.Name = "lblImportExport";
+            this.lblImportExport.Size = new System.Drawing.Size(290, 30);
+            this.lblImportExport.TabIndex = 16;
+            this.lblImportExport.Text = "Import / Export Directory";
+            // 
+            // btnImportDirectory
+            // 
+            this.btnImportDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportDirectory.ForeColor = System.Drawing.Color.Black;
+            this.btnImportDirectory.Location = new System.Drawing.Point(286, 597);
+            this.btnImportDirectory.Name = "btnImportDirectory";
+            this.btnImportDirectory.Size = new System.Drawing.Size(61, 59);
+            this.btnImportDirectory.TabIndex = 15;
+            this.btnImportDirectory.Text = "...";
+            this.btnImportDirectory.UseVisualStyleBackColor = true;
             // 
             // rtxtImportExportLocation
             // 
@@ -135,7 +159,7 @@
             // 
             this.cbxMaxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMaxSearch.FormattingEnabled = true;
-            this.cbxMaxSearch.Location = new System.Drawing.Point(19, 482);
+            this.cbxMaxSearch.Location = new System.Drawing.Point(14, 482);
             this.cbxMaxSearch.Name = "cbxMaxSearch";
             this.cbxMaxSearch.Size = new System.Drawing.Size(182, 47);
             this.cbxMaxSearch.TabIndex = 10;
@@ -182,7 +206,7 @@
             // rtxtArtistSongEntry
             // 
             this.rtxtArtistSongEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtArtistSongEntry.Location = new System.Drawing.Point(19, 346);
+            this.rtxtArtistSongEntry.Location = new System.Drawing.Point(15, 346);
             this.rtxtArtistSongEntry.Name = "rtxtArtistSongEntry";
             this.rtxtArtistSongEntry.Size = new System.Drawing.Size(328, 59);
             this.rtxtArtistSongEntry.TabIndex = 6;
@@ -205,7 +229,7 @@
             this.lblArtistSongEntry.AutoSize = true;
             this.lblArtistSongEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArtistSongEntry.ForeColor = System.Drawing.Color.White;
-            this.lblArtistSongEntry.Location = new System.Drawing.Point(14, 299);
+            this.lblArtistSongEntry.Location = new System.Drawing.Point(9, 299);
             this.lblArtistSongEntry.Name = "lblArtistSongEntry";
             this.lblArtistSongEntry.Size = new System.Drawing.Size(205, 30);
             this.lblArtistSongEntry.TabIndex = 3;
@@ -216,7 +240,7 @@
             this.lblMaxSearch.AutoSize = true;
             this.lblMaxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaxSearch.ForeColor = System.Drawing.Color.White;
-            this.lblMaxSearch.Location = new System.Drawing.Point(14, 429);
+            this.lblMaxSearch.Location = new System.Drawing.Point(9, 429);
             this.lblMaxSearch.Name = "lblMaxSearch";
             this.lblMaxSearch.Size = new System.Drawing.Size(293, 30);
             this.lblMaxSearch.TabIndex = 2;
@@ -232,30 +256,6 @@
             this.lblAppHeader.Size = new System.Drawing.Size(243, 39);
             this.lblAppHeader.TabIndex = 0;
             this.lblAppHeader.Text = "Spotify Search";
-            // 
-            // btnImportDirectory
-            // 
-            this.btnImportDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImportDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportDirectory.ForeColor = System.Drawing.Color.Black;
-            this.btnImportDirectory.Location = new System.Drawing.Point(286, 597);
-            this.btnImportDirectory.Name = "btnImportDirectory";
-            this.btnImportDirectory.Size = new System.Drawing.Size(61, 59);
-            this.btnImportDirectory.TabIndex = 15;
-            this.btnImportDirectory.Text = "...";
-            this.btnImportDirectory.UseVisualStyleBackColor = true;
-            // 
-            // lblImportExport
-            // 
-            this.lblImportExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblImportExport.AutoSize = true;
-            this.lblImportExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImportExport.ForeColor = System.Drawing.Color.White;
-            this.lblImportExport.Location = new System.Drawing.Point(11, 553);
-            this.lblImportExport.Name = "lblImportExport";
-            this.lblImportExport.Size = new System.Drawing.Size(290, 30);
-            this.lblImportExport.TabIndex = 16;
-            this.lblImportExport.Text = "Import / Export Directory";
             // 
             // SpotifySearchView
             // 

@@ -164,12 +164,15 @@ namespace SpotifySearch_SWENG861.UserControls
                 for (int i = 0; i < controls.Count; i++)
                 {
                     ListItemUserControl cnt = controls[i] as ListItemUserControl;
-                    if (cnt.Title == currentTitle)
+                    if (cnt != null && cnt.Title == currentTitle)
                     {
                         selectedIndex = i;
                     }
                 }
 
+                // todo will need to chnage from .WebBrowser to 
+                // ChromiumWebBrowser object if i decide to go with 
+                // CEFSharp API. 
                 ListenOnSpotifyView listenView = new ListenOnSpotifyView();
                 listenView.WebBrowser.Url = new Uri(view.TracksResults.Tracks.Items[selectedIndex].Preview_url);
                 listenView.Show();
