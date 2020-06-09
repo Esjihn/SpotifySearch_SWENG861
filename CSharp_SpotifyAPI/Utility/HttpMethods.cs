@@ -138,7 +138,6 @@ namespace CSharp_SpotifyAPI
                     errorMessage = wex.Message;
                 }
                 
-
                 throw new ArgumentException(errorMessage);
             }
         }

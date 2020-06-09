@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSharp_SpotifyAPI;
@@ -39,7 +40,7 @@ namespace SpotifySearch_SWENG861.Views
         {
             InitializeComponent();
             // TODO keep disabled until closer to completion
-            AuthenticateAndStartService();
+            // AuthenticateAndStartService();
         }
 
         #region Properties
@@ -75,6 +76,44 @@ namespace SpotifySearch_SWENG861.Views
         #endregion
 
         #region Event Handlers
+
+        /// <summary>
+        /// Artist / Song search rich text box text changed event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rtxtArtistSongEntry_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Radio Artist search button event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rbtnArtistSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.btnSearch.Enabled == false && this.btnSearch.UseVisualStyleBackColor == false) 
+            {
+                this.btnSearch.Enabled = true;
+                this.btnSearch.UseVisualStyleBackColor = true;
+            }
+        }
+
+        /// <summary>
+        /// Radio Song search button event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rbtnSongSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (btnSearch.Enabled == false && this.btnSearch.UseVisualStyleBackColor == false)
+            {
+                this.btnSearch.Enabled = true;
+                this.btnSearch.UseVisualStyleBackColor = true;
+            }
+        }
 
         /// <summary>
         /// Offline Mode button click event handler
@@ -113,6 +152,16 @@ namespace SpotifySearch_SWENG861.Views
         }
 
         /// <summary>
+        /// Artist / Song search rich tech box key press event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rtxtArtistSongEntry_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsSeparator(e.KeyChar);
+        }
+
+        /// <summary>
         /// Key Down event handler for artist/song entry text box
         /// </summary>
         /// <param name="sender"></param>
@@ -135,6 +184,8 @@ namespace SpotifySearch_SWENG861.Views
             PopulateMaxSearchComboBox();
             this.rtxtImportExportLocation.Enabled = false;
             HideAdvancedOptionsOnLoad();
+            this.btnSearch.Enabled = false;
+            this.btnSearch.BackColor = Color.DimGray;
         }
 
         /// <summary>
@@ -160,9 +211,6 @@ namespace SpotifySearch_SWENG861.Views
         /// <param name="e"></param>
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            // TODO place logic in here to go into an offline mode state where the search button is disabled
-            // but the user can import songs via xml that have been exported.
-
             LoadResults();
         }
         
@@ -206,9 +254,10 @@ namespace SpotifySearch_SWENG861.Views
                 api.Authenticate(true);
             });
 
-            while (Authenticated == false)
+            if (Authenticated == false)
             {
-                // todo add logic if authentication fails
+                MessageBox.Show(@"Authentication failed. Please try again or login with another account", @"Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -217,15 +266,10 @@ namespace SpotifySearch_SWENG861.Views
         /// </summary>
         private void LoadResults()
         {
-            // todo get user selections and call presenter to process results and send us result objects.
-            // todo regex the rtxtArtistSongEntry text box. Special characters will not be allowed. 
             // Clear panel for each subsequent search.
             if(this.flwSearchResultsFlowPanel.Controls.Count > 0 ) 
                 this.flwSearchResultsFlowPanel.Controls.Clear();
 
-            // Search query from user
-            // todo find out what is not allowed in spotify search (test using UI)
-            // also use app to type in illegal strings
             string searchQuery = this.rtxtArtistSongEntry.Text;
 
             // SearchType.* from user
@@ -242,8 +286,21 @@ namespace SpotifySearch_SWENG861.Views
             // Search Limit from user
             int searchLimit = Convert.ToInt16(cbxMaxSearch.SelectedValue);
 
-            string artistsJson = api.Search($"{searchQuery}", searchType, searchLimit, 0);
+            string artistsJson = string.Empty;
 
+            try
+            {
+                artistsJson = api.Search($"{searchQuery}", searchType, searchLimit, 0);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(@"Invalid search parameters or user not authenticated. Relaunch app and sign into Spotify via the web browser that launches on applicaton startup. If you receive error again please contact admin @ 1-888-555-5555. Error Message: " 
+                                + e.Message, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this.btnSearch.Enabled = false;
+                this.btnSearch.BackColor = Color.DimGray;
+            }
+            
             SpotifySearchPresenter p = new SpotifySearchPresenter(this);
             switch (searchType)
             {
@@ -261,12 +318,12 @@ namespace SpotifySearch_SWENG861.Views
 
             // Populate UI with result user control list.
             ListItemUserControl[] listItems = new ListItemUserControl[] { };
-            if (searchType == SearchType.artist)
+            if (searchType == SearchType.artist && ArtistsResults != null)
             {
                 listItems = new ListItemUserControl[ArtistsResults.Artists.Items.Count];
             }
 
-            if (searchType == SearchType.track)
+            if (searchType == SearchType.track && TracksResults != null)
             {
                 listItems = new ListItemUserControl[TracksResults.Tracks.Items.Count];
             }
@@ -304,7 +361,7 @@ namespace SpotifySearch_SWENG861.Views
                 }
             }
         }
-        #endregion
 
+        #endregion
     }
 }
