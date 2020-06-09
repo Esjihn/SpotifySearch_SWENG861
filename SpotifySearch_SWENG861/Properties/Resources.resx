@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="clientId" xml:space="preserve">
+    <value>305dbadf23cd4d9688868eb01857b54b</value>
+    <comment>spotify client id</comment>
+  </data>
+  <data name="redirectId" xml:space="preserve">
+    <value>http%3A%2F%2Flocalhost%3A62177</value>
+    <comment>spotify redirect id</comment>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="spotify_icon_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\spotify-icon-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="state" xml:space="preserve">
+    <value>123</value>
+    <comment>client state (not important)</comment>
   </data>
 </root>

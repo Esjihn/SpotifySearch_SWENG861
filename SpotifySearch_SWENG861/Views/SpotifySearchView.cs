@@ -20,19 +20,13 @@ namespace SpotifySearch_SWENG861.Views
 
         public static bool Authenticated;
 
-        /// <summary>
-        /// todo change these to project resource string variables
-        /// </summary>
-        static string clientID = "305dbadf23cd4d9688868eb01857b54b";
-        static string redirectID = "http%3A%2F%2Flocalhost%3A62177";
-        static string state = "123";
-
-        static List<Scope> scope = new List<Scope>()
+        static readonly List<Scope> Scope = new List<Scope>()
         {
-            Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserModifyPlaybackState, Scope.UserModifyPlaybackState, Scope.UserFollowRead, Scope.UserFollowModify, Scope.UserReadRecentlyPlayed, Scope.UserReadPlaybackState
+            CSharp_SpotifyAPI.Enums.Scope.UserReadPrivate, CSharp_SpotifyAPI.Enums.Scope.UserReadBirthdate, CSharp_SpotifyAPI.Enums.Scope.UserModifyPlaybackState, CSharp_SpotifyAPI.Enums.Scope.UserModifyPlaybackState, CSharp_SpotifyAPI.Enums.Scope.UserFollowRead, CSharp_SpotifyAPI.Enums.Scope.UserFollowModify, CSharp_SpotifyAPI.Enums.Scope.UserReadRecentlyPlayed, CSharp_SpotifyAPI.Enums.Scope.UserReadPlaybackState
         };
 
-        private static SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
+        // ClientId, redirectId, state are in project resources via project properties
+        private static readonly SpotifyAPI Api = new SpotifyAPI(Resources.clientId, Resources.redirectId, Resources.state, Scope, true);
 
         #endregion
 
@@ -247,11 +241,11 @@ namespace SpotifySearch_SWENG861.Views
         /// </summary>
         private void AuthenticateAndStartService()
         {
-            api.Authenticated += Api_Authenticated;
+            Api.Authenticated += Api_Authenticated;
 
             Task.Run(() =>
             {
-                api.Authenticate(true);
+                Api.Authenticate(true);
             });
 
             if (Authenticated == false)
@@ -290,7 +284,7 @@ namespace SpotifySearch_SWENG861.Views
 
             try
             {
-                artistsJson = api.Search($"{searchQuery}", searchType, searchLimit, 0);
+                artistsJson = Api.Search($"{searchQuery}", searchType, searchLimit, 0);
             }
             catch (Exception e)
             {

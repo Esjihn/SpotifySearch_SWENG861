@@ -61,12 +61,39 @@ namespace SpotifySearch_SWENG861.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 305dbadf23cd4d9688868eb01857b54b.
+        /// </summary>
+        internal static string clientId {
+            get {
+                return ResourceManager.GetString("clientId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http%3A%2F%2Flocalhost%3A62177.
+        /// </summary>
+        internal static string redirectId {
+            get {
+                return ResourceManager.GetString("redirectId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap spotify_icon_01 {
             get {
                 object obj = ResourceManager.GetObject("spotify_icon_01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 123.
+        /// </summary>
+        internal static string state {
+            get {
+                return ResourceManager.GetString("state", resourceCulture);
             }
         }
     }
