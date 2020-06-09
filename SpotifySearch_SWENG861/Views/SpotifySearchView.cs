@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using CSharp_SpotifyAPI;
 using CSharp_SpotifyAPI.Enums;
@@ -13,13 +11,13 @@ using SpotifySearch_SWENG861.Properties;
 using SpotifySearch_SWENG861.UserControls;
 using SpotifySearch_SWENG861.ViewInterfaces;
 
-namespace SpotifySearch_SWENG861
+namespace SpotifySearch_SWENG861.Views
 {
     public partial class SpotifySearchView : Form, ISpotifySearchView
     {
         #region Spotify Authentification
 
-        public static bool authenticated = false;
+        public static bool Authenticated;
 
         /// <summary>
         /// todo change these to project resource string variables
@@ -80,6 +78,42 @@ namespace SpotifySearch_SWENG861
         #region Event Handlers
 
         /// <summary>
+        /// Offline Mode button click event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOfflineMode_Click(object sender, EventArgs e)
+        {
+            if (this.btnImportSearch != null 
+                && this.btnExportSearch != null
+                && this.lblImportExport != null
+                && this.rtxtImportExportLocation != null
+                && this.btnImportDirectory != null)
+            {
+                if(this.btnImportSearch.Visible
+                   && this.btnExportSearch.Visible
+                   && this.lblImportExport.Visible
+                   && this.rtxtImportExportLocation.Visible
+                   && this.btnImportDirectory.Visible)
+                {
+                    this.btnImportSearch.Visible = false;
+                    this.btnExportSearch.Visible = false;
+                    this.lblImportExport.Visible = false;
+                    this.rtxtImportExportLocation.Visible = false;
+                    this.btnImportDirectory.Visible = false;
+                }
+                else
+                {
+                    this.btnImportSearch.Visible = true;
+                    this.btnExportSearch.Visible = true;
+                    this.lblImportExport.Visible = true;
+                    this.rtxtImportExportLocation.Visible = true;
+                    this.btnImportDirectory.Visible = true;
+                }
+            }
+        }
+
+        /// <summary>
         /// Key Down event handler for artist/song entry text box
         /// </summary>
         /// <param name="sender"></param>
@@ -100,6 +134,7 @@ namespace SpotifySearch_SWENG861
         private void SpotifySearchView_Load(object sender, EventArgs e)
         {
             PopulateMaxSearchComboBox();
+            HideAdvancedOptionsOnLoad();
         }
 
         /// <summary>
@@ -138,11 +173,27 @@ namespace SpotifySearch_SWENG861
         /// <param name="e"></param>
         private static void Api_Authenticated(object sender, EventArgs e)
         {
-            authenticated = true;
+            Authenticated = true;
         }
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Hides Import / Export UI elements which requires options to be clicked first
+        /// </summary>
+        private void HideAdvancedOptionsOnLoad()
+        {
+            if (this.btnImportSearch != null && this.btnExportSearch != null)
+            {
+                this.btnImportSearch.Visible = false;
+                this.btnExportSearch.Visible = false;
+                this.lblImportExport.Visible = false;
+                this.rtxtImportExportLocation.Visible = false;
+                this.btnImportDirectory.Visible = false;
+            }
+        }
+
         /// <summary>
         /// Authenticate Spotify Service.
         /// </summary>
@@ -155,7 +206,7 @@ namespace SpotifySearch_SWENG861
                 api.Authenticate(true);
             });
 
-            while (authenticated == false)
+            while (Authenticated == false)
             {
                 // todo add logic if authentication fails
             }
@@ -175,7 +226,7 @@ namespace SpotifySearch_SWENG861
 
             // Search query from user
             // todo find out what is not allowed in spotify search (test using UI)
-            string searchQuery = this.txtArtistSongEntry.Text;
+            string searchQuery = this.rtxtArtistSongEntry.Text;
 
             // SearchType.* from user
             SearchType searchType;
@@ -205,7 +256,7 @@ namespace SpotifySearch_SWENG861
                     break;
                 default:
                     // leave method if cannot process
-                    MessageBox.Show("Could not process Json");
+                    MessageBox.Show(@"Could not process Json");
                     return;
             }
 

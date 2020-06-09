@@ -1,4 +1,4 @@
-﻿namespace SpotifySearch_SWENG861
+﻿namespace SpotifySearch_SWENG861.Views
 {
     partial class SpotifySearchView
     {
@@ -31,15 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpotifySearchView));
             this.flwSearchResultsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlSpotifySearch = new System.Windows.Forms.Panel();
+            this.rtxtImportExportLocation = new System.Windows.Forms.RichTextBox();
+            this.btnOptions = new System.Windows.Forms.Button();
+            this.btnExportSearch = new System.Windows.Forms.Button();
+            this.btnImportSearch = new System.Windows.Forms.Button();
             this.cbxMaxSearch = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.rbtnArtistSearch = new System.Windows.Forms.RadioButton();
             this.rbtnSongSearch = new System.Windows.Forms.RadioButton();
-            this.txtArtistSongEntry = new System.Windows.Forms.RichTextBox();
+            this.rtxtArtistSongEntry = new System.Windows.Forms.RichTextBox();
             this.lblSearchType = new System.Windows.Forms.Label();
             this.lblArtistSongEntry = new System.Windows.Forms.Label();
             this.lblMaxSearch = new System.Windows.Forms.Label();
             this.lblAppHeader = new System.Windows.Forms.Label();
+            this.btnImportDirectory = new System.Windows.Forms.Button();
+            this.lblImportExport = new System.Windows.Forms.Label();
             this.pnlSpotifySearch.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,11 +63,17 @@
             // pnlSpotifySearch
             // 
             this.pnlSpotifySearch.BackColor = System.Drawing.Color.Teal;
+            this.pnlSpotifySearch.Controls.Add(this.lblImportExport);
+            this.pnlSpotifySearch.Controls.Add(this.btnImportDirectory);
+            this.pnlSpotifySearch.Controls.Add(this.rtxtImportExportLocation);
+            this.pnlSpotifySearch.Controls.Add(this.btnOptions);
+            this.pnlSpotifySearch.Controls.Add(this.btnExportSearch);
+            this.pnlSpotifySearch.Controls.Add(this.btnImportSearch);
             this.pnlSpotifySearch.Controls.Add(this.cbxMaxSearch);
             this.pnlSpotifySearch.Controls.Add(this.btnSearch);
             this.pnlSpotifySearch.Controls.Add(this.rbtnArtistSearch);
             this.pnlSpotifySearch.Controls.Add(this.rbtnSongSearch);
-            this.pnlSpotifySearch.Controls.Add(this.txtArtistSongEntry);
+            this.pnlSpotifySearch.Controls.Add(this.rtxtArtistSongEntry);
             this.pnlSpotifySearch.Controls.Add(this.lblSearchType);
             this.pnlSpotifySearch.Controls.Add(this.lblArtistSongEntry);
             this.pnlSpotifySearch.Controls.Add(this.lblMaxSearch);
@@ -71,6 +83,53 @@
             this.pnlSpotifySearch.Name = "pnlSpotifySearch";
             this.pnlSpotifySearch.Size = new System.Drawing.Size(364, 918);
             this.pnlSpotifySearch.TabIndex = 3;
+            // 
+            // rtxtImportExportLocation
+            // 
+            this.rtxtImportExportLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtxtImportExportLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtImportExportLocation.Location = new System.Drawing.Point(12, 597);
+            this.rtxtImportExportLocation.Name = "rtxtImportExportLocation";
+            this.rtxtImportExportLocation.Size = new System.Drawing.Size(265, 59);
+            this.rtxtImportExportLocation.TabIndex = 14;
+            this.rtxtImportExportLocation.Text = "";
+            // 
+            // btnOptions
+            // 
+            this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOptions.ForeColor = System.Drawing.Color.Black;
+            this.btnOptions.Location = new System.Drawing.Point(184, 678);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(160, 110);
+            this.btnOptions.TabIndex = 13;
+            this.btnOptions.Text = "Options";
+            this.btnOptions.UseVisualStyleBackColor = true;
+            this.btnOptions.Click += new System.EventHandler(this.btnOfflineMode_Click);
+            // 
+            // btnExportSearch
+            // 
+            this.btnExportSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportSearch.ForeColor = System.Drawing.Color.Black;
+            this.btnExportSearch.Location = new System.Drawing.Point(12, 799);
+            this.btnExportSearch.Name = "btnExportSearch";
+            this.btnExportSearch.Size = new System.Drawing.Size(160, 110);
+            this.btnExportSearch.TabIndex = 12;
+            this.btnExportSearch.Text = "Export Search";
+            this.btnExportSearch.UseVisualStyleBackColor = true;
+            // 
+            // btnImportSearch
+            // 
+            this.btnImportSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportSearch.ForeColor = System.Drawing.Color.Black;
+            this.btnImportSearch.Location = new System.Drawing.Point(12, 678);
+            this.btnImportSearch.Name = "btnImportSearch";
+            this.btnImportSearch.Size = new System.Drawing.Size(160, 110);
+            this.btnImportSearch.TabIndex = 11;
+            this.btnImportSearch.Text = "Import Search";
+            this.btnImportSearch.UseVisualStyleBackColor = true;
             // 
             // cbxMaxSearch
             // 
@@ -86,11 +145,11 @@
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(210, 826);
+            this.btnSearch.Location = new System.Drawing.Point(184, 799);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(137, 80);
+            this.btnSearch.Size = new System.Drawing.Size(160, 110);
             this.btnSearch.TabIndex = 0;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Spotify Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
@@ -120,15 +179,15 @@
             this.rbtnSongSearch.Text = "Song Search";
             this.rbtnSongSearch.UseVisualStyleBackColor = true;
             // 
-            // txtArtistSongEntry
+            // rtxtArtistSongEntry
             // 
-            this.txtArtistSongEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtArtistSongEntry.Location = new System.Drawing.Point(19, 346);
-            this.txtArtistSongEntry.Name = "txtArtistSongEntry";
-            this.txtArtistSongEntry.Size = new System.Drawing.Size(328, 59);
-            this.txtArtistSongEntry.TabIndex = 6;
-            this.txtArtistSongEntry.Text = "";
-            this.txtArtistSongEntry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArtistSongEntry_KeyDown);
+            this.rtxtArtistSongEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtArtistSongEntry.Location = new System.Drawing.Point(19, 346);
+            this.rtxtArtistSongEntry.Name = "rtxtArtistSongEntry";
+            this.rtxtArtistSongEntry.Size = new System.Drawing.Size(328, 59);
+            this.rtxtArtistSongEntry.TabIndex = 6;
+            this.rtxtArtistSongEntry.Text = "";
+            this.rtxtArtistSongEntry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArtistSongEntry_KeyDown);
             // 
             // lblSearchType
             // 
@@ -174,6 +233,30 @@
             this.lblAppHeader.TabIndex = 0;
             this.lblAppHeader.Text = "Spotify Search";
             // 
+            // btnImportDirectory
+            // 
+            this.btnImportDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportDirectory.ForeColor = System.Drawing.Color.Black;
+            this.btnImportDirectory.Location = new System.Drawing.Point(286, 597);
+            this.btnImportDirectory.Name = "btnImportDirectory";
+            this.btnImportDirectory.Size = new System.Drawing.Size(61, 59);
+            this.btnImportDirectory.TabIndex = 15;
+            this.btnImportDirectory.Text = "...";
+            this.btnImportDirectory.UseVisualStyleBackColor = true;
+            // 
+            // lblImportExport
+            // 
+            this.lblImportExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblImportExport.AutoSize = true;
+            this.lblImportExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImportExport.ForeColor = System.Drawing.Color.White;
+            this.lblImportExport.Location = new System.Drawing.Point(11, 553);
+            this.lblImportExport.Name = "lblImportExport";
+            this.lblImportExport.Size = new System.Drawing.Size(290, 30);
+            this.lblImportExport.TabIndex = 16;
+            this.lblImportExport.Text = "Import / Export Directory";
+            // 
             // SpotifySearchView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -199,11 +282,17 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.RadioButton rbtnArtistSearch;
         private System.Windows.Forms.RadioButton rbtnSongSearch;
-        private System.Windows.Forms.RichTextBox txtArtistSongEntry;
+        private System.Windows.Forms.RichTextBox rtxtArtistSongEntry;
         private System.Windows.Forms.Label lblSearchType;
         private System.Windows.Forms.Label lblArtistSongEntry;
         private System.Windows.Forms.Label lblMaxSearch;
         private System.Windows.Forms.ComboBox cbxMaxSearch;
+        private System.Windows.Forms.Button btnExportSearch;
+        private System.Windows.Forms.Button btnImportSearch;
+        private System.Windows.Forms.Button btnOptions;
+        private System.Windows.Forms.RichTextBox rtxtImportExportLocation;
+        private System.Windows.Forms.Button btnImportDirectory;
+        private System.Windows.Forms.Label lblImportExport;
     }
 }
 
