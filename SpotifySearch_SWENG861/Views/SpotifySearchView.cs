@@ -67,6 +67,17 @@ namespace SpotifySearch_SWENG861.Views
         /// Array of Track results from presenter
         /// </summary>
         public SearchSongs TracksResults { get; set; }
+
+        /// <summary>
+        /// Boolean flag corresponds to radio button artists search checked
+        /// </summary>
+        public bool IsArtistSearch { get; set; }
+
+        /// <summary>
+        /// Boolean flag corresponds to radio button song search checked
+        /// </summary>
+        public bool IsSongSearch { get; set; }
+
         #endregion
 
         #region Event Handlers
@@ -88,6 +99,20 @@ namespace SpotifySearch_SWENG861.Views
         /// <param name="e"></param>
         private void rbtnArtistSearch_CheckedChanged(object sender, EventArgs e)
         {
+            RadioButton btn = sender as RadioButton;
+
+            if (btn != null)
+            {
+                if (btn.Checked)
+                {
+                    IsArtistSearch = true;
+                }
+                else
+                {
+                    IsArtistSearch = false;
+                }
+            }
+
             if (this.btnSearch.Enabled == false && this.btnSearch.UseVisualStyleBackColor == false) 
             {
                 this.btnSearch.Enabled = true;
@@ -102,6 +127,20 @@ namespace SpotifySearch_SWENG861.Views
         /// <param name="e"></param>
         private void rbtnSongSearch_CheckedChanged(object sender, EventArgs e)
         {
+            RadioButton btn = sender as RadioButton;
+
+            if (btn != null)
+            {
+                if (btn.Checked)
+                {
+                    IsSongSearch = true;
+                }
+                else
+                {
+                    IsSongSearch = false;
+                }
+            }
+
             if (btnSearch.Enabled == false && this.btnSearch.UseVisualStyleBackColor == false)
             {
                 this.btnSearch.Enabled = true;

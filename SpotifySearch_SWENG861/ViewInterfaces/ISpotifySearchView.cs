@@ -11,5 +11,8 @@ namespace SpotifySearch_SWENG861.ViewInterfaces
     {
         SearchArtists ArtistsResults { get; set; }
         SearchSongs TracksResults { get; set; }
+
+        bool IsSongSearch { get; set; }
+        bool IsArtistSearch { get; set; }
     }
 }

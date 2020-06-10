@@ -7,20 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CSharp_SpotifyAPI.Models;
+using SpotifySearch_SWENG861.ViewInterfaces;
 
 namespace SpotifySearch_SWENG861.Views
 {
-    public partial class AdditionalMetaDataView : Form
+    public partial class AdditionalMetaDataView : Form, IAdditionalMetaDataView
     {
         public AdditionalMetaDataView()
         {
             InitializeComponent();
         }
 
-        // todo implement interface
-        // Format the meta data in the presenter
-        // onclick event will send formatted data to this form from the parent form. 
-        // will need to create property here for the present to send data too. and then add methods
-        // to IAdditionalMetaDataView interface. 
+        public void LoadMetaData(SearchSongs loadSearchSongsMetaData)
+        {
+            // todo guard clause, load data into form after formatting "pretty" results
+        }
+
+        public void LoadMetaData(SearchArtists loadSearchArtistsMetaData)
+        {
+            // todo guard clause, load data into form after formatting "pretty" results
+            
+        }
     }
 }
