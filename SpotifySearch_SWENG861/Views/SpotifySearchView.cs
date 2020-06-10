@@ -99,10 +99,12 @@ namespace SpotifySearch_SWENG861.Views
             // todo utilize IsArtistSearch and IsSongSearch booleans if necessary.
             // todo get Title, message, and MetaData. meta data view may need property for meta data list.
             // todo call presenter to perform this work. 
-            // todo presenter.CollectSpotifySearchViewListAndMetaData(ViewMethodWithList)
+            // todo presenter.CollectSpotifySearchViewListAndMetaData(ViewMethodWithList) example below.
+            //MainFrameDataPresenter p = new MainFrameDataPresenter(this.Parent.Parent as MainFrameDataView);
+            //p.CollectMainFrameDataViewList(MainFrameDataPOList());
             // todo presenter.ExportData() uses XmlBuilder, PdfBuilder, SpotifySearchViewPO, and DateTime
+            //p.ExportData();
         }
-
 
         /// <summary>
         /// btnImportSearch click event.
