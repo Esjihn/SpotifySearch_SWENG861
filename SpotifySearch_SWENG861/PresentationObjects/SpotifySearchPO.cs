@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CSharp_SpotifyAPI.Models;
+
+namespace SpotifySearch_SWENG861.PresentationObjects
+{
+    public class SpotifySearchPO
+    {
+        #region List Item UI
+        public string Title { get; set; }
+        public string Message { get; set; }
+        #endregion
+
+        #region Meta Data UI
+        public string NewLine { get { return Environment.NewLine; } }
+
+        public string Name { get; set; }
+        public bool ExplicitWords { get; set; }
+        public List<string> Genres { get; set; }
+        public string Genre { get; set; }
+        public int Popularity { get; set; }
+        public Item Followers { get; set; }
+        public int FollowerTotal { get; set; }
+        public string Id { get; set; }
+        public bool IsLocal { get; set; }
+        public string Href { get; set; }
+        public List<string> AvailableMarkets { get; set; }
+        public string PreviewUrl { get; set; }
+        public List<Artists> Artists { get; set; }
+        public string ArtistName { get; set; }
+        public int DurationMS { get; set; }
+        public int DiscNumber { get; set; }
+        public string ExternalUrls { get; set; }
+
+        #endregion
+    }
+}

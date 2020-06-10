@@ -107,8 +107,6 @@ namespace SpotifySearch_SWENG861.Views
             data.Add("Popularity Total: " + dataObject.Popularity);
             if(dataObject.Followers != null) data.Add("Followers: " + dataObject.Followers.Total);
             if(dataObject.Id != null) data.Add("ID: " + dataObject.Id);
-            if(dataObject.available_markets != null)
-                data.Add("Available Markets: " + dataObject.available_markets[index]);
             data.Add("Is Local: " + dataObject.Is_local);
             
             if (dataObject.Href != null)
