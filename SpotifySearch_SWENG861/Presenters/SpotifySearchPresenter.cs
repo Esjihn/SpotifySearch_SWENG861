@@ -109,8 +109,13 @@ namespace SpotifySearch_SWENG861.Presenters
             // leverage XMLBuilder, SpotifySearchPO path from CompleteSpotifySearchList.FirstOrDefault LINQ
             // leverage DateTime date = DateTime.Now
             XMLBuilder xmlBuilder = new XMLBuilder();
-            SpotifySearchPO path = CompleteSpotifySearchList.FirstOrDefault(s => s.)
-            
+            SpotifySearchPO path = CompleteSpotifySearchList.FirstOrDefault(s => !string.IsNullOrEmpty(s.ImportExportLocationText));
+            DateTime date = DateTime.Now;
+
+            if (path != null && !string.IsNullOrEmpty(path.ImportExportLocationText))
+            {
+                // todo
+            }
         }
 
         /// <summary>
