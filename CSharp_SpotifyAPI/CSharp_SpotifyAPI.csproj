@@ -64,6 +64,7 @@
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\SearchArtists.cs" />
     <Compile Include="Models\SearchSongs.cs" />
+    <Compile Include="Models\Tracks.cs" />
     <Compile Include="Utility\HttpMethods.cs" />
     <Compile Include="HTTPServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

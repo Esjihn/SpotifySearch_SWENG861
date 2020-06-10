@@ -34,7 +34,7 @@ namespace SpotifySearch_SWENG861.Views
         {
             InitializeComponent();
             // TODO keep disabled until closer to completion
-            // AuthenticateAndStartService();
+            AuthenticateAndStartService();
         }
 
         #region Properties
@@ -287,10 +287,11 @@ namespace SpotifySearch_SWENG861.Views
                 Api.Authenticate(true);
             });
 
-            if (Authenticated == false)
+            while (Authenticated == false)
             {
-                MessageBox.Show(@"Authentication failed. Please try again or login with another account", @"Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // do something
+                MessageBox.Show(@"Please confirm Spotify account in web browser window that opened and then click ok...", @"Check Browser",
+                    MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
         }
 

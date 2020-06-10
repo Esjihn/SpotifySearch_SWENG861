@@ -9,8 +9,6 @@ namespace SpotifySearch_SWENG861.ViewInterfaces
 {
     public interface IAdditionalMetaDataView
     {
-        void LoadMetaData(SearchSongs loadSearchSongsMetaData);
-
-        void LoadMetaData(SearchArtists loadSearchArtistsMetaData);
+        void LoadMetaData(string type, int index);
     }
 }

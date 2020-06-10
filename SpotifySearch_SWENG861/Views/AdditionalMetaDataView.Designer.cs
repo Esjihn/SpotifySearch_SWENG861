@@ -35,19 +35,22 @@
             // rtxtMetaData
             // 
             this.rtxtMetaData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtMetaData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtMetaData.Location = new System.Drawing.Point(0, 0);
+            this.rtxtMetaData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtxtMetaData.Name = "rtxtMetaData";
-            this.rtxtMetaData.Size = new System.Drawing.Size(800, 450);
+            this.rtxtMetaData.Size = new System.Drawing.Size(436, 478);
             this.rtxtMetaData.TabIndex = 0;
             this.rtxtMetaData.Text = "";
             // 
             // AdditionalMetaDataView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(436, 478);
             this.Controls.Add(this.rtxtMetaData);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AdditionalMetaDataView";
             this.Text = "Artist / Track Meta data";
             this.ResumeLayout(false);

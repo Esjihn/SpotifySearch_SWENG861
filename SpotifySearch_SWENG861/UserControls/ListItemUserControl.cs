@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using CSharp_SpotifyAPI;
 using CSharp_SpotifyAPI.Models;
 using SpotifySearch_SWENG861.ViewInterfaces;
 using SpotifySearch_SWENG861.Views;
@@ -276,24 +277,41 @@ namespace SpotifySearch_SWENG861.UserControls
         #region Private Methods
 
         /// <summary>
-        /// Loads, Fills, and shows AdditionalMetaDataView with active meta data.
+        /// Loads, Fills, and shows AdditionalMetaDataView with active meta data from user control
         /// </summary>
         /// <param name="view"></param>
         private void LoadAndFillMetaDataView(SpotifySearchView view)
         {
-            AdditionalMetaDataView metaView = new AdditionalMetaDataView();
+            string currentTitle = this.Title;
 
-            if (view.IsSongSearch)
+            if (view != null)
             {
-                metaView.LoadMetaData(LoadSearchSongsMetaData());
-            }
+                ControlCollection controls = view.FlowPanelObject.Controls;
+                int selectedIndex = 0;
 
-            if (view.IsArtistSearch)
-            {
-                metaView.LoadMetaData(LoadSearchArtistsMetaData());
-            }
+                for (int i = 0; i < controls.Count; i++)
+                {
+                    ListItemUserControl cnt = controls[i] as ListItemUserControl;
+                    if (cnt != null && cnt.Title == currentTitle)
+                    {
+                        selectedIndex = i;
+                    }
+                }
+                
+                AdditionalMetaDataView metaView = new AdditionalMetaDataView(LoadSearchSongsMetaData(), LoadSearchArtistsMetaData());
+                
+                if (view.IsSongSearch)
+                {
+                    metaView.LoadMetaData(Constants.Song, selectedIndex);
+                }
 
-            metaView.ShowDialog();
+                if (view.IsArtistSearch)
+                {
+                    metaView.LoadMetaData(Constants.Artist, selectedIndex);
+                }
+
+                metaView.ShowDialog();
+            }
         }
 
         #endregion
