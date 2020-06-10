@@ -91,17 +91,17 @@ namespace SpotifySearch_SWENG861.Views
         {
             if (dataObject == null) return new List<string>();
 
-            List<string> data = new List<string>();
+            List<string> data = new List<string> {Environment.NewLine};
             if(dataObject.Name != null) data.Add("Name: " + dataObject.Name);
             data.Add("Explicit Content: " + dataObject.ExplicitWords);
-            if(dataObject.Genres[index] != null) data.Add(dataObject.Genres[index]);
+            if(dataObject.Genres != null) data.Add("Genres: " + dataObject.Genres[index]);
             data.Add("Popularity Total: " + dataObject.Popularity);
-            data.Add("Followers: " + dataObject.Followers.Total);
-            if(dataObject.Id != null) data.Add("ID: " + dataObject.Id.FirstOrDefault());
+            if(dataObject.Followers != null) data.Add("Followers: " + dataObject.Followers.Total);
+            if(dataObject.Id != null) data.Add("ID: " + dataObject.Id);
             if(dataObject.available_markets != null)
-                data.Add("Available Markets: " + dataObject.available_markets[index].FirstOrDefault());
+                data.Add("Available Markets: " + dataObject.available_markets[index]);
             data.Add("Is Local: " + dataObject.Is_local);
-            if(dataObject.Href != null) data.Add("Link: " + dataObject.Href.FirstOrDefault());
+            if(dataObject.Href != null) data.Add("Link: " + dataObject.Href);
             data.Add("Track Number: " + dataObject.Track_number);
             if(dataObject.available_markets != null) 
                 data.Add("Available Markets: " + dataObject.available_markets[index]);
@@ -109,7 +109,8 @@ namespace SpotifySearch_SWENG861.Views
             if(dataObject.artists != null) data.Add("Artists: " + dataObject.artists[index]);
             data.Add("Song Duration: " + dataObject.duration_ms);
             data.Add("Disc Number: " + dataObject.disc_number);
-            if(dataObject.External_urls.Spotify != null) data.Add(dataObject.External_urls.Spotify);
+            if(dataObject.External_urls.Spotify != null) 
+                data.Add("External Urls: " + dataObject.External_urls.Spotify);
 
             return data;
         }
