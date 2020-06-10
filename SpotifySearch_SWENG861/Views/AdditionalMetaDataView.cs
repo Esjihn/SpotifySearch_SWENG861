@@ -88,20 +88,21 @@ namespace SpotifySearch_SWENG861.Views
             Debug.Print(dataObject.Name.FirstOrDefault().ToString());
 
 
-            List<string> data = new List<string>
-            {
-                // todo find the null object in this list. a regular string works fine. 
-                "Name: " + dataObject.Name,
-                "Explicit Content: " + dataObject.ExplicitWords,
-                // todo genres for only works for one. 
-                //"Genres: " + dataObject.Genres[index].FirstOrDefault(),
-                //"Popularity Total: " + dataObject.Popularity,
-                //"Followers: " + dataObject.Followers.Total,
-                //"ID: " + dataObject.Id.FirstOrDefault(),
-                //"Available Markets: " + dataObject.available_markets[index].FirstOrDefault(),
-                //"Is Local: " + dataObject.Is_local,
-                //"Link: " + dataObject.Href.FirstOrDefault()
-            };
+            List<string> data = new List<string>();
+            if(dataObject.Name != null) data.Add("Name: " + dataObject.Name);
+            data.Add("Explicit Content: " + dataObject.ExplicitWords);
+            if(dataObject.Genres[index] != null) data.Add(dataObject.Genres[index]);
+            data.Add("Popularity Total: " + dataObject.Popularity);
+            data.Add("Followers: " + dataObject.Followers.Total);
+            if(dataObject.Id != null) data.Add("ID: " + dataObject.Id.FirstOrDefault());
+            if(dataObject.available_markets != null)
+                data.Add("Available Markets: " + dataObject.available_markets[index].FirstOrDefault());
+            data.Add("Is Local: " + dataObject.Is_local);
+            if(dataObject.Href != null) data.Add("Link: " + dataObject.Href.FirstOrDefault());
+            data.Add("Track Number: " + dataObject.Track_number);
+            if(dataObject.available_markets != null) 
+                data.Add("Available Markets: " + dataObject.available_markets[index]);
+            if(dataObject.Preview_url != null); data.Add("Preview Url: " + dataObject.Preview_url);
 
             return data;
         }
