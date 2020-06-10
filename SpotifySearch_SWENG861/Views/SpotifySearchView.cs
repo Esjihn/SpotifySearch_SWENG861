@@ -87,6 +87,56 @@ namespace SpotifySearch_SWENG861.Views
         #endregion
 
         #region Event Handlers
+        
+        /// <summary>
+        /// btnExportSearch click event. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnExportSearch_Click(object sender, EventArgs e)
+        {
+            // todo create a SpotifySearchViewPO with necessary objects from view.
+            // todo utilize IsArtistSearch and IsSongSearch booleans if necessary.
+            // todo get Title, message, and MetaData. meta data view may need property for meta data list.
+            // todo call presenter to perform this work. 
+            // todo presenter.CollectSpotifySearchViewListAndMetaData(ViewMethodWithList)
+            // todo presenter.ExportData() uses XmlBuilder, PdfBuilder, SpotifySearchViewPO, and DateTime
+        }
+
+
+        /// <summary>
+        /// btnImportSearch click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnImportSearch_Click(object sender, EventArgs e)
+        {
+            if (fileBrowserDialog != null)
+            {
+                fileBrowserDialog.Filter = @"xml files (*.xml)|*.xml";
+
+                if (this.fileBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileNameAndPath = fileBrowserDialog.FileName;
+
+                    // todo create a FileImportHelper that will check if XML is valid. 
+                    // todo example of using presenter
+                    // todo create overloaded version of LoadResults that takes in saved parameters.
+                    if (1 > 2)
+                    {
+                        
+                        //MainFrameDataPresenter p = new MainFrameDataPresenter(this.Parent.Parent as SpotifySearchView);
+                        //p.ImportData(XMLImportList(fileNameAndPath));
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            @"The selected file is not compatible for import. *.xml files only.", @"File Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// rtxtImportExportLocation text changed event.

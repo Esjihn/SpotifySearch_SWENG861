@@ -47,6 +47,7 @@
             this.lblMaxSearch = new System.Windows.Forms.Label();
             this.lblAppHeader = new System.Windows.Forms.Label();
             this.fldrBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.fileBrowserDialog = new System.Windows.Forms.OpenFileDialog();
             this.pnlSpotifySearch.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -154,6 +155,7 @@
             this.btnExportSearch.TabIndex = 12;
             this.btnExportSearch.Text = "Export Search";
             this.btnExportSearch.UseVisualStyleBackColor = true;
+            this.btnExportSearch.Click += new System.EventHandler(this.btnExportSearch_Click);
             // 
             // btnImportSearch
             // 
@@ -167,6 +169,7 @@
             this.btnImportSearch.TabIndex = 11;
             this.btnImportSearch.Text = "Import Search";
             this.btnImportSearch.UseVisualStyleBackColor = true;
+            this.btnImportSearch.Click += new System.EventHandler(this.btnImportSearch_Click);
             // 
             // cbxMaxSearch
             // 
@@ -323,6 +326,7 @@
         private System.Windows.Forms.Button btnImportDirectory;
         private System.Windows.Forms.Label lblImportExport;
         private System.Windows.Forms.FolderBrowserDialog fldrBrowserDialog;
+        private System.Windows.Forms.OpenFileDialog fileBrowserDialog;
     }
 }
 
