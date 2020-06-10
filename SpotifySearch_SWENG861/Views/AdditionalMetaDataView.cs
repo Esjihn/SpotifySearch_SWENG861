@@ -81,12 +81,15 @@ namespace SpotifySearch_SWENG861.Views
             }
         }
 
+        /// <summary>
+        /// Massages Spotify Objects into readable list for view
+        /// </summary>
+        /// <param name="dataObject"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private List<string> CreateDataList(Item dataObject, int index)
         {
             if (dataObject == null) return new List<string>();
-
-            Debug.Print(dataObject.Name.FirstOrDefault().ToString());
-
 
             List<string> data = new List<string>();
             if(dataObject.Name != null) data.Add("Name: " + dataObject.Name);
@@ -111,6 +114,10 @@ namespace SpotifySearch_SWENG861.Views
             return data;
         }
 
+        /// <summary>
+        /// Sends massaged data to views textbox
+        /// </summary>
+        /// <param name="data"></param>
         private void DataToTextBox(List<string> data)
         {
             if (this.rtxtMetaData != null)
