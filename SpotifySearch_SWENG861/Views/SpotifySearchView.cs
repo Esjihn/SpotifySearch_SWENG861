@@ -40,9 +40,7 @@ namespace SpotifySearch_SWENG861.Views
             // TODO finish Export Builder
             // AuthenticateAndStartService();
 
-            // Initialize chrome browser object.
-            CefSettings settings = new CefSettings();
-            Cef.Initialize(settings);
+            InitializeChromeBrowser();
         }
 
         #region Properties
@@ -274,22 +272,6 @@ namespace SpotifySearch_SWENG861.Views
         }
 
         /// <summary>
-        /// Populates max search combo box on form load
-        /// </summary>
-        private void PopulateMaxSearchComboBox()
-        {
-            if (string.IsNullOrEmpty(this.cbxMaxSearch.Text))
-            {
-                List<string> data = new List<string>
-                {
-                    "1", "2", "3", "4", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50"
-                };
-
-                this.cbxMaxSearch.DataSource = data;
-            }
-        }
-
-        /// <summary>
         /// btnSearch click event.
         /// </summary>
         /// <param name="sender"></param>
@@ -308,9 +290,36 @@ namespace SpotifySearch_SWENG861.Views
         {
             Authenticated = true;
         }
+
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Populates max search combo box on form load
+        /// </summary>
+        private void PopulateMaxSearchComboBox()
+        {
+            if (string.IsNullOrEmpty(this.cbxMaxSearch.Text))
+            {
+                List<string> data = new List<string>
+                {
+                    "1", "2", "3", "4", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50"
+                };
+
+                this.cbxMaxSearch.DataSource = data;
+            }
+        }
+
+        /// <summary>
+        /// Initializes Chrome Browser on app start up.
+        /// If 'this' changes from main form this initialize() should be moved to it.
+        /// </summary>
+        private void InitializeChromeBrowser()
+        {
+            CefSettings settings = new CefSettings();
+            Cef.Initialize(settings);
+        }
 
         /// <summary>
         /// Hides Import / Export UI elements which requires options to be clicked first
