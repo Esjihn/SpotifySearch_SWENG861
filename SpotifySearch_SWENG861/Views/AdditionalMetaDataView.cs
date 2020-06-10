@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSharp_SpotifyAPI;
 using CSharp_SpotifyAPI.Models;
-using Microsoft.SqlServer.Server;
 using SpotifySearch_SWENG861.ViewInterfaces;
 
 namespace SpotifySearch_SWENG861.Views
@@ -105,7 +97,7 @@ namespace SpotifySearch_SWENG861.Views
             data.Add("Track Number: " + dataObject.Track_number);
             if(dataObject.available_markets != null) 
                 data.Add("Available Markets: " + dataObject.available_markets[index]);
-            if(dataObject.Preview_url != null); data.Add("Preview Url: " + dataObject.Preview_url);
+            if(dataObject.Preview_url != null) data.Add("Preview Url: " + dataObject.Preview_url);
             if(dataObject.artists != null) data.Add("Artists: " + dataObject.artists[index]);
             data.Add("Song Duration: " + dataObject.duration_ms);
             data.Add("Disc Number: " + dataObject.disc_number);
