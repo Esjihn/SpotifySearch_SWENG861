@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CefSharp.WinForms;
 using SpotifySearch_SWENG861.ViewInterfaces;
 
 namespace SpotifySearch_SWENG861.Views
@@ -16,6 +17,7 @@ namespace SpotifySearch_SWENG861.Views
         public ListenOnSpotifyView()
         {
             InitializeComponent();
+            // todo check if I.E. or Chrome should be used instead. 
         }
 
         #region Properties
@@ -34,6 +36,11 @@ namespace SpotifySearch_SWENG861.Views
                     this.webListenOnSpotify = value;
             }
         }
+
+        /// <summary>
+        /// todo finish
+        /// </summary>
+        public ChromiumWebBrowser ChromiumWebBrowser { get; set; }
         #endregion
     }
 }

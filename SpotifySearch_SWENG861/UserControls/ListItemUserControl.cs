@@ -266,16 +266,23 @@ namespace SpotifySearch_SWENG861.UserControls
 
                 if (view.TracksResults != null)
                 {
+
                     listenView.WebBrowser.Url = new Uri(view.TracksResults.Tracks.Items[selectedIndex].Preview_url);
                     listenView.Show();
                 }
                 else
                 {
-                    MessageBox.Show(@"No preview link found for this item.", @"Prompt",
-                        MessageBoxButtons.OK, 
-                        MessageBoxIcon.Information, 
+                    DialogResult result = MessageBox.Show(@"No preview link found for this item.", @"Prompt",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information,
                         MessageBoxDefaultButton.Button1,
                         MessageBoxOptions.DefaultDesktopOnly);
+
+                    if (result == DialogResult.OK)
+                    {
+                        view.TopMost = true;
+                        view.BringToFront();
+                    }
                 }
             }
         }
