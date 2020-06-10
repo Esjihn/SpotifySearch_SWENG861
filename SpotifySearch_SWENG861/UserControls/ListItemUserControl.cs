@@ -190,8 +190,6 @@ namespace SpotifySearch_SWENG861.UserControls
         /// <param name="e"></param>
         private void PicListenOnSpotify_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            // todo test internal i.e. browser with spotify's sample uri 
-            // if i.e. is not up to the task I may need to add another api that will open a newer browser like edge chromium, chrome, firefox. 
             FindSelectedUserControlIndexAndPlayTrackSample();
         }
 
@@ -202,8 +200,6 @@ namespace SpotifySearch_SWENG861.UserControls
         /// <param name="e"></param>
         private void LblDoubleClick_Click(object sender, EventArgs e)
         {
-            // todo test internal i.e. browser with spotify's sample uri 
-            // if i.e. is not up to the task I may need to add another api that will open a newer browser like edge chromium, chrome, firefox. 
             FindSelectedUserControlIndexAndPlayTrackSample();
         }
 

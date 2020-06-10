@@ -153,7 +153,7 @@ namespace SpotifySearch_SWENG861.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnOfflineMode_Click(object sender, EventArgs e)
+        private void btnOptions_Click(object sender, EventArgs e)
         {
             if (this.btnImportSearch != null 
                 && this.btnExportSearch != null
@@ -290,8 +290,14 @@ namespace SpotifySearch_SWENG861.Views
             while (Authenticated == false)
             {
                 // do something
-                MessageBox.Show(@"Please confirm Spotify account in web browser window that opened and then click ok...", @"Check Browser",
-                    MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                if (MessageBox.Show(
+                    @"Please confirm Spotify account in web browser window that opened and then click ok... or click cancel to use offline import/export (options) features",
+                    @"Check Browser",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
+                {
+                    this.btnSearch.Visible = false;
+                    break;
+                }
             }
         }
 

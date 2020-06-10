@@ -135,7 +135,7 @@
             this.btnOptions.TabIndex = 13;
             this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
-            this.btnOptions.Click += new System.EventHandler(this.btnOfflineMode_Click);
+            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
             // btnExportSearch
             // 

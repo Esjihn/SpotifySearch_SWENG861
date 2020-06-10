@@ -10,7 +10,7 @@ namespace SpotifySearch_SWENG861.ViewInterfaces
     public interface IListenOnSpotifyView
     {
         // todo complete interface
-        // todo may also need to change to use Chrome browser equivalent
+        // may also need to change to use Chrome browser equivalent
         WebBrowser WebBrowser { get; set; }
     }
 }

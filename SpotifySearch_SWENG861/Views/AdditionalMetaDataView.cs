@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -84,17 +85,19 @@ namespace SpotifySearch_SWENG861.Views
         {
             if (dataObject == null) return new List<string>();
 
+            Debug.Print(dataObject.Name.FirstOrDefault().ToString());
+
+
             List<string> data = new List<string>
             {
                 // todo find the null object in this list. a regular string works fine. 
-                "Test font size."
-                //"Name: " + dataObject.Name.FirstOrDefault(),
-                //"Explicit Content: " + dataObject.ExplicitWords,
+                "Name: " + dataObject.Name,
+                "Explicit Content: " + dataObject.ExplicitWords,
+                // todo genres for only works for one. 
                 //"Genres: " + dataObject.Genres[index].FirstOrDefault(),
                 //"Popularity Total: " + dataObject.Popularity,
                 //"Followers: " + dataObject.Followers.Total,
                 //"ID: " + dataObject.Id.FirstOrDefault(),
-                //"Album: " + dataObject.album.name.FirstOrDefault(),
                 //"Available Markets: " + dataObject.available_markets[index].FirstOrDefault(),
                 //"Is Local: " + dataObject.Is_local,
                 //"Link: " + dataObject.Href.FirstOrDefault()

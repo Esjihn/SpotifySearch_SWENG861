@@ -63,12 +63,6 @@ namespace SpotifySearch_SWENG861
             // search query from user
             string searchQuery = this.richTextBox2.Text;
 
-            // SearchType.* from user
-            string searchType = "";
-            
-            // Search Limit from user
-            int searchLimit = 10;
-
             string artistsJson = api.Search($"{searchQuery}", SearchType.artist, 10, 0);
             string tracksJson = api.Search($"{searchQuery}", SearchType.track, 10, 0);
 
@@ -76,7 +70,7 @@ namespace SpotifySearch_SWENG861
             SearchSongs searchSongs = JsonConvert.DeserializeObject<SearchSongs>(tracksJson);
 
             // iterates ver each item
-            this.richTextBox1.Text = "Artists Search Results: " + Environment.NewLine + Environment.NewLine;
+            this.richTextBox1.Text = @"Artists Search Results: " + Environment.NewLine + Environment.NewLine;
             foreach (var item in desArtist.Artists.Items)
             {
                 this.richTextBox1.Text += item.Name + Environment.NewLine;
@@ -84,7 +78,7 @@ namespace SpotifySearch_SWENG861
 
             this.richTextBox1.Text += Environment.NewLine;
 
-            this.richTextBox1.Text += "Songs Search Results: " + Environment.NewLine + Environment.NewLine;
+            this.richTextBox1.Text += @"Songs Search Results: " + Environment.NewLine + Environment.NewLine;
             foreach (var item in searchSongs.Tracks.Items)
             {
                 this.richTextBox1.Text += item.Name + Environment.NewLine;
