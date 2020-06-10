@@ -117,6 +117,7 @@
             // rtxtImportExportLocation
             // 
             this.rtxtImportExportLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtxtImportExportLocation.BackColor = System.Drawing.Color.Gray;
             this.rtxtImportExportLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtImportExportLocation.Location = new System.Drawing.Point(13, 596);
             this.rtxtImportExportLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -125,6 +126,7 @@
             this.rtxtImportExportLocation.Size = new System.Drawing.Size(264, 59);
             this.rtxtImportExportLocation.TabIndex = 14;
             this.rtxtImportExportLocation.Text = "";
+            this.rtxtImportExportLocation.TextChanged += new System.EventHandler(this.rtxtImportExportLocation_TextChanged);
             // 
             // btnOptions
             // 

@@ -32,6 +32,23 @@ namespace SpotifySearch_SWENG861.Views
             this._artistData = artistData;
         }
 
+        #region Event Handlers
+        
+        /// <summary>
+        /// Link clicked in meta data rich text box event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rtxtMetaData_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            if (e.LinkText != null)
+            {
+                System.Diagnostics.Process.Start(e.LinkText);
+            }
+        }
+
+        #endregion
+
         /// <summary>
         /// Loads Search Songs meta data into rtxtMetaData rich text box
         /// </summary>
@@ -93,7 +110,14 @@ namespace SpotifySearch_SWENG861.Views
             if(dataObject.available_markets != null)
                 data.Add("Available Markets: " + dataObject.available_markets[index]);
             data.Add("Is Local: " + dataObject.Is_local);
-            if(dataObject.Href != null) data.Add("Link: " + dataObject.Href);
+            
+            if (dataObject.Href != null)
+            {
+                // This link requires a token so remove link state from view. 
+                dataObject.Href = dataObject.Href.Replace("https://", "");
+                data.Add("Internal API Link: " + dataObject.Href);
+            }
+
             data.Add("Track Number: " + dataObject.Track_number);
             if(dataObject.available_markets != null) 
                 data.Add("Available Markets: " + dataObject.available_markets[index]);
@@ -126,5 +150,6 @@ namespace SpotifySearch_SWENG861.Views
                 }
             }
         }
+
     }
 }
