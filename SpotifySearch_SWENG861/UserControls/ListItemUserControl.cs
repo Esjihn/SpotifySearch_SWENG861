@@ -316,12 +316,12 @@ namespace SpotifySearch_SWENG861.UserControls
                 
                 if (view.IsSongSearch)
                 {
-                    metaView.LoadMetaData(Constants.Song, selectedIndex);
+                    metaView.LoadMetaData(SpotifyAPIConstants.Song, selectedIndex);
                 }
 
                 if (view.IsArtistSearch)
                 {
-                    metaView.LoadMetaData(Constants.Artist, selectedIndex);
+                    metaView.LoadMetaData(SpotifyAPIConstants.Artist, selectedIndex);
                 }
 
                 metaView.ShowDialog();
@@ -329,6 +329,5 @@ namespace SpotifySearch_SWENG861.UserControls
         }
 
         #endregion
-
     }
 }

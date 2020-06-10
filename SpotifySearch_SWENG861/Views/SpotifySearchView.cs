@@ -39,7 +39,7 @@ namespace SpotifySearch_SWENG861.Views
             // TODO keep disabled until closer to completion
             // TODO finish Import Manager
             // TODO finish Export Builder
-            // AuthenticateAndStartService();
+            AuthenticateAndStartService();
             InitializeChromeBrowser();
         }
 
@@ -99,7 +99,7 @@ namespace SpotifySearch_SWENG861.Views
             // todo utilize IsArtistSearch and IsSongSearch booleans if necessary.
             // todo get Title, message, and MetaData. meta data view may need property for meta data list.
             // todo call presenter to perform this work. 
-            SpotifySearchPresenter p = new SpotifySearchPresenter(this.Parent.Parent as SpotifySearchView);
+            SpotifySearchPresenter p = new SpotifySearchPresenter(this);
             p.CollectSpotifySearchViewList(SpotifySearchPOList());
             p.ExportData();
         }
@@ -351,10 +351,91 @@ namespace SpotifySearch_SWENG861.Views
         /// <returns></returns>
         private List<SpotifySearchPO> SpotifySearchPOList()
         {
-            // todo complete 
+            if (ArtistsResults == null && TracksResults == null)
+            {
+                return new List<SpotifySearchPO>();
+            }
+
+            int searchCount = 0;
+
+            if (IsArtistSearch)
+            {
+                searchCount = ArtistsResults.Artists.Items.Count;
+            }
+
+            if (IsSongSearch)
+            {
+                searchCount = TracksResults.Tracks.Items.Count;
+            }
+
             List<SpotifySearchPO> list = new List<SpotifySearchPO>();
+            SpotifySearchPO po = new SpotifySearchPO();
+            
+            for (int i = 0; i < searchCount; i++)
+            {
+                if (IsArtistSearch)
+                {
+                    Item artistObject = ArtistsResults.Artists.Items[i];
+                    po.Title = artistObject.Name;
+                    po.Message = $"Artist Spotify ID: {artistObject.Id}"
+                                      + Environment.NewLine + "Click to view metadata.";
+                    
+                    // high level artists object
+                    
+                    FillSpotifySearchPOWithMetaDataPortion(po, artistObject);
+                }
+
+                if (IsSongSearch)
+                {
+                    Item trackObject = TracksResults.Tracks.Items[i];
+                    po.Title = trackObject.Name;
+                    po.Message = $"Track Spotify ID: {trackObject.Id}"
+                                      + Environment.NewLine + "Click to view metadata.";
+
+                    FillSpotifySearchPOWithMetaDataPortion(po, trackObject);
+                }
+                
+                list.Add(po);
+            }
 
             return list;
+        }
+
+        /// <summary>
+        /// Fill meta data portion of SpotifySearchPO via injected Item object
+        /// </summary>
+        /// <param name="po">SpotifySearchPO</param>
+        /// <param name="dataObject">dataObject</param>
+        private void FillSpotifySearchPOWithMetaDataPortion(SpotifySearchPO po, Item dataObject)
+        {
+            po.ArtistsResults = ArtistsResults;
+            po.TracksResults = TracksResults;
+            if (dataObject.Name != null) po.Name = dataObject.Name;
+            po.ExplicitWords = dataObject.ExplicitWords;
+            if (dataObject.Genres != null) po.Genres = dataObject.Genres;
+            po.Popularity = dataObject.Popularity;
+            
+            if (dataObject.Followers != null)
+            {
+                po.Followers = dataObject.Followers;
+                po.FollowerTotal = dataObject.Followers.Total;
+            }
+
+            if (dataObject.Id != null) po.Id = dataObject.Id;
+            po.IsLocal = dataObject.Is_local;
+            if (dataObject.Href != null)
+            {
+                dataObject.Href = dataObject.Href.Replace("https://", "");
+                po.Href = dataObject.Href;
+            }
+
+            po.TrackNumber = dataObject.Track_number;
+            if (dataObject.available_markets != null) po.AvailableMarkets = dataObject.available_markets;
+            if (dataObject.Preview_url != null) po.PreviewUrl = dataObject.Preview_url;
+            if (dataObject.artists != null) po.Artists = dataObject.artists;
+            po.DurationMS = dataObject.duration_ms;
+            if (dataObject.External_urls.Spotify != null)
+                po.ExternalUrls = dataObject.External_urls.Spotify;
         }
 
         /// <summary>

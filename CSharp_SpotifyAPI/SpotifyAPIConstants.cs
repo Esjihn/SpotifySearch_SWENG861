@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSharp_SpotifyAPI
 {
-    public static class Constants
+    public static class SpotifyAPIConstants
     {
         public static string baseUrl = "https://api.spotify.com/v1/";
         public static string AuthCode;

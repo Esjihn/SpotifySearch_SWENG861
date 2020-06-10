@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using CSharp_SpotifyAPI.Models;
 using Newtonsoft.Json;
 using SpotifySearch_SWENG861.PresentationObjects;
@@ -78,6 +79,12 @@ namespace SpotifySearch_SWENG861.Presenters
         /// </summary>
         private List<SpotifySearchPO> CompleteSpotifySearchList { get; set; }
 
+        /// <summary>
+        /// Determines if CollectSpotifySearchViewList has a valid list. If not then
+        /// ExportData is not run. 
+        /// </summary>
+        public bool IsValidPOList { get; set; }
+
         #endregion
 
         #region Methods
@@ -87,6 +94,15 @@ namespace SpotifySearch_SWENG861.Presenters
         /// </summary>
         public void ExportData()
         {
+            if (IsValidPOList == false)
+            {
+                MessageBox.Show(@"Exception: export could not be completed.", @"Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly);
+
+                return;
+            }
+
             // todo finish
             // leverage XMLBuilder, SpotifySearchPO path from CompleteSpotifySearchList.FirstOrDefault LINQ
             // leverage DateTime date = DateTime.Now
@@ -127,10 +143,14 @@ namespace SpotifySearch_SWENG861.Presenters
         /// <returns>List of SpotifySearchPO</returns>
         internal void CollectSpotifySearchViewList(List<SpotifySearchPO> list)
         {
-            if (list == null || list.Count == 0) return;
+            if (list == null || list.Count == 0)
+            {
+                IsValidPOList = false;
+                return;
+            }
 
+            IsValidPOList = true;
             CompleteSpotifySearchList = list;
         }
-
     }
 }

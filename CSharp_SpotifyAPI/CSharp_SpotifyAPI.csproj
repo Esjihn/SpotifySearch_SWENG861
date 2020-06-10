@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="SpotifyAPIConstants.cs" />
     <Compile Include="Enums\AlbumType.cs" />
     <Compile Include="Enums\AuthorisationType.cs" />
     <Compile Include="Enums\Market.cs" />

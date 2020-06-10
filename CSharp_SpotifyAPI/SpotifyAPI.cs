@@ -42,7 +42,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="launchBrowser"></param>
         public void Authenticate(bool launchBrowser)
         {
-            Constants.AuthCode = auth.Authenticate(launchBrowser);
+            SpotifyAPIConstants.AuthCode = auth.Authenticate(launchBrowser);
 
             OnAuthentication(EventArgs.Empty);
         }

@@ -149,9 +149,9 @@ namespace CSharp_SpotifyAPI
         /// <returns></returns>
         public static dynamic SendGetRequest(string endpointUrl)
         {
-            string url = Constants.baseUrl + endpointUrl;
+            string url = SpotifyAPIConstants.baseUrl + endpointUrl;
 
-            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.GET);
+            var json = HttpMethodWithAuthHeader(url, SpotifyAPIConstants.AuthCode, HttpMethod.GET);
 
             return json;
         }
@@ -164,9 +164,9 @@ namespace CSharp_SpotifyAPI
         /// <returns></returns>
         public static dynamic SendPostRequest(string endpointUrl, string jsonData)
         {
-            string url = Constants.baseUrl + endpointUrl;
+            string url = SpotifyAPIConstants.baseUrl + endpointUrl;
 
-            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.POST, jsonData);
+            var json = HttpMethodWithAuthHeader(url, SpotifyAPIConstants.AuthCode, HttpMethod.POST, jsonData);
 
             return json;
         }
@@ -178,9 +178,9 @@ namespace CSharp_SpotifyAPI
         /// <returns></returns>
         public static dynamic SendPostRequest(string endpointUrl)
         {
-            string url = Constants.baseUrl + endpointUrl;
+            string url = SpotifyAPIConstants.baseUrl + endpointUrl;
 
-            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.POST);
+            var json = HttpMethodWithAuthHeader(url, SpotifyAPIConstants.AuthCode, HttpMethod.POST);
 
             return json;
         }
@@ -193,9 +193,9 @@ namespace CSharp_SpotifyAPI
         /// <returns></returns>
         public static dynamic SendDeleteRequest(string endpointUrl, string body)
         {
-            string url = Constants.baseUrl + endpointUrl;
+            string url = SpotifyAPIConstants.baseUrl + endpointUrl;
 
-            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.DELETE, body);
+            var json = HttpMethodWithAuthHeader(url, SpotifyAPIConstants.AuthCode, HttpMethod.DELETE, body);
 
             return json;
         }
@@ -207,9 +207,9 @@ namespace CSharp_SpotifyAPI
         /// <returns></returns>
         public static dynamic SendDeleteRequest(string endpointUrl)
         {
-            string url = Constants.baseUrl + endpointUrl;
+            string url = SpotifyAPIConstants.baseUrl + endpointUrl;
 
-            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.DELETE);
+            var json = HttpMethodWithAuthHeader(url, SpotifyAPIConstants.AuthCode, HttpMethod.DELETE);
 
             return json;
         }
@@ -222,9 +222,9 @@ namespace CSharp_SpotifyAPI
         /// <returns></returns>
         public static dynamic SendPutRequest(string endpointUrl, string body)
         {
-            string url = Constants.baseUrl + endpointUrl;
+            string url = SpotifyAPIConstants.baseUrl + endpointUrl;
 
-            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.PUT, body);
+            var json = HttpMethodWithAuthHeader(url, SpotifyAPIConstants.AuthCode, HttpMethod.PUT, body);
 
             return json;
         }
@@ -236,9 +236,9 @@ namespace CSharp_SpotifyAPI
         /// <returns></returns>
         public static dynamic SendPutRequest(string endpointUrl)
         {
-            string url = Constants.baseUrl + endpointUrl;
+            string url = SpotifyAPIConstants.baseUrl + endpointUrl;
 
-            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.PUT);
+            var json = HttpMethodWithAuthHeader(url, SpotifyAPIConstants.AuthCode, HttpMethod.PUT);
 
             return json;
         }

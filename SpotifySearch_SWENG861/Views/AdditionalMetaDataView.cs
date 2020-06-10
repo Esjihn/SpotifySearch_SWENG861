@@ -56,7 +56,7 @@ namespace SpotifySearch_SWENG861.Views
         /// <param name="index">index of item selected</param>
         public void LoadMetaData(string type, int index)
         {
-            if (type == Constants.Artist)
+            if (type == SpotifyAPIConstants.Artist)
             {
                 if (_artistData == null) return;
 
@@ -66,7 +66,7 @@ namespace SpotifySearch_SWENG861.Views
                 DataToTextBox(CreateDataList(artistObject, index));
             }
 
-            if (type == Constants.Song)
+            if (type == SpotifyAPIConstants.Song)
             {
                 if (_songData == null) return;
 
@@ -76,7 +76,7 @@ namespace SpotifySearch_SWENG861.Views
                 DataToTextBox(CreateDataList(trackObject, index));
             }
 
-            if (type != Constants.Artist && type != Constants.Song)
+            if (type != SpotifyAPIConstants.Artist && type != SpotifyAPIConstants.Song)
             {
                 if (this.rtxtMetaData != null)
                 {
