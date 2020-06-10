@@ -36,11 +36,9 @@ namespace SpotifySearch_SWENG861.Views
         {
             InitializeComponent();
             // TODO keep disabled until closer to completion
-            // TODO finish OPTIONS folder dialog and txtImportExport
             // TODO finish Import Manager
             // TODO finish Export Builder
-            // TODO go back and take a look how to solve ListenOnSpotify first load not displaying player.
-            //AuthenticateAndStartService();
+            // AuthenticateAndStartService();
 
             // Initialize chrome browser object.
             CefSettings settings = new CefSettings();

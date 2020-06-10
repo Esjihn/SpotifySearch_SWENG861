@@ -266,6 +266,7 @@ namespace SpotifySearch_SWENG861.UserControls
                     ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(
                         view.TracksResults.Tracks.Items[selectedIndex].Preview_url));
 
+                    listenView.Refresh();
                     listenView.ShowDialog();
                 }
                 else
