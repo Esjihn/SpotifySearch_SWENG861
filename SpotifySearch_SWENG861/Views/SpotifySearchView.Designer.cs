@@ -55,10 +55,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flwSearchResultsFlowPanel.AutoScroll = true;
-            this.flwSearchResultsFlowPanel.Location = new System.Drawing.Point(202, 0);
-            this.flwSearchResultsFlowPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flwSearchResultsFlowPanel.Location = new System.Drawing.Point(370, 0);
+            this.flwSearchResultsFlowPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flwSearchResultsFlowPanel.Name = "flwSearchResultsFlowPanel";
-            this.flwSearchResultsFlowPanel.Size = new System.Drawing.Size(617, 497);
+            this.flwSearchResultsFlowPanel.Size = new System.Drawing.Size(1131, 918);
             this.flwSearchResultsFlowPanel.TabIndex = 2;
             // 
             // pnlSpotifySearch
@@ -81,9 +81,9 @@
             this.pnlSpotifySearch.Controls.Add(this.lblAppHeader);
             this.pnlSpotifySearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSpotifySearch.Location = new System.Drawing.Point(0, 0);
-            this.pnlSpotifySearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlSpotifySearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlSpotifySearch.Name = "pnlSpotifySearch";
-            this.pnlSpotifySearch.Size = new System.Drawing.Size(199, 497);
+            this.pnlSpotifySearch.Size = new System.Drawing.Size(365, 918);
             this.pnlSpotifySearch.TabIndex = 3;
             // 
             // lblImportExport
@@ -92,10 +92,10 @@
             this.lblImportExport.AutoSize = true;
             this.lblImportExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImportExport.ForeColor = System.Drawing.Color.White;
-            this.lblImportExport.Location = new System.Drawing.Point(6, 300);
-            this.lblImportExport.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblImportExport.Location = new System.Drawing.Point(11, 554);
+            this.lblImportExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblImportExport.Name = "lblImportExport";
-            this.lblImportExport.Size = new System.Drawing.Size(169, 18);
+            this.lblImportExport.Size = new System.Drawing.Size(290, 30);
             this.lblImportExport.TabIndex = 16;
             this.lblImportExport.Text = "Import / Export Directory";
             // 
@@ -104,10 +104,10 @@
             this.btnImportDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImportDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImportDirectory.ForeColor = System.Drawing.Color.Black;
-            this.btnImportDirectory.Location = new System.Drawing.Point(156, 323);
-            this.btnImportDirectory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImportDirectory.Location = new System.Drawing.Point(286, 596);
+            this.btnImportDirectory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImportDirectory.Name = "btnImportDirectory";
-            this.btnImportDirectory.Size = new System.Drawing.Size(33, 32);
+            this.btnImportDirectory.Size = new System.Drawing.Size(61, 59);
             this.btnImportDirectory.TabIndex = 15;
             this.btnImportDirectory.Text = "...";
             this.btnImportDirectory.UseVisualStyleBackColor = true;
@@ -116,10 +116,10 @@
             // 
             this.rtxtImportExportLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtImportExportLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtImportExportLocation.Location = new System.Drawing.Point(7, 323);
-            this.rtxtImportExportLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtxtImportExportLocation.Location = new System.Drawing.Point(13, 596);
+            this.rtxtImportExportLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rtxtImportExportLocation.Name = "rtxtImportExportLocation";
-            this.rtxtImportExportLocation.Size = new System.Drawing.Size(146, 34);
+            this.rtxtImportExportLocation.Size = new System.Drawing.Size(264, 59);
             this.rtxtImportExportLocation.TabIndex = 14;
             this.rtxtImportExportLocation.Text = "";
             // 
@@ -128,10 +128,10 @@
             this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOptions.ForeColor = System.Drawing.Color.Black;
-            this.btnOptions.Location = new System.Drawing.Point(100, 367);
-            this.btnOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOptions.Location = new System.Drawing.Point(183, 678);
+            this.btnOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(87, 60);
+            this.btnOptions.Size = new System.Drawing.Size(160, 111);
             this.btnOptions.TabIndex = 13;
             this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
@@ -142,10 +142,10 @@
             this.btnExportSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnExportSearch.Location = new System.Drawing.Point(7, 433);
-            this.btnExportSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExportSearch.Location = new System.Drawing.Point(13, 799);
+            this.btnExportSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExportSearch.Name = "btnExportSearch";
-            this.btnExportSearch.Size = new System.Drawing.Size(87, 60);
+            this.btnExportSearch.Size = new System.Drawing.Size(160, 111);
             this.btnExportSearch.TabIndex = 12;
             this.btnExportSearch.Text = "Export Search";
             this.btnExportSearch.UseVisualStyleBackColor = true;
@@ -155,10 +155,10 @@
             this.btnImportSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImportSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImportSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnImportSearch.Location = new System.Drawing.Point(7, 367);
-            this.btnImportSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImportSearch.Location = new System.Drawing.Point(13, 678);
+            this.btnImportSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImportSearch.Name = "btnImportSearch";
-            this.btnImportSearch.Size = new System.Drawing.Size(87, 60);
+            this.btnImportSearch.Size = new System.Drawing.Size(160, 111);
             this.btnImportSearch.TabIndex = 11;
             this.btnImportSearch.Text = "Import Search";
             this.btnImportSearch.UseVisualStyleBackColor = true;
@@ -167,10 +167,10 @@
             // 
             this.cbxMaxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMaxSearch.FormattingEnabled = true;
-            this.cbxMaxSearch.Location = new System.Drawing.Point(8, 261);
-            this.cbxMaxSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxMaxSearch.Location = new System.Drawing.Point(15, 482);
+            this.cbxMaxSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbxMaxSearch.Name = "cbxMaxSearch";
-            this.cbxMaxSearch.Size = new System.Drawing.Size(101, 33);
+            this.cbxMaxSearch.Size = new System.Drawing.Size(182, 47);
             this.cbxMaxSearch.TabIndex = 10;
             // 
             // btnSearch
@@ -178,10 +178,10 @@
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(100, 433);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearch.Location = new System.Drawing.Point(183, 799);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(87, 60);
+            this.btnSearch.Size = new System.Drawing.Size(160, 111);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Spotify Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -192,10 +192,10 @@
             this.rbtnArtistSearch.AutoSize = true;
             this.rbtnArtistSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnArtistSearch.ForeColor = System.Drawing.Color.White;
-            this.rbtnArtistSearch.Location = new System.Drawing.Point(16, 113);
-            this.rbtnArtistSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbtnArtistSearch.Location = new System.Drawing.Point(29, 209);
+            this.rbtnArtistSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnArtistSearch.Name = "rbtnArtistSearch";
-            this.rbtnArtistSearch.Size = new System.Drawing.Size(93, 19);
+            this.rbtnArtistSearch.Size = new System.Drawing.Size(160, 29);
             this.rbtnArtistSearch.TabIndex = 9;
             this.rbtnArtistSearch.TabStop = true;
             this.rbtnArtistSearch.Text = "Artist Search";
@@ -207,10 +207,10 @@
             this.rbtnSongSearch.AutoSize = true;
             this.rbtnSongSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnSongSearch.ForeColor = System.Drawing.Color.White;
-            this.rbtnSongSearch.Location = new System.Drawing.Point(16, 132);
-            this.rbtnSongSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbtnSongSearch.Location = new System.Drawing.Point(29, 244);
+            this.rbtnSongSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnSongSearch.Name = "rbtnSongSearch";
-            this.rbtnSongSearch.Size = new System.Drawing.Size(96, 19);
+            this.rbtnSongSearch.Size = new System.Drawing.Size(161, 29);
             this.rbtnSongSearch.TabIndex = 8;
             this.rbtnSongSearch.TabStop = true;
             this.rbtnSongSearch.Text = "Song Search";
@@ -220,13 +220,13 @@
             // rtxtArtistSongEntry
             // 
             this.rtxtArtistSongEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtArtistSongEntry.Location = new System.Drawing.Point(8, 187);
-            this.rtxtArtistSongEntry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtxtArtistSongEntry.Location = new System.Drawing.Point(15, 345);
+            this.rtxtArtistSongEntry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtxtArtistSongEntry.MaxLength = 27;
             this.rtxtArtistSongEntry.Name = "rtxtArtistSongEntry";
-            this.rtxtArtistSongEntry.Size = new System.Drawing.Size(181, 34);
+            this.rtxtArtistSongEntry.Size = new System.Drawing.Size(329, 59);
             this.rtxtArtistSongEntry.TabIndex = 6;
             this.rtxtArtistSongEntry.Text = "";
-            this.rtxtArtistSongEntry.MaxLength = 27;
             this.rtxtArtistSongEntry.TextChanged += new System.EventHandler(this.rtxtArtistSongEntry_TextChanged);
             this.rtxtArtistSongEntry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArtistSongEntry_KeyDown);
             this.rtxtArtistSongEntry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtxtArtistSongEntry_KeyPress);
@@ -236,10 +236,10 @@
             this.lblSearchType.AutoSize = true;
             this.lblSearchType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearchType.ForeColor = System.Drawing.Color.White;
-            this.lblSearchType.Location = new System.Drawing.Point(8, 88);
-            this.lblSearchType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSearchType.Location = new System.Drawing.Point(15, 162);
+            this.lblSearchType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchType.Name = "lblSearchType";
-            this.lblSearchType.Size = new System.Drawing.Size(91, 18);
+            this.lblSearchType.Size = new System.Drawing.Size(158, 30);
             this.lblSearchType.TabIndex = 4;
             this.lblSearchType.Text = "Search Type";
             // 
@@ -248,10 +248,10 @@
             this.lblArtistSongEntry.AutoSize = true;
             this.lblArtistSongEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArtistSongEntry.ForeColor = System.Drawing.Color.White;
-            this.lblArtistSongEntry.Location = new System.Drawing.Point(5, 162);
-            this.lblArtistSongEntry.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblArtistSongEntry.Location = new System.Drawing.Point(9, 299);
+            this.lblArtistSongEntry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArtistSongEntry.Name = "lblArtistSongEntry";
-            this.lblArtistSongEntry.Size = new System.Drawing.Size(118, 18);
+            this.lblArtistSongEntry.Size = new System.Drawing.Size(205, 30);
             this.lblArtistSongEntry.TabIndex = 3;
             this.lblArtistSongEntry.Text = "Artist/Song Entry";
             // 
@@ -260,10 +260,10 @@
             this.lblMaxSearch.AutoSize = true;
             this.lblMaxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaxSearch.ForeColor = System.Drawing.Color.White;
-            this.lblMaxSearch.Location = new System.Drawing.Point(5, 232);
-            this.lblMaxSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMaxSearch.Location = new System.Drawing.Point(9, 428);
+            this.lblMaxSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMaxSearch.Name = "lblMaxSearch";
-            this.lblMaxSearch.Size = new System.Drawing.Size(170, 18);
+            this.lblMaxSearch.Size = new System.Drawing.Size(293, 30);
             this.lblMaxSearch.TabIndex = 2;
             this.lblMaxSearch.Text = "Max Search #: (up to 50)";
             // 
@@ -272,25 +272,26 @@
             this.lblAppHeader.AutoSize = true;
             this.lblAppHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAppHeader.ForeColor = System.Drawing.Color.White;
-            this.lblAppHeader.Location = new System.Drawing.Point(7, 46);
-            this.lblAppHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAppHeader.Location = new System.Drawing.Point(13, 85);
+            this.lblAppHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAppHeader.Name = "lblAppHeader";
-            this.lblAppHeader.Size = new System.Drawing.Size(140, 25);
+            this.lblAppHeader.Size = new System.Drawing.Size(243, 39);
             this.lblAppHeader.TabIndex = 0;
             this.lblAppHeader.Text = "Spotify Search";
             // 
             // SpotifySearchView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 497);
+            this.ClientSize = new System.Drawing.Size(1505, 918);
             this.Controls.Add(this.pnlSpotifySearch);
             this.Controls.Add(this.flwSearchResultsFlowPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SpotifySearchView";
             this.Text = "Spotify Search";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SpotifySearchView_FormClosing);
             this.Load += new System.EventHandler(this.SpotifySearchView_Load);
             this.pnlSpotifySearch.ResumeLayout(false);
             this.pnlSpotifySearch.PerformLayout();

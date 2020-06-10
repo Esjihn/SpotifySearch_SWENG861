@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CefSharp;
 using CefSharp.WinForms;
 using SpotifySearch_SWENG861.ViewInterfaces;
 
@@ -14,33 +15,33 @@ namespace SpotifySearch_SWENG861.Views
 {
     public partial class ListenOnSpotifyView : Form, IListenOnSpotifyView
     {
-        public ListenOnSpotifyView()
+        private ChromiumWebBrowser _chromiumWebBrowser;
+
+        public ListenOnSpotifyView(ChromiumWebBrowser chromeWebBrowser)
         {
             InitializeComponent();
-            // todo check if I.E. or Chrome should be used instead. 
+            this._chromiumWebBrowser = chromeWebBrowser;
+            DockBrowserInstance(chromeWebBrowser);
         }
 
-        #region Properties
+        #region Events
+
+        #endregion
+
+        #region IListenOnSpotifyView Properties
+
         /// <summary>
-        /// Property to communicate with webbrowser object.
+        /// Initializes Chromium. Dragging from toolbox in designer
+        /// does not work.
         /// </summary>
-        public WebBrowser WebBrowser
+        public void DockBrowserInstance(ChromiumWebBrowser chromeWebBrowser)
         {
-            get
-            {
-                return this.webListenOnSpotify;
-            }
-            set
-            {
-                if (value != null)
-                    this.webListenOnSpotify = value;
-            }
+            if (chromeWebBrowser == null) return;
+
+            this.Controls.Add(chromeWebBrowser);
+            chromeWebBrowser.Dock = DockStyle.Fill;
         }
 
-        /// <summary>
-        /// todo finish
-        /// </summary>
-        public ChromiumWebBrowser ChromiumWebBrowser { get; set; }
         #endregion
     }
 }

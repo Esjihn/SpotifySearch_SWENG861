@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CefSharp;
+using CefSharp.WinForms;
 using CSharp_SpotifyAPI;
 using CSharp_SpotifyAPI.Enums;
 using CSharp_SpotifyAPI.Models;
@@ -34,11 +36,12 @@ namespace SpotifySearch_SWENG861.Views
         {
             InitializeComponent();
             // TODO keep disabled until closer to completion
-            // TODO finish web browser implementation
             // TODO finish OPTIONS folder dialog and txtImportExport
             // TODO finish Import Manager
             // TODO finish Export Builder
             AuthenticateAndStartService();
+            CefSettings settings = new CefSettings();
+            Cef.Initialize(settings);
         }
 
         #region Properties
@@ -85,6 +88,17 @@ namespace SpotifySearch_SWENG861.Views
         #endregion
 
         #region Event Handlers
+
+        /// <summary>
+        /// SpotifySearchView form closing event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpotifySearchView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Shutdown Chrome browser instance
+            Cef.Shutdown();
+        }
 
         /// <summary>
         /// Artist / Song search rich text box text changed event
@@ -410,5 +424,6 @@ namespace SpotifySearch_SWENG861.Views
         }
 
         #endregion
+
     }
 }

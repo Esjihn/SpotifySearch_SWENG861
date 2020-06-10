@@ -98,7 +98,7 @@ namespace SpotifySearch_SWENG861.Views
             if(dataObject.available_markets != null) 
                 data.Add("Available Markets: " + dataObject.available_markets[index]);
             if(dataObject.Preview_url != null) data.Add("Preview Url: " + dataObject.Preview_url);
-            if(dataObject.artists != null) data.Add("Artists: " + dataObject.artists[index]);
+            if(dataObject.artists != null) data.Add("Artists: " + dataObject.artists[0].Name);
             data.Add("Song Duration: " + dataObject.duration_ms);
             data.Add("Disc Number: " + dataObject.disc_number);
             if(dataObject.External_urls.Spotify != null) 

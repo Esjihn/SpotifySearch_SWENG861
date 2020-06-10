@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using CefSharp;
+using CefSharp.WinForms;
 using CSharp_SpotifyAPI;
 using CSharp_SpotifyAPI.Models;
 using SpotifySearch_SWENG861.ViewInterfaces;
@@ -259,16 +261,12 @@ namespace SpotifySearch_SWENG861.UserControls
                     }
                 }
 
-                // todo will need to change from .WebBrowser to 
-                // ChromiumWebBrowser object if i decide to go with 
-                // CEFSharp API. 
-                ListenOnSpotifyView listenView = new ListenOnSpotifyView();
-
                 if (view.TracksResults != null)
                 {
+                    ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(
+                        view.TracksResults.Tracks.Items[selectedIndex].Preview_url));
 
-                    listenView.WebBrowser.Url = new Uri(view.TracksResults.Tracks.Items[selectedIndex].Preview_url);
-                    listenView.Show();
+                    listenView.ShowDialog();
                 }
                 else
                 {
