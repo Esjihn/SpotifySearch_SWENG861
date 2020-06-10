@@ -263,8 +263,20 @@ namespace SpotifySearch_SWENG861.UserControls
                 // ChromiumWebBrowser object if i decide to go with 
                 // CEFSharp API. 
                 ListenOnSpotifyView listenView = new ListenOnSpotifyView();
-                listenView.WebBrowser.Url = new Uri(view.TracksResults.Tracks.Items[selectedIndex].Preview_url);
-                listenView.Show();
+
+                if (view.TracksResults != null)
+                {
+                    listenView.WebBrowser.Url = new Uri(view.TracksResults.Tracks.Items[selectedIndex].Preview_url);
+                    listenView.Show();
+                }
+                else
+                {
+                    MessageBox.Show(@"No preview link found for this item.", @"Prompt",
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Information, 
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
+                }
             }
         }
 
