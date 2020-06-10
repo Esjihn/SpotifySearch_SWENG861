@@ -291,9 +291,12 @@ namespace SpotifySearch_SWENG861.Views
             {
                 // do something
                 if (MessageBox.Show(
-                    @"Please confirm Spotify account in web browser window that opened and then click ok... or click cancel to use offline import/export (options) features",
+                    @"Please confirm Spotify account in web browser window that opened and then click ok... or click cancel to use offline import/export (options) features.",
                     @"Check Browser",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Hand) == DialogResult.Cancel)
+                    MessageBoxButtons.OKCancel, 
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Cancel)
                 {
                     this.btnSearch.Visible = false;
                     break;
