@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CSharp_SpotifyAPI.Models;
 using Newtonsoft.Json;
+using SpotifySearch_SWENG861.PresentationObjects;
 using SpotifySearch_SWENG861.ViewInterfaces;
 
 namespace SpotifySearch_SWENG861.Presenters
@@ -70,7 +71,27 @@ namespace SpotifySearch_SWENG861.Presenters
 
         #endregion
 
+        #region Properties
+
+        /// <summary>
+        /// Complete Frame Data list from UI
+        /// </summary>
+        private List<SpotifySearchPO> CompleteSpotifySearchList { get; set; }
+
+        #endregion
+
         #region Methods
+
+        /// <summary>
+        /// Exports Data to XML and PDF File
+        /// </summary>
+        public void ExportData()
+        {
+            // todo finish
+            // leverage XMLBuilder, SpotifySearchPO path from CompleteSpotifySearchList.FirstOrDefault LINQ
+            // leverage DateTime date = DateTime.Now
+        }
+
         /// <summary>
         /// Parse json into SpotifySearchView ArtistResults property.
         /// </summary>
@@ -98,5 +119,18 @@ namespace SpotifySearch_SWENG861.Presenters
         }
 
         #endregion
+
+        /// <summary>
+        /// Collect Frame Data UI data and place into property for use. 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns>List of SpotifySearchPO</returns>
+        internal void CollectSpotifySearchViewList(List<SpotifySearchPO> list)
+        {
+            if (list == null || list.Count == 0) return;
+
+            CompleteSpotifySearchList = list;
+        }
+
     }
 }

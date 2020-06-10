@@ -9,6 +9,7 @@ using CefSharp.WinForms;
 using CSharp_SpotifyAPI;
 using CSharp_SpotifyAPI.Enums;
 using CSharp_SpotifyAPI.Models;
+using SpotifySearch_SWENG861.PresentationObjects;
 using SpotifySearch_SWENG861.Presenters;
 using SpotifySearch_SWENG861.Properties;
 using SpotifySearch_SWENG861.UserControls;
@@ -39,7 +40,6 @@ namespace SpotifySearch_SWENG861.Views
             // TODO finish Import Manager
             // TODO finish Export Builder
             // AuthenticateAndStartService();
-
             InitializeChromeBrowser();
         }
 
@@ -99,11 +99,9 @@ namespace SpotifySearch_SWENG861.Views
             // todo utilize IsArtistSearch and IsSongSearch booleans if necessary.
             // todo get Title, message, and MetaData. meta data view may need property for meta data list.
             // todo call presenter to perform this work. 
-            // todo presenter.CollectSpotifySearchViewListAndMetaData(ViewMethodWithList) example below.
-            //MainFrameDataPresenter p = new MainFrameDataPresenter(this.Parent.Parent as MainFrameDataView);
-            //p.CollectMainFrameDataViewList(MainFrameDataPOList());
-            // todo presenter.ExportData() uses XmlBuilder, PdfBuilder, SpotifySearchViewPO, and DateTime
-            //p.ExportData();
+            SpotifySearchPresenter p = new SpotifySearchPresenter(this.Parent.Parent as SpotifySearchView);
+            p.CollectSpotifySearchViewList(SpotifySearchPOList());
+            p.ExportData();
         }
 
         /// <summary>
@@ -348,6 +346,18 @@ namespace SpotifySearch_SWENG861.Views
         #region Private Methods
 
         /// <summary>
+        /// Create SpotifySearchPO list from relevant UI elements.
+        /// </summary>
+        /// <returns></returns>
+        private List<SpotifySearchPO> SpotifySearchPOList()
+        {
+            // todo complete 
+            List<SpotifySearchPO> list = new List<SpotifySearchPO>();
+
+            return list;
+        }
+
+        /// <summary>
         /// Populates max search combo box on form load
         /// </summary>
         private void PopulateMaxSearchComboBox()
@@ -402,14 +412,13 @@ namespace SpotifySearch_SWENG861.Views
 
             while (Authenticated == false)
             {
-                // do something
                 if (MessageBox.Show(
-                    @"Please confirm Spotify account in web browser window that opened and then click ok... or click cancel to use offline import/export (options) features.",
-                    @"Check Browser",
-                    MessageBoxButtons.OKCancel, 
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Cancel)
+                        @"Please confirm Spotify account in web browser window that opened and then click ok... or click cancel to use offline import/export (options) features.",
+                        @"Check Browser",
+                        MessageBoxButtons.OKCancel, 
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Cancel)
                 {
                     this.btnSearch.Visible = false;
                     break;
@@ -496,14 +505,22 @@ namespace SpotifySearch_SWENG861.Views
                 switch (searchType)
                 {
                     case SearchType.artist:
-                        listItems[i].Title = ArtistsResults.Artists.Items[i].Name;
-                        listItems[i].Message = $"Artist Spotify ID: {ArtistsResults.Artists.Items[i].Id}"
-                                               + Environment.NewLine + "Click to view metadata.";
+                        if (ArtistsResults != null)
+                        {
+                            listItems[i].Title = ArtistsResults.Artists.Items[i].Name;
+                            listItems[i].Message = $"Artist Spotify ID: {ArtistsResults.Artists.Items[i].Id}"
+                                                   + Environment.NewLine + "Click to view metadata.";
+                        }
+
                         break;
                     case SearchType.track:
-                        listItems[i].Title = TracksResults.Tracks.Items[i].Name;
-                        listItems[i].Message = $"Track Spotify ID: {TracksResults.Tracks.Items[i].Id}"
-                            + Environment.NewLine + "Click to view metadata.";
+                        if (TracksResults != null)
+                        {
+                            listItems[i].Title = TracksResults.Tracks.Items[i].Name;
+                            listItems[i].Message = $"Track Spotify ID: {TracksResults.Tracks.Items[i].Id}"
+                                                   + Environment.NewLine + "Click to view metadata.";
+                        }
+
                         break;
                 }
 
