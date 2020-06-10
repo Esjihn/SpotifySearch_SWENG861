@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using CSharp_SpotifyAPI.Models;
 using Newtonsoft.Json;
+using SpotifySearch_SWENG861.Builders;
 using SpotifySearch_SWENG861.PresentationObjects;
 using SpotifySearch_SWENG861.ViewInterfaces;
 
@@ -106,6 +108,9 @@ namespace SpotifySearch_SWENG861.Presenters
             // todo finish
             // leverage XMLBuilder, SpotifySearchPO path from CompleteSpotifySearchList.FirstOrDefault LINQ
             // leverage DateTime date = DateTime.Now
+            XMLBuilder xmlBuilder = new XMLBuilder();
+            SpotifySearchPO path = CompleteSpotifySearchList.FirstOrDefault(s => s.)
+            
         }
 
         /// <summary>

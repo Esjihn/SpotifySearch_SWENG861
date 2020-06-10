@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\PDFBuilder.cs" />
+    <Compile Include="Builders\XMLBuilder.cs" />
     <Compile Include="Constants\SpotifySearchPOConstants.cs" />
     <Compile Include="PresentationObjects\SpotifySearchPO.cs" />
     <Compile Include="Presenters\SpotifySearchPresenter.cs" />

@@ -95,10 +95,6 @@ namespace SpotifySearch_SWENG861.Views
         /// <param name="e"></param>
         private void btnExportSearch_Click(object sender, EventArgs e)
         {
-            // todo create a SpotifySearchViewPO with necessary objects from view.
-            // todo utilize IsArtistSearch and IsSongSearch booleans if necessary.
-            // todo get Title, message, and MetaData. meta data view may need property for meta data list.
-            // todo call presenter to perform this work. 
             SpotifySearchPresenter p = new SpotifySearchPresenter(this);
             p.CollectSpotifySearchViewList(SpotifySearchPOList());
             p.ExportData();
@@ -370,7 +366,10 @@ namespace SpotifySearch_SWENG861.Views
 
             List<SpotifySearchPO> list = new List<SpotifySearchPO>();
             SpotifySearchPO po = new SpotifySearchPO();
-            
+
+            string defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string selectedDirectory = this.rtxtImportExportLocation.Text;
+
             for (int i = 0; i < searchCount; i++)
             {
                 if (IsArtistSearch)
@@ -395,6 +394,16 @@ namespace SpotifySearch_SWENG861.Views
                     FillSpotifySearchPOWithMetaDataPortion(po, trackObject);
                 }
                 
+                if (rtxtImportExportLocation != null && !string.IsNullOrEmpty(selectedDirectory))
+                {
+                    po.ImportExportLocationText = selectedDirectory;
+                }
+                else
+                {
+                    // Default import / export location is "MyDocuments" environment variable if none selected.
+                    po.ImportExportLocationText = defaultPath;
+                }
+
                 list.Add(po);
             }
 
@@ -436,6 +445,7 @@ namespace SpotifySearch_SWENG861.Views
             po.DurationMS = dataObject.duration_ms;
             if (dataObject.External_urls.Spotify != null)
                 po.ExternalUrls = dataObject.External_urls.Spotify;
+            po.DiscNumber = dataObject.disc_number;
         }
 
         /// <summary>

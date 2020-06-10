@@ -39,11 +39,13 @@ namespace SpotifySearch_SWENG861.PresentationObjects
         public IList<Artist> Artists { get; set; }
         public SearchSongs TracksResults { get; set; }
         public int TrackNumber { get; set; }
-        public string ArtistName { get; set; }
         public int DurationMS { get; set; }
         public int DiscNumber { get; set; }
         public string ExternalUrls { get; set; }
+        #endregion
 
+        #region SpotifySearch UI
+        public string ImportExportLocationText { get; set; }
         #endregion
     }
 }
