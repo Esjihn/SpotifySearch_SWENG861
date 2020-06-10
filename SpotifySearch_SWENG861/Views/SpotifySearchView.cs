@@ -39,7 +39,10 @@ namespace SpotifySearch_SWENG861.Views
             // TODO finish OPTIONS folder dialog and txtImportExport
             // TODO finish Import Manager
             // TODO finish Export Builder
-            AuthenticateAndStartService();
+            // TODO go back and take a look how to solve ListenOnSpotify first load not displaying player.
+            //AuthenticateAndStartService();
+
+            // Initialize chrome browser object.
             CefSettings settings = new CefSettings();
             Cef.Initialize(settings);
         }
@@ -88,6 +91,24 @@ namespace SpotifySearch_SWENG861.Views
         #endregion
 
         #region Event Handlers
+
+        /// <summary>
+        /// btnImportDirectory click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnImportDirectory_Click(object sender, EventArgs e)
+        {
+            if (fldrBrowserDialog != null)
+            {
+                fldrBrowserDialog.ShowNewFolderButton = true;
+
+                if (this.fldrBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.rtxtImportExportLocation.Text = fldrBrowserDialog.SelectedPath;
+                }
+            }
+        }
 
         /// <summary>
         /// SpotifySearchView form closing event
@@ -233,8 +254,8 @@ namespace SpotifySearch_SWENG861.Views
         private void SpotifySearchView_Load(object sender, EventArgs e)
         {
             PopulateMaxSearchComboBox();
-            this.rtxtImportExportLocation.Enabled = false;
             HideAdvancedOptionsOnLoad();
+            this.rtxtImportExportLocation.ReadOnly = true;
             this.btnSearch.Enabled = false;
             this.btnSearch.BackColor = Color.DimGray;
         }

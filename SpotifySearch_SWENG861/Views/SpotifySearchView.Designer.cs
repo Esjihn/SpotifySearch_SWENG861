@@ -46,6 +46,7 @@
             this.lblArtistSongEntry = new System.Windows.Forms.Label();
             this.lblMaxSearch = new System.Windows.Forms.Label();
             this.lblAppHeader = new System.Windows.Forms.Label();
+            this.fldrBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.pnlSpotifySearch.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +112,7 @@
             this.btnImportDirectory.TabIndex = 15;
             this.btnImportDirectory.Text = "...";
             this.btnImportDirectory.UseVisualStyleBackColor = true;
+            this.btnImportDirectory.Click += new System.EventHandler(this.btnImportDirectory_Click);
             // 
             // rtxtImportExportLocation
             // 
@@ -118,6 +120,7 @@
             this.rtxtImportExportLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtImportExportLocation.Location = new System.Drawing.Point(13, 596);
             this.rtxtImportExportLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtxtImportExportLocation.Multiline = false;
             this.rtxtImportExportLocation.Name = "rtxtImportExportLocation";
             this.rtxtImportExportLocation.Size = new System.Drawing.Size(264, 59);
             this.rtxtImportExportLocation.TabIndex = 14;
@@ -317,6 +320,7 @@
         private System.Windows.Forms.RichTextBox rtxtImportExportLocation;
         private System.Windows.Forms.Button btnImportDirectory;
         private System.Windows.Forms.Label lblImportExport;
+        private System.Windows.Forms.FolderBrowserDialog fldrBrowserDialog;
     }
 }
 
