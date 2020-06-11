@@ -34,12 +34,12 @@ namespace SpotifySearch_SWENG861.Builders
                 Chunk singleSpaceChunk = new Chunk(Environment.NewLine);
                 Chunk doubleSpaceChunk = new Chunk(Environment.NewLine + Environment.NewLine);
 
-
-                
                 // List Item
                 Chunk listItemHeaderChunk = new Chunk();
                 Chunk listItemChunk = new Chunk();
                 List<Chunk> listItemChunkList = new List<Chunk>();
+
+                // Meta Data Item
 
                 for(int i = 0; i < list.Count; i++)
                 {
@@ -54,11 +54,15 @@ namespace SpotifySearch_SWENG861.Builders
                             
                     listItemChunk = new Chunk(listItem, FontFactory.GetFont("Arial, 11"));
 
+
+                    // todo finish MetaData
+
+
+
+
+
                     listItemChunkList.Add(listItemChunk);
                 }
-
-                // todo finish MetaData
-
 
                 DateTime date = DateTime.Now;
                 Chunk creatorChunk = new Chunk($"Developer: Matthew Miller, Email: sysnom@gmail.com, Export Date: {date}",
@@ -82,6 +86,7 @@ namespace SpotifySearch_SWENG861.Builders
                 listItemHeaderParagraph.Add(listItemHeaderChunk);
                 foreach (Chunk item in listItemChunkList)
                 {
+                    // todo add the same foreach for meta data item
                     listItemParagraph.Add(item + Environment.NewLine);
                 }
                 
