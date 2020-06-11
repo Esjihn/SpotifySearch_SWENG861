@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using SpotifySearch_SWENG861.Constants;
 using SpotifySearch_SWENG861.PresentationObjects;
 
 namespace SpotifySearch_SWENG861.Builders
@@ -19,7 +23,30 @@ namespace SpotifySearch_SWENG861.Builders
 
             try
             {
+                Document doc = new Document();
+                PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
+                doc.Open();
+
+                Chunk headerChunk = new Chunk("Spotify Search", FontFactory.GetFont("Arial", 48));
+                Chunk linkChunk = new Chunk("--------------------------------------------------------------------------" +
+                                            "--------------------------------------------------------------------",
+                    FontFactory.GetFont("Arial", 11));
+
                 // todo finish
+                // List Item
+                Chunk listItemHeaderChunk = new Chunk();
+                Chunk listItemChunk = new Chunk();
+
+                foreach (SpotifySearchPO item in list)
+                {
+                    listItemHeaderChunk = new Chunk("Basic Spotify Data", FontFactory.GetFont("Arial Bold", 22));
+                    
+                    string listItem
+                        = SpotifySearchXMLConstants.ListItemUIElements + item.NewLine
+                            + SpotifySearchXMLConstants.
+                }
+                
+
 
 
 

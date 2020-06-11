@@ -10,18 +10,13 @@ namespace SpotifySearch_SWENG861.PresentationObjects
 {
     public class SpotifySearchPO
     {
-        #region Header
-        // For use with import.
-        public string SpotifySearchXmlHeader = SpotifySearchPOConstants.SpotifySearchPO;
-        #endregion
-
         #region List Item UI
         public string Title { get; set; }
         public string Message { get; set; }
         #endregion
 
         #region Meta Data UI
-        // Used for import alignment in MetaDataView
+        // Used for xml/pdf creation
         public string NewLine { get { return Environment.NewLine; } }
         public string Name { get; set; }
         public bool ExplicitWords { get; set; }
