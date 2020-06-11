@@ -36,33 +36,32 @@ namespace SpotifySearch_SWENG861.Builders
                 Chunk doubleSpaceChunk = new Chunk(Environment.NewLine + Environment.NewLine);
 
                 // List Item
-                Chunk listItemHeaderChunk = new Chunk();
-                Chunk listItemChunk = new Chunk();
-                List<Chunk> listItemChunkList = new List<Chunk>();
+                Chunk searchResultsHeaderChunk = new Chunk();
+                Chunk searchResultsChunk = new Chunk();
+                List<Chunk> searchResultsList = new List<Chunk>();
 
                 // Meta Data Item
 
                 for(int i = 0; i < list.Count; i++)
                 {
                     SpotifySearchPO po = list[i];
-                    listItemHeaderChunk = new Chunk("Basic Spotify Data", FontFactory.GetFont("Arial Bold", 22));
+                    searchResultsHeaderChunk = new Chunk("Basic Spotify Data", FontFactory.GetFont("Arial Bold", 22));
                     
                     string listItem
                         // List user control items
-                        = SpotifySearchXMLConstants.ListItemUIElements + ": " + po.NewLine
-                            + SpotifySearchXMLConstants.Title + ": " + po.Title + po.NewLine
-                            + SpotifySearchXMLConstants.Message + ": " + po.Message + po.NewLine;
+                        = SpotifySearchXMLConstants.Title + ": " + po.Title + po.NewLine
+                          + SpotifySearchXMLConstants.Message + ": " + po.Message + po.NewLine;
                             
-                    listItemChunk = new Chunk(listItem, FontFactory.GetFont("Arial, 11"));
+                    searchResultsChunk = new Chunk(listItem, FontFactory.GetFont("Arial, 11"));
 
 
-                    // todo finish MetaData
+                    // todo finish adding MetaData
 
 
 
 
 
-                    listItemChunkList.Add(listItemChunk);
+                    searchResultsList.Add(searchResultsChunk);
                 }
 
                 DateTime date = DateTime.Now;
@@ -73,8 +72,8 @@ namespace SpotifySearch_SWENG861.Builders
                 Paragraph headerParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
 
                 // list user control paragraph
-                Paragraph listItemHeaderParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
-                Paragraph listItemParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
+                Paragraph searchResultsHeaderParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
+                Paragraph searchResultsParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
 
                 Paragraph creatorParagraph = new Paragraph { Alignment = Element.ALIGN_RIGHT };
                 Paragraph dateParagraph = new Paragraph { Alignment = Element.ALIGN_RIGHT };
@@ -84,13 +83,13 @@ namespace SpotifySearch_SWENG861.Builders
 
                 // Header
                 headerParagraph.Add(headerChunk);
-                
+
                 // list ui
-                listItemHeaderParagraph.Add(listItemHeaderChunk);
-                foreach (Chunk item in listItemChunkList)
+                searchResultsHeaderParagraph.Add(searchResultsHeaderChunk);
+                foreach (Chunk item in searchResultsList)
                 {
                     // todo add the same foreach for meta data item
-                    listItemParagraph.Add(item + Environment.NewLine);
+                    searchResultsParagraph.Add(item + Environment.NewLine);
                 }
                 
                 // Dev 
@@ -108,13 +107,11 @@ namespace SpotifySearch_SWENG861.Builders
                 doc.Add(dateParagraph);
                 doc.Add(singleSpaceParagraph);
 
-                // list UI doc
-                doc.Add(listItemHeaderParagraph);
+                // Search Results doc
+                doc.Add(searchResultsHeaderParagraph);
                 doc.Add(singleSpaceParagraph);
-                doc.Add(listItemParagraph);
+                doc.Add(searchResultsParagraph);
                 doc.Add(singleSpaceParagraph);
-
-
 
                 // Footer doc
                 doc.Add(lineParagraph);
