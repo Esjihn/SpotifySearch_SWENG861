@@ -15,5 +15,6 @@ namespace SpotifySearch_SWENG861.ViewInterfaces
 
         bool IsSongSearch { get; set; }
         bool IsArtistSearch { get; set; }
+        FlowLayoutPanel FlowPanelObject { get; set; }
     }
 }

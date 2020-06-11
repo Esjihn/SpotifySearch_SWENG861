@@ -40,8 +40,6 @@ namespace SpotifySearch_SWENG861.Views
         public SpotifySearchView()
         {
             InitializeComponent();
-            // TODO keep disabled until closer to completion
-            // TODO finish Import Manager
             AuthenticateAndStartService();
             InitializeChromeBrowser();
         }
@@ -118,8 +116,6 @@ namespace SpotifySearch_SWENG861.Views
                 if (this.fileBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     string fileNameAndPath = fileBrowserDialog.FileName;
-
-                    // todo create overloaded version of LoadResults that takes in saved parameters.
 
                     FileImportHelper helper = new FileImportHelper();
                     if (helper.DetermineIfSelectedXmlIsValid(fileNameAndPath))
@@ -376,7 +372,6 @@ namespace SpotifySearch_SWENG861.Views
                     .Element(SpotifySearchXMLPDFConstants.ListItemUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Message)
                     .Value;
-
 
                 searchPo.NewLineImport = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)

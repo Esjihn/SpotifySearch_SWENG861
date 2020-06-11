@@ -16,7 +16,6 @@ namespace SpotifySearch_SWENG861.Builders
 {
     public class PDFBuilder
     {
-        // todo complete implementation.
         public void CreatePdfFromMainFrameDataPoList(List<SpotifySearchPO> list, string path)
         {
             if (list == null || !list.Any() || string.IsNullOrEmpty(path)) return;
@@ -122,7 +121,6 @@ namespace SpotifySearch_SWENG861.Builders
                 searchResultsHeaderParagraph.Add(searchResultsHeaderChunk);
                 foreach (Chunk item in searchResultsList)
                 {
-                    // todo add the same foreach for meta data item
                     searchResultsParagraph.Add(item + Environment.NewLine);
                 }
                 

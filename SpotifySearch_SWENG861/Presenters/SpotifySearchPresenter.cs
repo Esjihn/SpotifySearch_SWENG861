@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using CSharp_SpotifyAPI.Enums;
 using CSharp_SpotifyAPI.Models;
 using Newtonsoft.Json;
 using SpotifySearch_SWENG861.Builders;
 using SpotifySearch_SWENG861.PresentationObjects;
+using SpotifySearch_SWENG861.Properties;
+using SpotifySearch_SWENG861.UserControls;
 using SpotifySearch_SWENG861.ViewInterfaces;
 
 namespace SpotifySearch_SWENG861.Presenters
@@ -97,12 +101,36 @@ namespace SpotifySearch_SWENG861.Presenters
         /// <param name="xmlImportList"></param>
         public void ImportData(List<SpotifySearchPO> xmlImportList)
         {
-            // todo logic. half of LoadResults logic should be used
             if (xmlImportList == null || xmlImportList.Count == 0) return;
 
-            // need user control list from view. 
-            // need flow layout panel object as well. 
+            // Populate UI with result user control list.
+            ListItemUserControl[] listItems = new ListItemUserControl[xmlImportList.Count];
+            
+            for (int i = 0; i < listItems.Length; i++)
+            {
+                listItems[i] = new ListItemUserControl
+                {
+                    Width = _viewMain.FlowPanelObject.Width,
+                    Icon = Resources.spotify_icon_01,
+                    IconBackGround = Color.Black
+                };
 
+                foreach (SpotifySearchPO po in xmlImportList)
+                {
+                    listItems[i].Title = po.Title;
+                    listItems[i].Message = $"Artist Spotify ID: {po.Message}"
+                                           + Environment.NewLine + "Click to view metadata.";
+                }
+                
+                if (_viewMain.FlowPanelObject.Controls.Count > 0)
+                {
+                    _viewMain.FlowPanelObject.Controls.Clear();
+                }
+                else
+                {
+                    this._viewMain.FlowPanelObject.Controls.Add(listItems[i]);
+                }
+            }
         }
 
         /// <summary>
