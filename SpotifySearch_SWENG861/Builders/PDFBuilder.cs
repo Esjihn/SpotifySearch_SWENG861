@@ -75,8 +75,7 @@ namespace SpotifySearch_SWENG861.Builders
                     if (po.Artists != null)
                     {
                         listItem += SpotifySearchXMLPDFConstants.Artists + colon + po.NewLine;
-                        listItem = po.Artists.Aggregate(listItem, (current, artist) => current + artist.Name);
-                        listItem += " ";
+                        listItem = po.Artists.Aggregate(listItem, (current, artist) => current + artist.Name + " ");
                         listItem += po.NewLine;
                     }
 
