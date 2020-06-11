@@ -65,17 +65,16 @@ namespace SpotifySearch_SWENG861.Builders
                                 ? new XElement(SpotifySearchXMLPDFConstants.PreviewUrl, po.PreviewUrl)
                                 : new XElement(SpotifySearchXMLPDFConstants.PreviewUrl, string.Empty),
                             po.Artists != null
-                                ? new XElement(SpotifySearchXMLPDFConstants.Artists, po.Artists)
+                                ? new XElement(SpotifySearchXMLPDFConstants.Artists, po.Artists.Select(a => a.Name))
                                 : new XElement(SpotifySearchXMLPDFConstants.Artists, string.Empty),
                             new XElement(SpotifySearchXMLPDFConstants.TrackNumber, po.TrackNumber),
                             new XElement(SpotifySearchXMLPDFConstants.DurationMS, po.DurationMS),
                             new XElement(SpotifySearchXMLPDFConstants.DiscNumber, po.DiscNumber),
                             po.ExternalUrls != null
                                 ? new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, po.ExternalUrls)
-                                : new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, string.Empty)),
-                        from po in list
-                            select new XElement(SpotifySearchXMLPDFConstants.ImportExport,
-                                new XElement(SpotifySearchXMLPDFConstants.ImportExportLocationText, po.ImportExportLocationText)));
+                                : new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, string.Empty),
+                            new XElement(SpotifySearchXMLPDFConstants.ImportExport,
+                                new XElement(SpotifySearchXMLPDFConstants.ImportExportLocationText, po.ImportExportLocationText))));
                 
                 // Write complete XML element as XML page to file.
                 using (StreamWriter sw = new StreamWriter(path, true))

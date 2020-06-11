@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using CefSharp;
 using CefSharp.WinForms;
 using CSharp_SpotifyAPI;
 using CSharp_SpotifyAPI.Enums;
 using CSharp_SpotifyAPI.Models;
+using SpotifySearch_SWENG861.Constants;
+using SpotifySearch_SWENG861.Helpers;
 using SpotifySearch_SWENG861.PresentationObjects;
 using SpotifySearch_SWENG861.Presenters;
 using SpotifySearch_SWENG861.Properties;
@@ -38,7 +42,6 @@ namespace SpotifySearch_SWENG861.Views
             InitializeComponent();
             // TODO keep disabled until closer to completion
             // TODO finish Import Manager
-            // TODO finish Export Builder
             AuthenticateAndStartService();
             InitializeChromeBrowser();
         }
@@ -96,7 +99,7 @@ namespace SpotifySearch_SWENG861.Views
         private void btnExportSearch_Click(object sender, EventArgs e)
         {
             SpotifySearchPresenter p = new SpotifySearchPresenter(this);
-            p.CollectSpotifySearchViewList(SpotifySearchPOList());
+            p.CollectSpotifySearchViewList(SpotifySearchPOListFromUI());
             p.ExportData();
             KeepTopMostAndBringToFront();
         }
@@ -116,12 +119,13 @@ namespace SpotifySearch_SWENG861.Views
                 {
                     string fileNameAndPath = fileBrowserDialog.FileName;
 
-                    // todo create a FileImportHelper that will check if XML is valid. 
-                    // todo example of using presenter
                     // todo create overloaded version of LoadResults that takes in saved parameters.
-                    if (1 > 2)
+
+                    FileImportHelper helper = new FileImportHelper();
+                    if (helper.DetermineIfSelectedXmlIsValid(fileNameAndPath))
                     {
-                        
+                        SpotifySearchPresenter p = new SpotifySearchPresenter(this);
+                        p.ImportData(XMLImportList(fileNameAndPath));
                         //MainFrameDataPresenter p = new MainFrameDataPresenter(this.Parent.Parent as SpotifySearchView);
                         //p.ImportData(XMLImportList(fileNameAndPath));
 
@@ -345,6 +349,158 @@ namespace SpotifySearch_SWENG861.Views
         #endregion
 
         #region Private Methods
+        
+        /// <summary>
+        /// Creates SpotifySearchPO list from XML Import file.
+        /// </summary>
+        /// <param name="fileNameAndPath"></param>
+        /// <returns></returns>
+        private List<SpotifySearchPO> XMLImportList(string fileNameAndPath)
+        {
+            if (string.IsNullOrEmpty(fileNameAndPath)) return new List<SpotifySearchPO>();
+
+            List<SpotifySearchPO> importList = new List<SpotifySearchPO>();
+
+            XDocument doc = XDocument.Load(fileNameAndPath);
+
+            try
+            {
+                SpotifySearchPO searchPo = new SpotifySearchPO();
+
+                XElement listItemUiElement = doc.Element(SpotifySearchXMLPDFConstants.SpotifySearchResults)
+                    .Element(SpotifySearchXMLPDFConstants.ListItemUIElements);
+
+                searchPo.Title = listItemUiElement
+                    .Element(SpotifySearchXMLPDFConstants.ListItemUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.Title)
+                    .Value;
+
+                searchPo.Name = listItemUiElement
+                    .Element(SpotifySearchXMLPDFConstants.ListItemUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.Name)
+                    .Value;
+
+                XElement metaDataElement = doc.Element(SpotifySearchXMLPDFConstants.SpotifySearchResults)
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements);
+
+                searchPo.NewLineImport = metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.EmptyLine)
+                    .Value;
+
+                searchPo.Name = metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.Name)
+                    .Value;
+
+                searchPo.ExplicitWords = Convert.ToBoolean(metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.ExplicitWords)
+                    .Value);
+
+                searchPo.Popularity = Convert.ToInt32(metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.Popularity)
+                    .Value);
+
+                searchPo.FollowerTotal = Convert.ToInt32(metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.FollowerTotal)
+                    .Value);
+
+                searchPo.Id = metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.Id)
+                    .Value;
+
+                searchPo.IsLocal = Convert.ToBoolean(metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.IsLocal)
+                    .Value);
+
+                searchPo.Href = metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.Href)
+                    .Value;
+
+                searchPo.AvailableMarkets = new string[]
+                {
+                    metaDataElement
+                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                        .Element(SpotifySearchXMLPDFConstants.AvailableMarkets)
+                        .Value
+                };
+
+                searchPo.PreviewUrl = metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.PreviewUrl)
+                    .Value;
+                
+                string artists = metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.Artists).Value;
+
+                if (!string.IsNullOrEmpty(artists))
+                {
+                    string[] artistList = artists.Split(' ');
+
+                    for (int i = 0; i < artistList.Length; i++)
+                    {
+                        for (int j = 0; j < searchPo.Artists.Count; i++)
+                        {
+                            artistList[i] = searchPo.Artists[j].Name;
+                        }
+                    }
+                }
+
+                searchPo.TrackNumber = Convert.ToInt32(metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.TrackNumber)
+                    .Value);
+
+                searchPo.DurationMS = Convert.ToInt32(metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.DurationMS)
+                    .Value);
+
+                searchPo.DiscNumber = Convert.ToInt32(metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.DiscNumber)
+                    .Value);
+
+                searchPo.ExternalUrls = metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.ExternalUrls)
+                    .Value;
+
+                searchPo.ImportExportLocationText = metaDataElement
+                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
+                    .Element(SpotifySearchXMLPDFConstants.ImportExport)
+                    .Element(SpotifySearchXMLPDFConstants.ImportExportLocationText)
+                    .Value;
+
+                importList.Add(searchPo);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(@"Unable to Import file. File is either corrupt or xml tags are from a deprecated version of export."
+                                + Environment.NewLine
+                                + $@" Error: {e}", @"Import File Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly);
+
+                KeepTopMostAndBringToFront();
+                return new List<SpotifySearchPO>();
+            }
+
+            MessageBox.Show(@"Import Successful! Click 'OK' to update app.", @"Success");
+            KeepTopMostAndBringToFront();
+
+            return importList;
+        }
+
 
         /// <summary>
         /// Brings main form to front of form hierarchy
@@ -359,7 +515,7 @@ namespace SpotifySearch_SWENG861.Views
         /// Create SpotifySearchPO list from relevant UI elements.
         /// </summary>
         /// <returns></returns>
-        private List<SpotifySearchPO> SpotifySearchPOList()
+        private List<SpotifySearchPO> SpotifySearchPOListFromUI()
         {
             int searchCount = 0;
 
@@ -638,6 +794,5 @@ namespace SpotifySearch_SWENG861.Views
         }
 
         #endregion
-
     }
 }

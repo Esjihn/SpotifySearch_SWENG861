@@ -10,6 +10,10 @@ namespace SpotifySearch_SWENG861.PresentationObjects
 {
     public class SpotifySearchPO
     {
+        #region Formatting
+        public string NewLineImport;
+        #endregion
+        
         #region List Item UI
         public string Title { get; set; }
         public string Message { get; set; }

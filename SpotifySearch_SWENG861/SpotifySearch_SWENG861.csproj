@@ -71,6 +71,7 @@
     <Compile Include="Builders\XMLBuilder.cs" />
     <Compile Include="Constants\SpotifySearchPOConstants.cs" />
     <Compile Include="Constants\SpotifySearchXMLPDFConstants.cs" />
+    <Compile Include="Helpers\FileImportHelper.cs" />
     <Compile Include="PresentationObjects\SpotifySearchPO.cs" />
     <Compile Include="Presenters\SpotifySearchPresenter.cs" />
     <Compile Include="ViewInterfaces\IListenOnSpotifyView.cs" />
