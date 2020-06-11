@@ -361,20 +361,17 @@ namespace SpotifySearch_SWENG861.Views
         /// <returns></returns>
         private List<SpotifySearchPO> SpotifySearchPOList()
         {
-            if (ArtistsResults == null && TracksResults == null)
-            {
-                return new List<SpotifySearchPO>();
-            }
-
             int searchCount = 0;
 
             if (IsArtistSearch)
             {
+                if(ArtistsResults == null) return new List<SpotifySearchPO>();
                 searchCount = ArtistsResults.Artists.Items.Count;
             }
 
             if (IsSongSearch)
             {
+                if(TracksResults == null) return new List<SpotifySearchPO>();
                 searchCount = TracksResults.Tracks.Items.Count;
             }
 
