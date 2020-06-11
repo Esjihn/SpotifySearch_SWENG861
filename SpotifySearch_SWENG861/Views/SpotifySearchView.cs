@@ -347,8 +347,6 @@ namespace SpotifySearch_SWENG861.Views
         /// <returns></returns>
         private List<SpotifySearchPO> SpotifySearchPOList()
         {
-            // todo bug list of items are the same even though the count is correct. 
-            // fix bug to produce correct list of different items. 
             if (ArtistsResults == null && TracksResults == null)
             {
                 return new List<SpotifySearchPO>();
@@ -367,13 +365,14 @@ namespace SpotifySearch_SWENG861.Views
             }
 
             List<SpotifySearchPO> list = new List<SpotifySearchPO>();
-            SpotifySearchPO po = new SpotifySearchPO();
-
+            
             string defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string selectedDirectory = this.rtxtImportExportLocation.Text;
 
             for (int i = 0; i < searchCount; i++)
             {
+                SpotifySearchPO po = new SpotifySearchPO();
+
                 if (IsArtistSearch)
                 {
                     Item artistObject = ArtistsResults.Artists.Items[i];
