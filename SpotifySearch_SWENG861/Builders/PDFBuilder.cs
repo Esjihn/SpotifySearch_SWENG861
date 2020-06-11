@@ -31,6 +31,9 @@ namespace SpotifySearch_SWENG861.Builders
                 Chunk linkChunk = new Chunk("--------------------------------------------------------------------------" +
                                             "--------------------------------------------------------------------",
                     FontFactory.GetFont("Arial", 11));
+                Chunk singleSpaceChunk = new Chunk(Environment.NewLine);
+                Chunk doubleSpaceChunk = new Chunk(Environment.NewLine + Environment.NewLine);
+
 
                 // todo finish
                 // List Item
@@ -42,13 +45,61 @@ namespace SpotifySearch_SWENG861.Builders
                     listItemHeaderChunk = new Chunk("Basic Spotify Data", FontFactory.GetFont("Arial Bold", 22));
                     
                     string listItem
+                        // List user control items
                         = SpotifySearchXMLConstants.ListItemUIElements + item.NewLine
-                            + SpotifySearchXMLConstants.
+                            + SpotifySearchXMLConstants.Title + ": " + item.Title + item.NewLine
+                            + SpotifySearchXMLConstants.Message + ": " + item.Message + item.NewLine;
+                            
+                    listItemChunk = new Chunk(listItem, FontFactory.GetFont("Arial, 11"));
                 }
+
+                DateTime date = DateTime.Now;
+                Chunk creatorChunk = new Chunk($"Developer: Matthew Miller, Email: sysnom@gmail.com, Export Date: {date}",
+                    FontFactory.GetFont("Arial", 11));
+
+                Paragraph headerParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
+
+                // list user control paragraph
+                Paragraph listItemHeaderParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
+                Paragraph listItemParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
+
+                Paragraph creatorParagraph = new Paragraph { Alignment = Element.ALIGN_RIGHT };
+                Paragraph lineParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
+                Paragraph singleSpaceParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
+                Paragraph doubleSpaceParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
+
+                // Header
+                headerParagraph.Add(headerChunk);
                 
+                // list ui
+                listItemHeaderParagraph.Add(listItemHeaderChunk);
+                listItemParagraph.Add(listItemChunk);
 
 
 
+                // Formatting
+                singleSpaceParagraph.Add(singleSpaceChunk);
+                doubleSpaceParagraph.Add(doubleSpaceChunk);
+                lineParagraph.Add(linkChunk);
+
+                // Header doc
+                doc.Add(headerParagraph);
+                doc.Add(lineParagraph);
+                doc.Add(singleSpaceParagraph);
+
+                // list UI doc
+                doc.Add(listItemHeaderParagraph);
+                doc.Add(singleSpaceParagraph);
+                doc.Add(listItemParagraph);
+                doc.Add(singleSpaceParagraph);
+
+
+
+                // Footer doc
+                doc.Add(lineParagraph);
+                doc.Add(creatorParagraph);
+
+                doc.Close();
 
                 workComplete = true;
             }
