@@ -127,6 +127,8 @@ namespace SpotifySearch_SWENG861.Presenters
                 xmlBuilder.CreateXMLFromSpotifySearchPOList(CompleteSpotifySearchList, myPath);
             }
 
+            // 2. Build Export PDF for easy viewing (leverage PDFBuilder)
+
             // todo
         }
 

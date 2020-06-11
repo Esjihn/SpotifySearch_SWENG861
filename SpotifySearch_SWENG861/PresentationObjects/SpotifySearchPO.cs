@@ -23,7 +23,6 @@ namespace SpotifySearch_SWENG861.PresentationObjects
         #region Meta Data UI
         // Used for import alignment in MetaDataView
         public string NewLine { get { return Environment.NewLine; } }
-
         public string Name { get; set; }
         public bool ExplicitWords { get; set; }
         public IList<string> Genres { get; set; }
