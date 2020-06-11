@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CSharp_SpotifyAPI.Models;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using SpotifySearch_SWENG861.Constants;
@@ -42,41 +43,70 @@ namespace SpotifySearch_SWENG861.Builders
                 for (int i = 0; i < list.Count; i++)
                 {
                     SpotifySearchPO po = list[i];
-                    searchResultsHeaderChunk = new Chunk("Basic Spotify Data", FontFactory.GetFont("Arial Bold", 22));
+                    searchResultsHeaderChunk = new Chunk(SpotifySearchXMLPDFConstants.SpotifySearchResultsHeader, FontFactory.GetFont("Arial Bold", 22));
 
                     string listItem
                         // List user control items
                         = SpotifySearchXMLPDFConstants.Title + colon + po.Title + po.NewLine
                           + SpotifySearchXMLPDFConstants.Message + colon + po.Message + po.NewLine
-                          + SpotifySearchXMLPDFConstants.HyphenLineListSplit
+                          + po.NewLine
                           + SpotifySearchXMLPDFConstants.MetaData + po.NewLine;
+                    
+                    if (po.Name != null) listItem += SpotifySearchXMLPDFConstants.Name + colon + po.Name + po.NewLine;
+                    listItem += SpotifySearchXMLPDFConstants.ExplicitWords + colon + po.ExplicitWords + po.NewLine;
+                    listItem += SpotifySearchXMLPDFConstants.Popularity + colon + po.Popularity + po.NewLine;
+                    if (po.Followers != null) listItem += SpotifySearchXMLPDFConstants.FollowerTotal + colon + po.FollowerTotal + po.NewLine;
+                    if (po.Id != null) listItem += SpotifySearchXMLPDFConstants.Id + colon + po.Id + po.NewLine;
+                    listItem += SpotifySearchXMLPDFConstants.IsLocal + colon + po.IsLocal + po.NewLine;
+                    if (po.Href != null) listItem += SpotifySearchXMLPDFConstants.Href + colon + po.Href + po.NewLine;
 
-                    if (po.Name != null) listItem += SpotifySearchXMLPDFConstants.Name + colon + po.Name;
-                    listItem += SpotifySearchXMLPDFConstants.ExplicitWords + colon + po.Name;
-                    listItem += SpotifySearchXMLPDFConstants.Popularity + colon + po.Popularity;
+                    if (po.AvailableMarkets != null)
+                    {
+                        listItem += SpotifySearchXMLPDFConstants.AvailableMarkets + colon + po.NewLine;
+                        listItem = po.AvailableMarkets.Aggregate(listItem, (current, market) => current + (market + ", "));
+                        listItem += po.NewLine;
+                    }
 
+                    if (po.PreviewUrl != null)
+                    {
+                        listItem += SpotifySearchXMLPDFConstants.PreviewUrl + colon + po.PreviewUrl + po.NewLine;
+                    }
 
+                    if (po.Artists != null)
+                    {
+                        listItem += SpotifySearchXMLPDFConstants.Artists + colon + po.NewLine;
+                        listItem = po.Artists.Aggregate(listItem, (current, artist) => current + artist.Name);
+                        listItem += " ";
+                        listItem += po.NewLine;
+                    }
+
+                    listItem += SpotifySearchXMLPDFConstants.TrackNumber + colon + po.TrackNumber + po.NewLine;
+                    listItem += SpotifySearchXMLPDFConstants.DurationMS + colon + po.DurationMS + po.NewLine;
+                    listItem += SpotifySearchXMLPDFConstants.DiscNumber + colon + po.DiscNumber + po.NewLine;
+                    if (po.ExternalUrls != null)
+                        listItem += SpotifySearchXMLPDFConstants.ExternalUrls + colon + po.ExternalUrls + po.NewLine;
+
+                    if (!string.IsNullOrEmpty(po.ImportExportLocationText))
+                    {
+                        listItem += SpotifySearchXMLPDFConstants.ImportExportPDF + colon + po.ImportExportLocationText + po.NewLine;
+                    }
+
+                    listItem += po.NewLine + po.NewLine + po.NewLine;
 
                     Chunk searchResultsChunk = new Chunk(listItem, FontFactory.GetFont("Arial, 11"));
                     
-                    // todo finish adding MetaData
-
-
-
-
-
                     searchResultsList.Add(searchResultsChunk);
                 }
 
                 DateTime date = DateTime.Now;
-                Chunk dateChunk = new Chunk(date.ToString(CultureInfo.InvariantCulture), FontFactory.GetFont("Arial", 11));
+                Chunk dateChunk = new Chunk($"Export Date: {date}", FontFactory.GetFont("Arial", 11));
                 Chunk creatorChunk = new Chunk($"Developer: Matthew Miller, Email: sysnom@gmail.com, Export Date: {date}",
                     FontFactory.GetFont("Arial", 11));
 
                 Paragraph headerParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
 
                 // list user control paragraph
-                Paragraph searchResultsHeaderParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
+                Paragraph searchResultsHeaderParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
                 Paragraph searchResultsParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
 
                 Paragraph creatorParagraph = new Paragraph { Alignment = Element.ALIGN_RIGHT };

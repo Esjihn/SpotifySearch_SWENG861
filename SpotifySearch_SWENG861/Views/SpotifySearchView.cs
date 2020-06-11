@@ -441,7 +441,6 @@ namespace SpotifySearch_SWENG861.Views
             
             if (dataObject.Followers != null)
             {
-                po.Followers = dataObject.Followers;
                 po.FollowerTotal = dataObject.Followers.Total;
             }
 

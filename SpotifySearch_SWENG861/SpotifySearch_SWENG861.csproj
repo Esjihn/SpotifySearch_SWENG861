@@ -70,7 +70,7 @@
     <Compile Include="Builders\PDFBuilder.cs" />
     <Compile Include="Builders\XMLBuilder.cs" />
     <Compile Include="Constants\SpotifySearchPOConstants.cs" />
-    <Compile Include="Constants\SpotifySearchXMLConstants.cs" />
+    <Compile Include="Constants\SpotifySearchXMLPDFConstants.cs" />
     <Compile Include="PresentationObjects\SpotifySearchPO.cs" />
     <Compile Include="Presenters\SpotifySearchPresenter.cs" />
     <Compile Include="ViewInterfaces\IListenOnSpotifyView.cs" />

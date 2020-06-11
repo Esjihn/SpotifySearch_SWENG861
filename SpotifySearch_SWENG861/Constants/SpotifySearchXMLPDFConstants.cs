@@ -11,6 +11,7 @@ namespace SpotifySearch_SWENG861.Constants
     {
         #region Parent XML constant
         public const string SpotifySearchResults = "SpotifySearchResults";
+        public const string SpotifySearchResultsHeader = "Search Results";
         #endregion
 
         #region List Item constants
@@ -27,16 +28,13 @@ namespace SpotifySearch_SWENG861.Constants
         public const string Name = "Name";
         public const string ExplicitWords = "ExplicitWords";
         public const string Popularity = "Popularity";
-        public const string Followers = "Followers";
         public const string FollowerTotal = "FollowerTotal";
         public const string Id = "Id";
         public const string IsLocal = "IsLocal";
         public const string Href = "Href";
         public const string AvailableMarkets = "AvailableMarkets";
         public const string PreviewUrl = "PreviewUrl";
-        public const string ArtistsResults = "ArtistsResults";
         public const string Artists = "Artists";
-        public const string TrackResults = "TrackResults";
         public const string TrackNumber = "TrackNumber";
         public const string DurationMS = "DurationMS";
         public const string DiscNumber = "DiscNumber";
@@ -45,14 +43,13 @@ namespace SpotifySearch_SWENG861.Constants
         
         #region Import/Export Directory
         public const string ImportExport = "ImportExport";
+        public const string ImportExportPDF = "Import / Export Location";
         public const string ImportExportLocationText = "ImportExportLocationText";
         #endregion
 
         #region Formatting
         public static string HyphenLineHeaderFooter = "--------------------------------------------------------------------------" +
                                           "--------------------------------------------------------------------";
-        public static string HyphenLineListSplit = "--------------------------------------------------------------------------" +
-                                          "------------------------------------------------";
         #endregion
     }
 }
