@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -65,6 +66,7 @@ namespace SpotifySearch_SWENG861.Builders
                 }
 
                 DateTime date = DateTime.Now;
+                Chunk dateChunk = new Chunk(date.ToString(CultureInfo.InvariantCulture), FontFactory.GetFont("Arial", 11));
                 Chunk creatorChunk = new Chunk($"Developer: Matthew Miller, Email: sysnom@gmail.com, Export Date: {date}",
                     FontFactory.GetFont("Arial", 11));
 
@@ -75,6 +77,7 @@ namespace SpotifySearch_SWENG861.Builders
                 Paragraph listItemParagraph = new Paragraph { Alignment = Element.ALIGN_LEFT };
 
                 Paragraph creatorParagraph = new Paragraph { Alignment = Element.ALIGN_RIGHT };
+                Paragraph dateParagraph = new Paragraph { Alignment = Element.ALIGN_RIGHT };
                 Paragraph lineParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
                 Paragraph singleSpaceParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
                 Paragraph doubleSpaceParagraph = new Paragraph { Alignment = Element.ALIGN_CENTER };
@@ -92,6 +95,7 @@ namespace SpotifySearch_SWENG861.Builders
                 
                 // Dev 
                 creatorParagraph.Add(creatorChunk);
+                dateParagraph.Add(dateChunk);
 
                 // Formatting
                 singleSpaceParagraph.Add(singleSpaceChunk);
@@ -101,6 +105,7 @@ namespace SpotifySearch_SWENG861.Builders
                 // Header doc
                 doc.Add(headerParagraph);
                 doc.Add(lineParagraph);
+                doc.Add(dateParagraph);
                 doc.Add(singleSpaceParagraph);
 
                 // list UI doc
