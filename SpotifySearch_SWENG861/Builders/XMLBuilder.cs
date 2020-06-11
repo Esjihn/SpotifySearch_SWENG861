@@ -73,8 +73,7 @@ namespace SpotifySearch_SWENG861.Builders
                             po.ExternalUrls != null
                                 ? new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, po.ExternalUrls)
                                 : new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, string.Empty),
-                            new XElement(SpotifySearchXMLPDFConstants.ImportExport,
-                                new XElement(SpotifySearchXMLPDFConstants.ImportExportLocationText, po.ImportExportLocationText))));
+                            new XElement(SpotifySearchXMLPDFConstants.ImportExportLocationText, po.ImportExportLocationText)));
                 
                 // Write complete XML element as XML page to file.
                 using (StreamWriter sw = new StreamWriter(path, true))

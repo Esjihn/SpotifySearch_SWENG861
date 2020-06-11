@@ -436,16 +436,14 @@ namespace SpotifySearch_SWENG861.Views
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Artists).Value;
 
-                if (artists != SpotifySearchXMLPDFConstants.CSharp_SpotifyAPI)
+                string[] artistList = artists.Split(' ');
+                
+                searchPo.Artists = new List<Artist>();
+                for (int i = 0; i < artistList.Length; i++)
                 {
-                    string[] artistList = artists.Split(' ');
-
-                    for (int i = 0; i < artistList.Length; i++)
+                    for (int j = 0; j < searchPo.Artists.Count; i++)
                     {
-                        for (int j = 0; j < searchPo.Artists.Count; i++)
-                        {
-                            artistList[i] = searchPo.Artists[j].Name;
-                        }
+                        artistList[i] = searchPo.Artists[j].Name;
                     }
                 }
 
@@ -471,11 +469,9 @@ namespace SpotifySearch_SWENG861.Views
 
                 searchPo.ImportExportLocationText = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                    .Element(SpotifySearchXMLPDFConstants.ImportExport)
                     .Element(SpotifySearchXMLPDFConstants.ImportExportLocationText)
                     .Value;
 
-                // todo finish.
                 importList.Add(searchPo);
             }
             catch (Exception e)
