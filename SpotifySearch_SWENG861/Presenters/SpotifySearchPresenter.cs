@@ -128,8 +128,20 @@ namespace SpotifySearch_SWENG861.Presenters
             }
 
             // 2. Build Export PDF for easy viewing (leverage PDFBuilder)
-
-            // todo
+            PDFBuilder pdfBuilder = new PDFBuilder();
+            if (path != null && !string.IsNullOrEmpty(path.ImportExportLocationText))
+            {
+                pdfBuilder.CreatePdfFromMainFrameDataPoList(
+                    CompleteSpotifySearchList,
+                    path.ImportExportLocationText + codedPathPdf);
+            }
+            else
+            {
+                // Place into my documents folder if user hasn't set an actual folder
+                string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string myPath = myDocuments + @"\" + fileAppendDateFormat + "_SpotifySearchResults.pdf";
+                pdfBuilder.CreatePdfFromMainFrameDataPoList(CompleteSpotifySearchList, myPath);
+            }
         }
 
         /// <summary>
