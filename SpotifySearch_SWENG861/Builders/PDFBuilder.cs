@@ -29,32 +29,36 @@ namespace SpotifySearch_SWENG861.Builders
                 doc.Open();
 
                 Chunk headerChunk = new Chunk("Spotify Search", FontFactory.GetFont("Arial", 48));
-                Chunk linkChunk = new Chunk("--------------------------------------------------------------------------" +
-                                            "--------------------------------------------------------------------",
-                    FontFactory.GetFont("Arial", 11));
+                Chunk linkChunk = new Chunk(SpotifySearchXMLPDFConstants.HyphenLineHeaderFooter, FontFactory.GetFont("Arial", 11));
                 Chunk singleSpaceChunk = new Chunk(Environment.NewLine);
                 Chunk doubleSpaceChunk = new Chunk(Environment.NewLine + Environment.NewLine);
 
-                // List Item
+                // Search results
                 Chunk searchResultsHeaderChunk = new Chunk();
-                Chunk searchResultsChunk = new Chunk();
                 List<Chunk> searchResultsList = new List<Chunk>();
+                string colon = ": ";
 
-                // Meta Data Item
 
-                for(int i = 0; i < list.Count; i++)
+                for (int i = 0; i < list.Count; i++)
                 {
                     SpotifySearchPO po = list[i];
                     searchResultsHeaderChunk = new Chunk("Basic Spotify Data", FontFactory.GetFont("Arial Bold", 22));
-                    
+
                     string listItem
                         // List user control items
-                        = SpotifySearchXMLConstants.Title + ": " + po.Title + po.NewLine
-                          + SpotifySearchXMLConstants.Message + ": " + po.Message + po.NewLine;
-                            
-                    searchResultsChunk = new Chunk(listItem, FontFactory.GetFont("Arial, 11"));
+                        = SpotifySearchXMLPDFConstants.Title + colon + po.Title + po.NewLine
+                          + SpotifySearchXMLPDFConstants.Message + colon + po.Message + po.NewLine
+                          + SpotifySearchXMLPDFConstants.HyphenLineListSplit
+                          + SpotifySearchXMLPDFConstants.MetaData + po.NewLine;
+
+                    if (po.Name != null) listItem += SpotifySearchXMLPDFConstants.Name + colon + po.Name;
+                    listItem += SpotifySearchXMLPDFConstants.ExplicitWords + colon + po.Name;
+                    listItem += SpotifySearchXMLPDFConstants.Popularity + colon + po.Popularity;
 
 
+
+                    Chunk searchResultsChunk = new Chunk(listItem, FontFactory.GetFont("Arial, 11"));
+                    
                     // todo finish adding MetaData
 
 

@@ -36,34 +36,34 @@ namespace SpotifySearch_SWENG861.Builders
                 //      D. Import / Export location.
 
                 XElement element = 
-                    new XElement(SpotifySearchXMLConstants.SpotifySearchResults,
+                    new XElement(SpotifySearchXMLPDFConstants.SpotifySearchResults,
                         from po in list 
-                            select new XElement(SpotifySearchXMLConstants.ListItemUIElements,
-                                new XElement(SpotifySearchXMLConstants.Title, po.Title),
-                                new XElement(SpotifySearchXMLConstants.Message, po.Message)),
+                            select new XElement(SpotifySearchXMLPDFConstants.ListItemUIElements,
+                                new XElement(SpotifySearchXMLPDFConstants.Title, po.Title),
+                                new XElement(SpotifySearchXMLPDFConstants.Message, po.Message)),
                         from po in list 
-                            select new XElement(SpotifySearchXMLConstants.MetaDataUIElements,
-                                new XElement(SpotifySearchXMLConstants.EmptyLine, po.NewLine),
-                                new XElement(SpotifySearchXMLConstants.Name, po.Name),
-                                new XElement(SpotifySearchXMLConstants.ExplicitWords, po.ExplicitWords),
-                                new XElement(SpotifySearchXMLConstants.Popularity, po.Popularity),
-                                new XElement(SpotifySearchXMLConstants.Followers, po.Followers),
-                                new XElement(SpotifySearchXMLConstants.FollowerTotal, po.FollowerTotal),
-                                new XElement(SpotifySearchXMLConstants.Id, po.Id),
-                                new XElement(SpotifySearchXMLConstants.IsLocal, po.IsLocal),
-                                new XElement(SpotifySearchXMLConstants.Href, po.Href),
-                                new XElement(SpotifySearchXMLConstants.AvailableMarkets, po.AvailableMarkets),
-                                new XElement(SpotifySearchXMLConstants.PreviewUrl, po.PreviewUrl),
-                                new XElement(SpotifySearchXMLConstants.ArtistsResults, po.ArtistsResults),
-                                po.Artists.Select(a => new XElement(SpotifySearchXMLConstants.Artists)),
-                                new XElement(SpotifySearchXMLConstants.TrackResults, po.TracksResults),
-                                new XElement(SpotifySearchXMLConstants.TrackNumber, po.TrackNumber),
-                                new XElement(SpotifySearchXMLConstants.DurationMS, po.DurationMS),
-                                new XElement(SpotifySearchXMLConstants.DiscNumber, po.DiscNumber),
-                                new XElement(SpotifySearchXMLConstants.ExternalUrls, po.ExternalUrls)),
+                            select new XElement(SpotifySearchXMLPDFConstants.MetaDataUIElements,
+                                new XElement(SpotifySearchXMLPDFConstants.EmptyLine, po.NewLine),
+                                new XElement(SpotifySearchXMLPDFConstants.Name, po.Name),
+                                new XElement(SpotifySearchXMLPDFConstants.ExplicitWords, po.ExplicitWords),
+                                new XElement(SpotifySearchXMLPDFConstants.Popularity, po.Popularity),
+                                new XElement(SpotifySearchXMLPDFConstants.Followers, po.Followers),
+                                new XElement(SpotifySearchXMLPDFConstants.FollowerTotal, po.FollowerTotal),
+                                new XElement(SpotifySearchXMLPDFConstants.Id, po.Id),
+                                new XElement(SpotifySearchXMLPDFConstants.IsLocal, po.IsLocal),
+                                new XElement(SpotifySearchXMLPDFConstants.Href, po.Href),
+                                new XElement(SpotifySearchXMLPDFConstants.AvailableMarkets, po.AvailableMarkets),
+                                new XElement(SpotifySearchXMLPDFConstants.PreviewUrl, po.PreviewUrl),
+                                new XElement(SpotifySearchXMLPDFConstants.ArtistsResults, po.ArtistsResults),
+                                po.Artists.Select(a => new XElement(SpotifySearchXMLPDFConstants.Artists)),
+                                new XElement(SpotifySearchXMLPDFConstants.TrackResults, po.TracksResults),
+                                new XElement(SpotifySearchXMLPDFConstants.TrackNumber, po.TrackNumber),
+                                new XElement(SpotifySearchXMLPDFConstants.DurationMS, po.DurationMS),
+                                new XElement(SpotifySearchXMLPDFConstants.DiscNumber, po.DiscNumber),
+                                new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, po.ExternalUrls)),
                         from po in list
-                            select new XElement(SpotifySearchXMLConstants.ImportExport,
-                                new XElement(SpotifySearchXMLConstants.ImportExportLocationText, po.ImportExportLocationText)));
+                            select new XElement(SpotifySearchXMLPDFConstants.ImportExport,
+                                new XElement(SpotifySearchXMLPDFConstants.ImportExportLocationText, po.ImportExportLocationText)));
                 
                 // Write complete XML element as XML page to file.
                 using (StreamWriter sw = new StreamWriter(path, true))

@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace SpotifySearch_SWENG861.Constants
 {
-    public class SpotifySearchXMLConstants
+    public class SpotifySearchXMLPDFConstants
     {
         #region Parent XML constant
         public const string SpotifySearchResults = "SpotifySearchResults";
@@ -23,6 +23,7 @@ namespace SpotifySearch_SWENG861.Constants
         // mimics NewLine in XML
         public const string EmptyLine = "EmptyLine";
         public const string MetaDataUIElements = "MetaDataUIElements";
+        public const string MetaData = "MetaData: ";
         public const string Name = "Name";
         public const string ExplicitWords = "ExplicitWords";
         public const string Popularity = "Popularity";
@@ -45,6 +46,13 @@ namespace SpotifySearch_SWENG861.Constants
         #region Import/Export Directory
         public const string ImportExport = "ImportExport";
         public const string ImportExportLocationText = "ImportExportLocationText";
+        #endregion
+
+        #region Formatting
+        public static string HyphenLineHeaderFooter = "--------------------------------------------------------------------------" +
+                                          "--------------------------------------------------------------------";
+        public static string HyphenLineListSplit = "--------------------------------------------------------------------------" +
+                                          "------------------------------------------------";
         #endregion
     }
 }
