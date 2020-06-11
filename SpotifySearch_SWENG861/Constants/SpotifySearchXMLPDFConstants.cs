@@ -34,6 +34,7 @@ namespace SpotifySearch_SWENG861.Constants
         public const string Href = "Href";
         public const string AvailableMarkets = "AvailableMarkets";
         public const string PreviewUrl = "PreviewUrl";
+        public const string CSharp_SpotifyAPI = "CSharp_SpotifyAPI.Models.Artist";
         public const string Artists = "Artists";
         public const string TrackNumber = "TrackNumber";
         public const string DurationMS = "DurationMS";
@@ -48,7 +49,7 @@ namespace SpotifySearch_SWENG861.Constants
         #endregion
 
         #region Formatting
-        public static string HyphenLineHeaderFooter = "--------------------------------------------------------------------------" +
+        public const string HyphenLineHeaderFooter = "--------------------------------------------------------------------------" +
                                           "--------------------------------------------------------------------";
         #endregion
     }

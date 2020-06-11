@@ -92,6 +92,20 @@ namespace SpotifySearch_SWENG861.Presenters
         #region Methods
 
         /// <summary>
+        /// Imports XML to UI.
+        /// </summary>
+        /// <param name="xmlImportList"></param>
+        public void ImportData(List<SpotifySearchPO> xmlImportList)
+        {
+            // todo logic. half of LoadResults logic should be used
+            if (xmlImportList == null || xmlImportList.Count == 0) return;
+
+            // need user control list from view. 
+            // need flow layout panel object as well. 
+
+        }
+
+        /// <summary>
         /// Exports Data to XML and PDF File
         /// </summary>
         public void ExportData()

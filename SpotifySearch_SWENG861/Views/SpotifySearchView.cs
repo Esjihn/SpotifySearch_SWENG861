@@ -126,9 +126,6 @@ namespace SpotifySearch_SWENG861.Views
                     {
                         SpotifySearchPresenter p = new SpotifySearchPresenter(this);
                         p.ImportData(XMLImportList(fileNameAndPath));
-                        //MainFrameDataPresenter p = new MainFrameDataPresenter(this.Parent.Parent as SpotifySearchView);
-                        //p.ImportData(XMLImportList(fileNameAndPath));
-
                         KeepTopMostAndBringToFront();
                     }
                     else
@@ -367,80 +364,79 @@ namespace SpotifySearch_SWENG861.Views
             {
                 SpotifySearchPO searchPo = new SpotifySearchPO();
 
-                XElement listItemUiElement = doc.Element(SpotifySearchXMLPDFConstants.SpotifySearchResults)
-                    .Element(SpotifySearchXMLPDFConstants.ListItemUIElements);
-
-                searchPo.Title = listItemUiElement
+                XElement spotifySearchResults 
+                    = doc.Element(SpotifySearchXMLPDFConstants.SpotifySearchResults);
+                    
+                // todo fix bug here. it finds the ui element parent.
+                searchPo.Title = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.ListItemUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Title)
                     .Value;
 
-                searchPo.Name = listItemUiElement
+                searchPo.Name = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.ListItemUIElements)
-                    .Element(SpotifySearchXMLPDFConstants.Name)
+                    .Element(SpotifySearchXMLPDFConstants.Message)
                     .Value;
 
-                XElement metaDataElement = doc.Element(SpotifySearchXMLPDFConstants.SpotifySearchResults)
-                    .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements);
 
-                searchPo.NewLineImport = metaDataElement
+                searchPo.NewLineImport = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.EmptyLine)
                     .Value;
 
-                searchPo.Name = metaDataElement
+                searchPo.Name = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Name)
                     .Value;
 
-                searchPo.ExplicitWords = Convert.ToBoolean(metaDataElement
+                searchPo.ExplicitWords = Convert.ToBoolean(spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.ExplicitWords)
                     .Value);
 
-                searchPo.Popularity = Convert.ToInt32(metaDataElement
+                searchPo.Popularity = Convert.ToInt32(spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Popularity)
                     .Value);
 
-                searchPo.FollowerTotal = Convert.ToInt32(metaDataElement
+                searchPo.FollowerTotal = Convert.ToInt32(spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.FollowerTotal)
                     .Value);
 
-                searchPo.Id = metaDataElement
+                searchPo.Id = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Id)
                     .Value;
 
-                searchPo.IsLocal = Convert.ToBoolean(metaDataElement
+                searchPo.IsLocal = Convert.ToBoolean(spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.IsLocal)
                     .Value);
 
-                searchPo.Href = metaDataElement
+                searchPo.Href = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Href)
                     .Value;
 
                 searchPo.AvailableMarkets = new string[]
                 {
-                    metaDataElement
+                    spotifySearchResults
                         .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                         .Element(SpotifySearchXMLPDFConstants.AvailableMarkets)
                         .Value
                 };
 
-                searchPo.PreviewUrl = metaDataElement
+                searchPo.PreviewUrl = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.PreviewUrl)
                     .Value;
                 
-                string artists = metaDataElement
+                string artists = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Artists).Value;
 
-                if (!string.IsNullOrEmpty(artists))
+                if (artists != SpotifySearchXMLPDFConstants.CSharp_SpotifyAPI)
                 {
                     string[] artistList = artists.Split(' ');
 
@@ -453,32 +449,33 @@ namespace SpotifySearch_SWENG861.Views
                     }
                 }
 
-                searchPo.TrackNumber = Convert.ToInt32(metaDataElement
+                searchPo.TrackNumber = Convert.ToInt32(spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.TrackNumber)
                     .Value);
 
-                searchPo.DurationMS = Convert.ToInt32(metaDataElement
+                searchPo.DurationMS = Convert.ToInt32(spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.DurationMS)
                     .Value);
 
-                searchPo.DiscNumber = Convert.ToInt32(metaDataElement
+                searchPo.DiscNumber = Convert.ToInt32(spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.DiscNumber)
                     .Value);
 
-                searchPo.ExternalUrls = metaDataElement
+                searchPo.ExternalUrls = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.ExternalUrls)
                     .Value;
 
-                searchPo.ImportExportLocationText = metaDataElement
+                searchPo.ImportExportLocationText = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                     .Element(SpotifySearchXMLPDFConstants.ImportExport)
                     .Element(SpotifySearchXMLPDFConstants.ImportExportLocationText)
                     .Value;
 
+                // todo finish.
                 importList.Add(searchPo);
             }
             catch (Exception e)
@@ -608,7 +605,15 @@ namespace SpotifySearch_SWENG861.Views
             po.TrackNumber = dataObject.Track_number;
             if (dataObject.available_markets != null) po.AvailableMarkets = dataObject.available_markets;
             if (dataObject.Preview_url != null) po.PreviewUrl = dataObject.Preview_url;
-            if (dataObject.artists != null) po.Artists = dataObject.artists;
+            if (dataObject.artists != null)
+            {
+                po.Artists = new List<Artist>();
+                for (int i = 0; i < dataObject.artists.Count; i++)
+                {
+                    po.Artists.Add(dataObject.artists[i]);
+                }
+            }
+                
             po.DurationMS = dataObject.duration_ms;
             if (dataObject.External_urls.Spotify != null)
                 po.ExternalUrls = dataObject.External_urls.Spotify;
@@ -794,5 +799,6 @@ namespace SpotifySearch_SWENG861.Views
         }
 
         #endregion
+
     }
 }
