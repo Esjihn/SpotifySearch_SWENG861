@@ -347,6 +347,8 @@ namespace SpotifySearch_SWENG861.Views
         /// <returns></returns>
         private List<SpotifySearchPO> SpotifySearchPOList()
         {
+            // todo bug list of items are the same even though the count is correct. 
+            // fix bug to produce correct list of different items. 
             if (ArtistsResults == null && TracksResults == null)
             {
                 return new List<SpotifySearchPO>();

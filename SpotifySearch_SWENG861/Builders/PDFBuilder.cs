@@ -35,23 +35,30 @@ namespace SpotifySearch_SWENG861.Builders
                 Chunk doubleSpaceChunk = new Chunk(Environment.NewLine + Environment.NewLine);
 
 
-                // todo finish
+                
                 // List Item
                 Chunk listItemHeaderChunk = new Chunk();
                 Chunk listItemChunk = new Chunk();
+                List<Chunk> listItemChunkList = new List<Chunk>();
 
-                foreach (SpotifySearchPO item in list)
+                for(int i = 0; i < list.Count; i++)
                 {
+                    SpotifySearchPO po = list[i];
                     listItemHeaderChunk = new Chunk("Basic Spotify Data", FontFactory.GetFont("Arial Bold", 22));
                     
                     string listItem
                         // List user control items
-                        = SpotifySearchXMLConstants.ListItemUIElements + item.NewLine
-                            + SpotifySearchXMLConstants.Title + ": " + item.Title + item.NewLine
-                            + SpotifySearchXMLConstants.Message + ": " + item.Message + item.NewLine;
+                        = SpotifySearchXMLConstants.ListItemUIElements + ": " + po.NewLine
+                            + SpotifySearchXMLConstants.Title + ": " + po.Title + po.NewLine
+                            + SpotifySearchXMLConstants.Message + ": " + po.Message + po.NewLine;
                             
                     listItemChunk = new Chunk(listItem, FontFactory.GetFont("Arial, 11"));
+
+                    listItemChunkList.Add(listItemChunk);
                 }
+
+                // todo finish MetaData
+
 
                 DateTime date = DateTime.Now;
                 Chunk creatorChunk = new Chunk($"Developer: Matthew Miller, Email: sysnom@gmail.com, Export Date: {date}",
@@ -73,9 +80,13 @@ namespace SpotifySearch_SWENG861.Builders
                 
                 // list ui
                 listItemHeaderParagraph.Add(listItemHeaderChunk);
-                listItemParagraph.Add(listItemChunk);
-
-
+                foreach (Chunk item in listItemChunkList)
+                {
+                    listItemParagraph.Add(item + Environment.NewLine);
+                }
+                
+                // Dev 
+                creatorParagraph.Add(creatorChunk);
 
                 // Formatting
                 singleSpaceParagraph.Add(singleSpaceChunk);
