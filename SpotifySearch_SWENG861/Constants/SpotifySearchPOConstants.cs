@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpotifySearch_SWENG861.Constants
 {
-    public static class SpotifySearchPOConstants
+    public class SpotifySearchPOConstants
     {
         public const string SpotifySearchPO = "SpotifySearchPO";
     }

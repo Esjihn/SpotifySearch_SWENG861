@@ -105,17 +105,29 @@ namespace SpotifySearch_SWENG861.Presenters
                 return;
             }
 
-            // todo finish
-            // leverage XMLBuilder, SpotifySearchPO path from CompleteSpotifySearchList.FirstOrDefault LINQ
-            // leverage DateTime date = DateTime.Now
+            // 1. Build Export XML for import (leverage XMLBuilder)
             XMLBuilder xmlBuilder = new XMLBuilder();
             SpotifySearchPO path = CompleteSpotifySearchList.FirstOrDefault(s => !string.IsNullOrEmpty(s.ImportExportLocationText));
             DateTime date = DateTime.Now;
 
+            string fileAppendDateFormat = $"{date.Year}{date.Day}{date.Month}{date.Hour}{date.Minute}";
+            string codedPathXml = @"\" + fileAppendDateFormat + "_SpotifySearchResults.xml";
+            string codedPathPdf = @"\" + fileAppendDateFormat + "_SpotifySearchResults.pdf";
+
             if (path != null && !string.IsNullOrEmpty(path.ImportExportLocationText))
             {
-                // todo
+                xmlBuilder.CreateXMLFromSpotifySearchPOList(CompleteSpotifySearchList,
+                    path.ImportExportLocationText + codedPathXml);
             }
+            else
+            {
+                // Place into my documents folder if user hasn't set an actual folder
+                string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string myPath = myDocuments + @"\" + fileAppendDateFormat + "_SpotifySearchResults.xml";
+                xmlBuilder.CreateXMLFromSpotifySearchPOList(CompleteSpotifySearchList, myPath);
+            }
+
+            // todo
         }
 
         /// <summary>
