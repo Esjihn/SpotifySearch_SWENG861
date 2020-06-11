@@ -82,6 +82,7 @@ namespace SpotifySearch_SWENG861.Builders
                     listItem += SpotifySearchXMLPDFConstants.TrackNumber + colon + po.TrackNumber + po.NewLine;
                     listItem += SpotifySearchXMLPDFConstants.DurationMS + colon + po.DurationMS + po.NewLine;
                     listItem += SpotifySearchXMLPDFConstants.DiscNumber + colon + po.DiscNumber + po.NewLine;
+
                     if (po.ExternalUrls != null)
                         listItem += SpotifySearchXMLPDFConstants.ExternalUrls + colon + po.ExternalUrls + po.NewLine;
 

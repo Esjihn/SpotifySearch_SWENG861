@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,29 +36,43 @@ namespace SpotifySearch_SWENG861.Builders
                 //          i) Meta Data UI elements
                 //      D. Import / Export location.
 
-                XElement element = 
+                XElement element =
                     new XElement(SpotifySearchXMLPDFConstants.SpotifySearchResults,
-                        from po in list 
-                            select new XElement(SpotifySearchXMLPDFConstants.ListItemUIElements,
-                                new XElement(SpotifySearchXMLPDFConstants.Title, po.Title),
-                                new XElement(SpotifySearchXMLPDFConstants.Message, po.Message)),
-                        from po in list 
-                            select new XElement(SpotifySearchXMLPDFConstants.MetaDataUIElements,
-                                new XElement(SpotifySearchXMLPDFConstants.EmptyLine, po.NewLine),
-                                new XElement(SpotifySearchXMLPDFConstants.Name, po.Name),
-                                new XElement(SpotifySearchXMLPDFConstants.ExplicitWords, po.ExplicitWords),
-                                new XElement(SpotifySearchXMLPDFConstants.Popularity, po.Popularity),
-                                new XElement(SpotifySearchXMLPDFConstants.FollowerTotal, po.FollowerTotal),
-                                new XElement(SpotifySearchXMLPDFConstants.Id, po.Id),
-                                new XElement(SpotifySearchXMLPDFConstants.IsLocal, po.IsLocal),
-                                new XElement(SpotifySearchXMLPDFConstants.Href, po.Href),
-                                new XElement(SpotifySearchXMLPDFConstants.AvailableMarkets, po.AvailableMarkets),
-                                new XElement(SpotifySearchXMLPDFConstants.PreviewUrl, po.PreviewUrl),
-                                po.Artists.Select(a => new XElement(SpotifySearchXMLPDFConstants.Artists)),
-                                new XElement(SpotifySearchXMLPDFConstants.TrackNumber, po.TrackNumber),
-                                new XElement(SpotifySearchXMLPDFConstants.DurationMS, po.DurationMS),
-                                new XElement(SpotifySearchXMLPDFConstants.DiscNumber, po.DiscNumber),
-                                new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, po.ExternalUrls)),
+                        from po in list
+                        select new XElement(SpotifySearchXMLPDFConstants.ListItemUIElements,
+                            new XElement(SpotifySearchXMLPDFConstants.Title, po.Title),
+                            new XElement(SpotifySearchXMLPDFConstants.Message, po.Message)),
+                        from po in list
+                        select new XElement(SpotifySearchXMLPDFConstants.MetaDataUIElements,
+                            new XElement(SpotifySearchXMLPDFConstants.EmptyLine, po.NewLine),
+                            po.Name != null
+                                ? new XElement(SpotifySearchXMLPDFConstants.Name, po.Name)
+                                : new XElement(SpotifySearchXMLPDFConstants.Name, string.Empty),
+                            new XElement(SpotifySearchXMLPDFConstants.ExplicitWords, po.ExplicitWords),
+                            new XElement(SpotifySearchXMLPDFConstants.Popularity, po.Popularity),
+                            new XElement(SpotifySearchXMLPDFConstants.FollowerTotal, po.FollowerTotal),
+                            po.Id != null
+                                ? new XElement(SpotifySearchXMLPDFConstants.Id, po.Id)
+                                : new XElement(SpotifySearchXMLPDFConstants.Id, string.Empty),
+                            new XElement(SpotifySearchXMLPDFConstants.IsLocal, po.IsLocal),
+                            po.Href != null
+                                ? new XElement(SpotifySearchXMLPDFConstants.Href, po.Href)
+                                : new XElement(SpotifySearchXMLPDFConstants.Href, string.Empty),
+                            po.AvailableMarkets != null
+                                ? new XElement(SpotifySearchXMLPDFConstants.AvailableMarkets, po.AvailableMarkets)
+                                : new XElement(SpotifySearchXMLPDFConstants.AvailableMarkets, string.Empty),
+                            po.PreviewUrl != null
+                                ? new XElement(SpotifySearchXMLPDFConstants.PreviewUrl, po.PreviewUrl)
+                                : new XElement(SpotifySearchXMLPDFConstants.PreviewUrl, string.Empty),
+                            po.Artists != null
+                                ? new XElement(SpotifySearchXMLPDFConstants.Artists, po.Artists)
+                                : new XElement(SpotifySearchXMLPDFConstants.Artists, string.Empty),
+                            new XElement(SpotifySearchXMLPDFConstants.TrackNumber, po.TrackNumber),
+                            new XElement(SpotifySearchXMLPDFConstants.DurationMS, po.DurationMS),
+                            new XElement(SpotifySearchXMLPDFConstants.DiscNumber, po.DiscNumber),
+                            po.ExternalUrls != null
+                                ? new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, po.ExternalUrls)
+                                : new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, string.Empty)),
                         from po in list
                             select new XElement(SpotifySearchXMLPDFConstants.ImportExport,
                                 new XElement(SpotifySearchXMLPDFConstants.ImportExportLocationText, po.ImportExportLocationText)));
