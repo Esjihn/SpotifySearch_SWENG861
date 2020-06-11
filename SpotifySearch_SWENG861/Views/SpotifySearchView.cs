@@ -366,8 +366,7 @@ namespace SpotifySearch_SWENG861.Views
 
                 XElement spotifySearchResults 
                     = doc.Element(SpotifySearchXMLPDFConstants.SpotifySearchResults);
-                    
-                // todo fix bug here. it finds the ui element parent.
+                
                 searchPo.Title = spotifySearchResults
                     .Element(SpotifySearchXMLPDFConstants.ListItemUIElements)
                     .Element(SpotifySearchXMLPDFConstants.Title)
