@@ -358,10 +358,10 @@ namespace SpotifySearch_SWENG861.Views
 
             List<SpotifySearchPO> importList = new List<SpotifySearchPO>();
 
-            XDocument doc = XDocument.Load(fileNameAndPath);
-
             try
             {
+                XDocument doc = XDocument.Load(fileNameAndPath);
+
                 SpotifySearchPO searchPo = new SpotifySearchPO();
 
                 XElement spotifySearchResults 
