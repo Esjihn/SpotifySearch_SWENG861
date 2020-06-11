@@ -20,7 +20,7 @@ namespace SpotifySearch_SWENG861.Presenters
     {
         #region Interface variables
 
-        private ISpotifySearchView _viewMain;
+        private readonly ISpotifySearchView _viewMain;
         private IListenOnSpotifyView _viewWeb;
         private IListItemUserControl _userControl;
         private IAdditionalMetaDataView _viewMetalData;
@@ -118,6 +118,7 @@ namespace SpotifySearch_SWENG861.Presenters
             {
                 xmlBuilder.CreateXMLFromSpotifySearchPOList(CompleteSpotifySearchList,
                     path.ImportExportLocationText + codedPathXml);
+
             }
             else
             {

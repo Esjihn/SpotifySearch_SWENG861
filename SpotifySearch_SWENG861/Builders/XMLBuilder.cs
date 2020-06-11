@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using SpotifySearch_SWENG861.Constants;
 using SpotifySearch_SWENG861.PresentationObjects;
+using SpotifySearch_SWENG861.Views;
 
 namespace SpotifySearch_SWENG861.Builders
 {
@@ -45,7 +46,6 @@ namespace SpotifySearch_SWENG861.Builders
                                 new XElement(SpotifySearchXMLConstants.EmptyLine, po.NewLine),
                                 new XElement(SpotifySearchXMLConstants.Name, po.Name),
                                 new XElement(SpotifySearchXMLConstants.ExplicitWords, po.ExplicitWords),
-                                new XElement(SpotifySearchXMLConstants.Genres, po.Genres),
                                 new XElement(SpotifySearchXMLConstants.Popularity, po.Popularity),
                                 new XElement(SpotifySearchXMLConstants.Followers, po.Followers),
                                 new XElement(SpotifySearchXMLConstants.FollowerTotal, po.FollowerTotal),
@@ -55,7 +55,7 @@ namespace SpotifySearch_SWENG861.Builders
                                 new XElement(SpotifySearchXMLConstants.AvailableMarkets, po.AvailableMarkets),
                                 new XElement(SpotifySearchXMLConstants.PreviewUrl, po.PreviewUrl),
                                 new XElement(SpotifySearchXMLConstants.ArtistsResults, po.ArtistsResults),
-                                new XElement(SpotifySearchXMLConstants.Artists, po.Artists),
+                                po.Artists.Select(a => new XElement(SpotifySearchXMLConstants.Artists)),
                                 new XElement(SpotifySearchXMLConstants.TrackResults, po.TracksResults),
                                 new XElement(SpotifySearchXMLConstants.TrackNumber, po.TrackNumber),
                                 new XElement(SpotifySearchXMLConstants.DurationMS, po.DurationMS),

@@ -98,6 +98,7 @@ namespace SpotifySearch_SWENG861.Views
             SpotifySearchPresenter p = new SpotifySearchPresenter(this);
             p.CollectSpotifySearchViewList(SpotifySearchPOList());
             p.ExportData();
+            KeepTopMostAndBringToFront();
         }
 
         /// <summary>
@@ -123,12 +124,16 @@ namespace SpotifySearch_SWENG861.Views
                         
                         //MainFrameDataPresenter p = new MainFrameDataPresenter(this.Parent.Parent as SpotifySearchView);
                         //p.ImportData(XMLImportList(fileNameAndPath));
+
+                        KeepTopMostAndBringToFront();
                     }
                     else
                     {
                         MessageBox.Show(
                             @"The selected file is not compatible for import. *.xml files only.", @"File Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        KeepTopMostAndBringToFront();
                     }
                 }
             }
@@ -340,6 +345,15 @@ namespace SpotifySearch_SWENG861.Views
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Brings main form to front of form hierarchy
+        /// </summary>
+        private void KeepTopMostAndBringToFront()
+        {
+            this.TopMost = true;
+            this.BringToFront();
+        }
 
         /// <summary>
         /// Create SpotifySearchPO list from relevant UI elements.

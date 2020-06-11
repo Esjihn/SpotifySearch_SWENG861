@@ -21,11 +21,10 @@ namespace SpotifySearch_SWENG861.Constants
 
         #region Meta Data constants
         // mimics NewLine in XML
-        public const string EmptyLine = "";
+        public const string EmptyLine = "EmptyLine";
         public const string MetaDataUIElements = "MetaDataUIElements";
         public const string Name = "Name";
         public const string ExplicitWords = "ExplicitWords";
-        public const string Genres = "Genres";
         public const string Popularity = "Popularity";
         public const string Followers = "Followers";
         public const string FollowerTotal = "FollowerTotal";
