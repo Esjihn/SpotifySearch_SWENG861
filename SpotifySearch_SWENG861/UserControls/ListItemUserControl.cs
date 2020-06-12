@@ -300,6 +300,8 @@ namespace SpotifySearch_SWENG861.UserControls
         /// <param name="view"></param>
         private void LoadAndFillMetaDataView(SpotifySearchView view)
         {
+            // todo fix bug that changes index to be larger than current selection
+            // todo repro steps perform a live search followed by import and then click meta data. 
             string currentTitle = this.Title;
 
             if (view != null)
