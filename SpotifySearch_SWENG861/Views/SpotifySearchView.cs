@@ -372,116 +372,97 @@ namespace SpotifySearch_SWENG861.Views
 
                 foreach (XElement item in spotifySearchResults.Elements())
                 {
-                    SpotifySearchPO searchPo = new SpotifySearchPO();
-                    if (item.Name == SpotifySearchXMLPDFConstants.ListItemUIElements)
+                    SpotifySearchPO po = new SpotifySearchPO();
+
+                    if (item.Name == SpotifySearchXMLPDFConstants.SearchResults)
                     {
-                        searchPo.Title = item
+                        po.Title = item
                             .Element(SpotifySearchXMLPDFConstants.Title)
                             .Value;
 
-                        searchPo.Message = item
+                        po.Message = item
                             .Element(SpotifySearchXMLPDFConstants.Message)
                             .Value;
 
-                        importList.Add(searchPo);
-                    }
-                }
+                        //po.NewLineImport = spotifySearchResults
+                            //.Element(SpotifySearchXMLPDFConstants.EmptyLine)
+                            //.Value;
 
-                // todo fix bug that happens here that does not create a list of import
-                foreach (SpotifySearchPO po in importList)
-                {
-                    po.NewLineImport = spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.EmptyLine)
-                        .Value;
+                        po.Name = item
+                            .Element(SpotifySearchXMLPDFConstants.Name)
+                            .Value;
 
-                    po.Name = spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.Name)
-                        .Value;
+                        po.ExplicitWords = Convert.ToBoolean(item
+                            .Element(SpotifySearchXMLPDFConstants.ExplicitWords)
+                            .Value);
 
-                    po.ExplicitWords = Convert.ToBoolean(spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.ExplicitWords)
-                        .Value);
+                        po.Popularity = Convert.ToInt32(item
+                            .Element(SpotifySearchXMLPDFConstants.Popularity)
+                            .Value);
 
-                    po.Popularity = Convert.ToInt32(spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.Popularity)
-                        .Value);
+                        po.FollowerTotal = Convert.ToInt32(item
+                            .Element(SpotifySearchXMLPDFConstants.FollowerTotal)
+                            .Value);
 
-                    po.FollowerTotal = Convert.ToInt32(spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.FollowerTotal)
-                        .Value);
+                        po.Id = item
+                            .Element(SpotifySearchXMLPDFConstants.Id)
+                            .Value;
 
-                    po.Id = spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.Id)
-                        .Value;
+                        po.IsLocal = Convert.ToBoolean(item
+                            .Element(SpotifySearchXMLPDFConstants.IsLocal)
+                            .Value);
 
-                    po.IsLocal = Convert.ToBoolean(spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.IsLocal)
-                        .Value);
+                        po.Href = item
+                            .Element(SpotifySearchXMLPDFConstants.Href)
+                            .Value;
 
-                    po.Href = spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.Href)
-                        .Value;
-
-                    po.AvailableMarkets = new string[]
-                    {
-                        spotifySearchResults
-                            .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                            .Element(SpotifySearchXMLPDFConstants.AvailableMarkets)
-                            .Value
-                    };
-
-                    po.PreviewUrl = spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.PreviewUrl)
-                        .Value;
-                    
-                    string artists = spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.Artists).Value;
-
-                    string[] artistList = artists.Split(' ');
-
-                    po.Artists = new List<Artist>();
-                    for (int i = 0; i < artistList.Length; i++)
-                    {
-                        for (int j = 0; j < po.Artists.Count; i++)
+                        po.AvailableMarkets = new string[]
                         {
-                            artistList[i] = po.Artists[j].Name;
+                            item
+                                .Element(SpotifySearchXMLPDFConstants.AvailableMarkets)
+                                .Value
+                        };
+
+                        po.PreviewUrl = item
+                            .Element(SpotifySearchXMLPDFConstants.PreviewUrl)
+                            .Value;
+
+                        string artists = item
+                            .Element(SpotifySearchXMLPDFConstants.Artists).Value;
+
+                        string[] artistList = artists.Split(' ');
+
+                        po.Artists = new List<Artist>();
+                        for (int i = 0; i < artistList.Length; i++)
+                        {
+                            for (int j = 0; j < po.Artists.Count; i++)
+                            {
+                                artistList[i] = po.Artists[j].Name;
+                            }
                         }
+
+                        po.TrackNumber = Convert.ToInt32(item
+                            .Element(SpotifySearchXMLPDFConstants.TrackNumber)
+                            .Value);
+
+                        po.DurationMS = Convert.ToInt32(item
+                            .Element(SpotifySearchXMLPDFConstants.DurationMS)
+                            .Value);
+
+                        po.DiscNumber = Convert.ToInt32(item
+                            .Element(SpotifySearchXMLPDFConstants.DiscNumber)
+                            .Value);
+
+                        po.ExternalUrls_Spotify = item
+                            .Element(SpotifySearchXMLPDFConstants.ExternalUrls)
+                            .Value;
+
+                        po.ImportExportLocationText = item
+                            .Element(SpotifySearchXMLPDFConstants.ImportExportLocationText)
+                            .Value;
                     }
 
-                    po.TrackNumber = Convert.ToInt32(spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.TrackNumber)
-                        .Value);
-
-                    po.DurationMS = Convert.ToInt32(spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.DurationMS)
-                        .Value);
-
-                    po.DiscNumber = Convert.ToInt32(spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.DiscNumber)
-                        .Value);
-
-                    po.ExternalUrls_Spotify = spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.ExternalUrls)
-                        .Value;
-
-                    po.ImportExportLocationText = spotifySearchResults
-                        .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
-                        .Element(SpotifySearchXMLPDFConstants.ImportExportLocationText)
-                        .Value;
+                    importList.Add(po);
                 }
             }
             catch (Exception e)
@@ -502,8 +483,9 @@ namespace SpotifySearch_SWENG861.Views
    
             IsOnlineSearch = false;
             KeepTopMostAndBringToFront();
-    
-            return importList;
+            ImportResults = importList;
+
+            return ImportResults;
         }
 
         /// <summary>

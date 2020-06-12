@@ -39,11 +39,9 @@ namespace SpotifySearch_SWENG861.Builders
                 XElement element =
                     new XElement(SpotifySearchXMLPDFConstants.SpotifySearchResults,
                         from po in list
-                        select new XElement(SpotifySearchXMLPDFConstants.ListItemUIElements,
+                        select new XElement(SpotifySearchXMLPDFConstants.SearchResults,
                             new XElement(SpotifySearchXMLPDFConstants.Title, po.Title),
-                            new XElement(SpotifySearchXMLPDFConstants.Message, po.Message)),
-                        from po in list
-                        select new XElement(SpotifySearchXMLPDFConstants.MetaDataUIElements,
+                            new XElement(SpotifySearchXMLPDFConstants.Message, po.Message),
                             new XElement(SpotifySearchXMLPDFConstants.EmptyLine, po.NewLine),
                             po.Name != null
                                 ? new XElement(SpotifySearchXMLPDFConstants.Name, po.Name)

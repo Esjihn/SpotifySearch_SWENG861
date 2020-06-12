@@ -143,7 +143,7 @@ namespace SpotifySearch_SWENG861.Views
 
                     txt.Text += @"Track Number: " + item.TrackNumber + newLine;
                     if (item.AvailableMarkets != null && index <= item.AvailableMarkets.Count)
-                        txt.Text += @"Available Markets: " + item.AvailableMarkets[index] + newLine;
+                        txt.Text += @"Available Markets: " + item.AvailableMarkets[0] + newLine;
                     if (item.PreviewUrl != null) txt.Text += @"Preview Url: " + item.PreviewUrl + newLine;
                     if (item.Artists != null && item.Artists.Count > 0) txt.Text += @"Artists: " + item.Artists[index].Name + newLine;
                     txt.Text += @"Song Duration: " + item.DurationMS + newLine;

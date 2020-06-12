@@ -15,7 +15,7 @@ namespace SpotifySearch_SWENG861.Constants
         #endregion
 
         #region List Item constants
-        public const string ListItemUIElements = "ListItemUIElements";
+        public const string SearchResults = "SearchResults";
         public const string Title = "Title";
         public const string Message = "Message";
         #endregion
@@ -23,7 +23,6 @@ namespace SpotifySearch_SWENG861.Constants
         #region Meta Data constants
         // mimics NewLine in XML
         public const string EmptyLine = "EmptyLine";
-        public const string MetaDataUIElements = "MetaDataUIElements";
         public const string MetaData = "MetaData: ";
         public const string Name = "Name";
         public const string ExplicitWords = "ExplicitWords";
