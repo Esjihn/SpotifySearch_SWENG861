@@ -283,13 +283,14 @@ namespace SpotifySearch_SWENG861.UserControls
                 {
                     ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(
                         view.TracksResults.Tracks.Items[selectedIndex].Preview_url));
-
+                    
+                    listenView.Text = @"Listen On Spotify Preview! " + '"' + view.TracksResults.Tracks.Items[selectedIndex].Name + '"' + @" playing!";
                     listenView.Refresh();
                     listenView.ShowDialog();
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show(@"No preview link found for this item or use Song Search is Artist Search Type selected.", @"Prompt",
+                    DialogResult result = MessageBox.Show(@"No preview link found for this item or use Song Search if Artist Search Type selected.", @"Prompt",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information,
                         MessageBoxDefaultButton.Button1,
