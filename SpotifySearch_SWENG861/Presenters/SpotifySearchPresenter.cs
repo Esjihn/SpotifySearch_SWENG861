@@ -25,9 +25,6 @@ namespace SpotifySearch_SWENG861.Presenters
         #region Interface variables
 
         private readonly ISpotifySearchView _viewMain;
-        private IListenOnSpotifyView _viewWeb;
-        private IListItemUserControl _userControl;
-        private IAdditionalMetaDataView _viewMetalData;
 
         #endregion
 
@@ -47,33 +44,6 @@ namespace SpotifySearch_SWENG861.Presenters
         public SpotifySearchPresenter(ISpotifySearchView viewMain)
         {
             this._viewMain = viewMain;
-        }
-
-        /// <summary>
-        /// IListenOnSpotifyView constructor
-        /// </summary>
-        /// <param name="viewWeb"></param>
-        public SpotifySearchPresenter(IListenOnSpotifyView viewWeb)
-        {
-            this._viewWeb = viewWeb;
-        }
-
-        /// <summary>
-        /// IListItemUserControl constructor
-        /// </summary>
-        /// <param name="userControl"></param>
-        public SpotifySearchPresenter(IListItemUserControl userControl)
-        {
-            this._userControl = userControl;
-        }
-
-        /// <summary>
-        /// IAdditionalMetaDataView constructor
-        /// </summary>
-        /// <param name="viewMetaData"></param>
-        public SpotifySearchPresenter(IAdditionalMetaDataView viewMetaData)
-        {
-            this._viewMetalData = viewMetaData;
         }
 
         #endregion

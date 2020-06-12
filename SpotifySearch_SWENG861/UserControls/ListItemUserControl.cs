@@ -289,7 +289,7 @@ namespace SpotifySearch_SWENG861.UserControls
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show(@"No preview link found for this item.", @"Prompt",
+                    DialogResult result = MessageBox.Show(@"No preview link found for this item or use Song Search is Artist Search Type selected.", @"Prompt",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information,
                         MessageBoxDefaultButton.Button1,

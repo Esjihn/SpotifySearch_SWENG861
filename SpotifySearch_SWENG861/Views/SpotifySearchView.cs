@@ -335,6 +335,17 @@ namespace SpotifySearch_SWENG861.Views
         /// <param name="e"></param>
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(this.rtxtArtistSongEntry.Text))
+            {
+                MessageBox.Show(@"Please enter an artist or song to search and try again.", @"Invalid search parameters",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly);
+
+                return;
+            }
+
             LoadResults();
             IsOnlineSearch = true;
         }
