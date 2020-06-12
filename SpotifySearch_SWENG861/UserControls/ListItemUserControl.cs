@@ -294,6 +294,8 @@ namespace SpotifySearch_SWENG861.UserControls
                     ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(view.ImportResults[selectedIndex].PreviewUrl));
                     listenView.Refresh();
                     listenView.ShowDialog();
+                    listenView.TopMost = true;
+                    listenView.BringToFront();
                 }
                 else
                 {
