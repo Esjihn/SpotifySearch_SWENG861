@@ -261,10 +261,6 @@ namespace SpotifySearch_SWENG861.UserControls
                     }
                 }
 
-                // todo create static flag or event handler that listens to if an import has just been processed
-                // and allow a single use token to pull meta data for imported items from the imported presentation object. 
-                // this token should also get destroyed if user runs another spotify search immediately after an import.
-
                 if (view.TracksResults != null)
                 {
                     ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(
@@ -300,8 +296,6 @@ namespace SpotifySearch_SWENG861.UserControls
         /// <param name="view"></param>
         private void LoadAndFillMetaDataView(SpotifySearchView view)
         {
-            // todo fix bug that changes index to be larger than current selection
-            // todo repro steps perform a live search followed by import and then click meta data. 
             string currentTitle = this.Title;
 
             if (view != null)
@@ -317,6 +311,10 @@ namespace SpotifySearch_SWENG861.UserControls
                         selectedIndex = i;
                     }
                 }
+
+                // todo create static flag or event handler that listens to if an import has just been processed
+                // and allow a single use token to pull meta data for imported items from the imported presentation object. 
+                // this token should also get destroyed if user runs another spotify search immediately after an import.
                 
                 AdditionalMetaDataView metaView = new AdditionalMetaDataView(LoadSearchSongsMetaData(), LoadSearchArtistsMetaData());
                 
@@ -330,7 +328,9 @@ namespace SpotifySearch_SWENG861.UserControls
                     metaView.LoadMetaData(SpotifyAPIConstants.Artist, selectedIndex);
                 }
 
+                metaView.TopMost = true;
                 metaView.ShowDialog();
+                metaView.BringToFront();
             }
         }
 

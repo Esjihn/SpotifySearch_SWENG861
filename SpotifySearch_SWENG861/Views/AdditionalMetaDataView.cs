@@ -56,7 +56,7 @@ namespace SpotifySearch_SWENG861.Views
         /// <param name="index">index of item selected</param>
         public void LoadMetaData(string type, int index)
         {
-            if (type == SpotifyAPIConstants.Artist)
+            if (type == SpotifyAPIConstants.Artist && index <= _artistData.Artists.Items.Count)
             {
                 if (_artistData == null) return;
 
@@ -66,7 +66,7 @@ namespace SpotifySearch_SWENG861.Views
                 DataToTextBox(CreateDataList(artistObject, index));
             }
 
-            if (type == SpotifyAPIConstants.Song)
+            if (type == SpotifyAPIConstants.Song && index <= _songData.Tracks.Items.Count)
             {
                 if (_songData == null) return;
 
@@ -103,7 +103,7 @@ namespace SpotifySearch_SWENG861.Views
             List<string> data = new List<string> {Environment.NewLine};
             if(dataObject.Name != null) data.Add("Name: " + dataObject.Name);
             data.Add("Explicit Content: " + dataObject.ExplicitWords);
-            if(dataObject.Genres != null) data.Add("Genres: " + dataObject.Genres[index]);
+            if(dataObject.Genres != null && index <= dataObject.Genres.Count) data.Add("Genres: " + dataObject.Genres[index]);
             data.Add("Popularity Total: " + dataObject.Popularity);
             if(dataObject.Followers != null) data.Add("Followers: " + dataObject.Followers.Total);
             if(dataObject.Id != null) data.Add("ID: " + dataObject.Id);
@@ -117,7 +117,7 @@ namespace SpotifySearch_SWENG861.Views
             }
 
             data.Add("Track Number: " + dataObject.Track_number);
-            if(dataObject.available_markets != null) 
+            if(dataObject.available_markets != null && index <= dataObject.available_markets.Count) 
                 data.Add("Available Markets: " + dataObject.available_markets[index]);
             if(dataObject.Preview_url != null) data.Add("Preview Url: " + dataObject.Preview_url);
             if(dataObject.artists != null) data.Add("Artists: " + dataObject.artists[0].Name);
@@ -148,6 +148,5 @@ namespace SpotifySearch_SWENG861.Views
                 }
             }
         }
-
     }
 }
