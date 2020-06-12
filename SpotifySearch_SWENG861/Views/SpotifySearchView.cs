@@ -168,11 +168,11 @@ namespace SpotifySearch_SWENG861.Views
 
                 if (this.fldrBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (this.rtxtImportExportLocation != null)
+                    if (this.rtxtExportLocation != null)
                     {
-                        this.rtxtImportExportLocation.Text = fldrBrowserDialog.SelectedPath;
-                        this.rtxtImportExportLocation.Focus();
-                        this.rtxtImportExportLocation.Select(this.rtxtImportExportLocation.Text.Length, 0);
+                        this.rtxtExportLocation.Text = fldrBrowserDialog.SelectedPath;
+                        this.rtxtExportLocation.Focus();
+                        this.rtxtExportLocation.Select(this.rtxtExportLocation.Text.Length, 0);
                     }
                 }
             }
@@ -264,28 +264,31 @@ namespace SpotifySearch_SWENG861.Views
         {
             if (this.btnImportSearch != null 
                 && this.btnExportSearch != null
-                && this.lblImportExport != null
-                && this.rtxtImportExportLocation != null
+                && this.lblExport != null
+                && this.rtxtExportLocation != null
                 && this.btnImportDirectory != null)
             {
                 if(this.btnImportSearch.Visible
                    && this.btnExportSearch.Visible
-                   && this.lblImportExport.Visible
-                   && this.rtxtImportExportLocation.Visible
+                   && this.lblExport.Visible
+                   && this.rtxtExportLocation.Visible
                    && this.btnImportDirectory.Visible)
                 {
                     this.btnImportSearch.Visible = false;
                     this.btnExportSearch.Visible = false;
-                    this.lblImportExport.Visible = false;
-                    this.rtxtImportExportLocation.Visible = false;
+                    this.lblExport.Visible = false;
+                    this.rtxtExportLocation.Visible = false;
                     this.btnImportDirectory.Visible = false;
                 }
                 else
                 {
                     this.btnImportSearch.Visible = true;
                     this.btnExportSearch.Visible = true;
-                    this.lblImportExport.Visible = true;
-                    this.rtxtImportExportLocation.Visible = true;
+                    this.lblExport.Visible = true;
+                    this.rtxtExportLocation.Visible = true;
+                    this.rtxtExportLocation.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    this.rtxtExportLocation.Focus();
+                    this.rtxtExportLocation.Select(this.rtxtExportLocation.Text.Length, 0);
                     this.btnImportDirectory.Visible = true;
                 }
             }
@@ -323,7 +326,7 @@ namespace SpotifySearch_SWENG861.Views
         {
             PopulateMaxSearchComboBox();
             HideAdvancedOptionsOnLoad();
-            this.rtxtImportExportLocation.ReadOnly = true;
+            this.rtxtExportLocation.ReadOnly = true;
             this.btnSearch.Enabled = false;
             this.btnSearch.BackColor = Color.DimGray;
         }
@@ -384,6 +387,7 @@ namespace SpotifySearch_SWENG861.Views
                 foreach (XElement item in spotifySearchResults.Elements())
                 {
                     SpotifySearchPO po = new SpotifySearchPO();
+
 
                     if (item.Name == SpotifySearchXMLPDFConstants.SearchResults)
                     {
@@ -531,7 +535,7 @@ namespace SpotifySearch_SWENG861.Views
             List<SpotifySearchPO> list = new List<SpotifySearchPO>();
             
             string defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string selectedDirectory = this.rtxtImportExportLocation.Text;
+            string selectedDirectory = this.rtxtExportLocation.Text;
 
             for (int i = 0; i < searchCount; i++)
             {
@@ -559,7 +563,7 @@ namespace SpotifySearch_SWENG861.Views
                     FillSpotifySearchPOWithMetaDataPortion(po, trackObject);
                 }
                 
-                if (rtxtImportExportLocation != null && !string.IsNullOrEmpty(selectedDirectory))
+                if (rtxtExportLocation != null && !string.IsNullOrEmpty(selectedDirectory))
                 {
                     po.ImportExportLocationText = selectedDirectory;
                 }
@@ -655,8 +659,8 @@ namespace SpotifySearch_SWENG861.Views
             {
                 this.btnImportSearch.Visible = false;
                 this.btnExportSearch.Visible = false;
-                this.lblImportExport.Visible = false;
-                this.rtxtImportExportLocation.Visible = false;
+                this.lblExport.Visible = false;
+                this.rtxtExportLocation.Visible = false;
                 this.btnImportDirectory.Visible = false;
             }
         }
