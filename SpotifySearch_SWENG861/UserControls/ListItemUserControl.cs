@@ -261,6 +261,10 @@ namespace SpotifySearch_SWENG861.UserControls
                     }
                 }
 
+                // todo create static flag or event handler that listens to if an import has just been processed
+                // and allow a single use token to pull meta data for imported items from the imported presentation object. 
+                // this token should also get destroyed if user runs another spotify search immediately after an import.
+
                 if (view.TracksResults != null)
                 {
                     ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(

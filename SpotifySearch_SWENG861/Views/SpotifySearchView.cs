@@ -360,7 +360,6 @@ namespace SpotifySearch_SWENG861.Views
 
                 foreach (XElement item in spotifySearchResults.Elements())
                 {
-                    // todo run debugger here 
                     SpotifySearchPO searchPo = new SpotifySearchPO();
                     if (item.Name == SpotifySearchXMLPDFConstants.ListItemUIElements)
                     {
