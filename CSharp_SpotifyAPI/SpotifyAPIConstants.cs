@@ -12,5 +12,6 @@ namespace CSharp_SpotifyAPI
         public static string AuthCode;
         public static string Song = "song";
         public static string Artist = "artist";
+        public static string Import = "import";
     }
 }

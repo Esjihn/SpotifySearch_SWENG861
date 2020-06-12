@@ -45,6 +45,12 @@ namespace SpotifySearch_SWENG861.Views
         #region Properties
 
         /// <summary>
+        /// Boolean that represents if user has activated an online search prior to
+        /// clicking meta data view.
+        /// </summary>
+        public bool IsOnlineSearch { get; set; }
+        
+        /// <summary>
         /// Flow Layout Panel in SpotifySearchView
         /// </summary>
         public FlowLayoutPanel FlowPanelObject
@@ -74,6 +80,11 @@ namespace SpotifySearch_SWENG861.Views
         public SearchSongs TracksResults { get; set; }
 
         /// <summary>
+        /// Array of Import Search results
+        /// </summary>
+        public List<SpotifySearchPO> ImportResults { get; set; }
+
+        /// <summary>
         /// Boolean flag corresponds to radio button artists search checked
         /// </summary>
         public bool IsArtistSearch { get; set; }
@@ -86,7 +97,7 @@ namespace SpotifySearch_SWENG861.Views
         #endregion
 
         #region Event Handlers
-        
+
         /// <summary>
         /// btnExportSearch click event. 
         /// </summary>
@@ -325,8 +336,9 @@ namespace SpotifySearch_SWENG861.Views
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             LoadResults();
+            IsOnlineSearch = true;
         }
-        
+
         /// <summary>
         /// Static boolean changed after successful authentication
         /// </summary>
@@ -375,6 +387,7 @@ namespace SpotifySearch_SWENG861.Views
                     }
                 }
 
+                // todo fix bug that happens here that does not create a list of import
                 foreach (SpotifySearchPO po in importList)
                 {
                     po.NewLineImport = spotifySearchResults
@@ -460,7 +473,7 @@ namespace SpotifySearch_SWENG861.Views
                         .Element(SpotifySearchXMLPDFConstants.DiscNumber)
                         .Value);
 
-                    po.ExternalUrls = spotifySearchResults
+                    po.ExternalUrls_Spotify = spotifySearchResults
                         .Element(SpotifySearchXMLPDFConstants.MetaDataUIElements)
                         .Element(SpotifySearchXMLPDFConstants.ExternalUrls)
                         .Value;
@@ -486,11 +499,12 @@ namespace SpotifySearch_SWENG861.Views
             }
 
             MessageBox.Show(@"Import Successful! Click 'OK' to update app.", @"Success");
+   
+            IsOnlineSearch = false;
             KeepTopMostAndBringToFront();
-
+    
             return importList;
         }
-
 
         /// <summary>
         /// Brings main form to front of form hierarchy
@@ -609,7 +623,7 @@ namespace SpotifySearch_SWENG861.Views
                 
             po.DurationMS = dataObject.duration_ms;
             if (dataObject.External_urls.Spotify != null)
-                po.ExternalUrls = dataObject.External_urls.Spotify;
+                po.ExternalUrls_Spotify = dataObject.External_urls.Spotify;
             po.DiscNumber = dataObject.disc_number;
         }
 

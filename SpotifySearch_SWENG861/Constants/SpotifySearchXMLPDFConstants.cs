@@ -30,15 +30,15 @@ namespace SpotifySearch_SWENG861.Constants
         public const string Popularity = "Popularity";
         public const string FollowerTotal = "FollowerTotal";
         public const string Id = "Id";
-        public const string IsLocal = "IsLocal";
+        public const string IsLocal = "Is_local";
         public const string Href = "Href";
-        public const string AvailableMarkets = "AvailableMarkets";
-        public const string PreviewUrl = "PreviewUrl";
+        public const string AvailableMarkets = "available_markets";
+        public const string PreviewUrl = "Preview_url";
         public const string Artists = "Artists";
         public const string TrackNumber = "TrackNumber";
-        public const string DurationMS = "DurationMS";
-        public const string DiscNumber = "DiscNumber";
-        public const string ExternalUrls = "ExternalUrls";
+        public const string DurationMS = "duration_ms";
+        public const string DiscNumber = "disc_number";
+        public const string ExternalUrls = "ExternalUrls_Spotify";
         #endregion
         
         #region Import/Export Directory

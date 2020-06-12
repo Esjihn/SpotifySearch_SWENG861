@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -6,6 +7,7 @@ using CefSharp;
 using CefSharp.WinForms;
 using CSharp_SpotifyAPI;
 using CSharp_SpotifyAPI.Models;
+using SpotifySearch_SWENG861.PresentationObjects;
 using SpotifySearch_SWENG861.ViewInterfaces;
 using SpotifySearch_SWENG861.Views;
 using Image = System.Drawing.Image;
@@ -238,6 +240,22 @@ namespace SpotifySearch_SWENG861.UserControls
 
             return new SearchSongs();
         }
+        
+        /// <summary>
+        /// Loads meta data from import list in SpotifySearchView
+        /// </summary>
+        /// <returns></returns>
+        private List<SpotifySearchPO> LoadImportMetaData()
+        {
+            SpotifySearchView view = this.Parent.Parent as SpotifySearchView;
+
+            if (view != null)
+            {
+                return view.ImportResults;
+            }
+
+            return new List<SpotifySearchPO>();
+        }
 
         /// <summary>
         /// Matches current selected control index in flow panel to track sample play index.
@@ -312,20 +330,23 @@ namespace SpotifySearch_SWENG861.UserControls
                     }
                 }
 
-                // todo create static flag or event handler that listens to if an import has just been processed
-                // and allow a single use token to pull meta data for imported items from the imported presentation object. 
-                // this token should also get destroyed if user runs another spotify search immediately after an import.
-                
-                AdditionalMetaDataView metaView = new AdditionalMetaDataView(LoadSearchSongsMetaData(), LoadSearchArtistsMetaData());
-                
-                if (view.IsSongSearch)
-                {
-                    metaView.LoadMetaData(SpotifyAPIConstants.Song, selectedIndex);
-                }
+                AdditionalMetaDataView metaView = new AdditionalMetaDataView(LoadSearchSongsMetaData(), LoadSearchArtistsMetaData(), LoadImportMetaData());
 
-                if (view.IsArtistSearch)
+                if (view.IsOnlineSearch)
                 {
-                    metaView.LoadMetaData(SpotifyAPIConstants.Artist, selectedIndex);
+                    if (view.IsSongSearch)
+                    {
+                        metaView.LoadMetaData(SpotifyAPIConstants.Song, selectedIndex);
+                    }
+
+                    if (view.IsArtistSearch)
+                    {
+                        metaView.LoadMetaData(SpotifyAPIConstants.Artist, selectedIndex);
+                    }
+                }
+                else // search "offline" import
+                {
+                    metaView.LoadMetaData(SpotifyAPIConstants.Import, selectedIndex);
                 }
 
                 metaView.TopMost = true;

@@ -39,7 +39,7 @@ namespace SpotifySearch_SWENG861.PresentationObjects
         public int TrackNumber { get; set; }
         public int DurationMS { get; set; }
         public int DiscNumber { get; set; }
-        public string ExternalUrls { get; set; }
+        public string ExternalUrls_Spotify { get; set; }
         #endregion
 
         #region SpotifySearch UI

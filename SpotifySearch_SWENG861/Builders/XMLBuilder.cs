@@ -70,8 +70,8 @@ namespace SpotifySearch_SWENG861.Builders
                             new XElement(SpotifySearchXMLPDFConstants.TrackNumber, po.TrackNumber),
                             new XElement(SpotifySearchXMLPDFConstants.DurationMS, po.DurationMS),
                             new XElement(SpotifySearchXMLPDFConstants.DiscNumber, po.DiscNumber),
-                            po.ExternalUrls != null
-                                ? new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, po.ExternalUrls)
+                            po.ExternalUrls_Spotify != null
+                                ? new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, po.ExternalUrls_Spotify)
                                 : new XElement(SpotifySearchXMLPDFConstants.ExternalUrls, string.Empty),
                             new XElement(SpotifySearchXMLPDFConstants.ImportExportLocationText, po.ImportExportLocationText)));
                 
