@@ -105,7 +105,12 @@ namespace SpotifySearch_SWENG861.Presenters
 
             // Populate UI with result user control list.
             ListItemUserControl[] listItems = new ListItemUserControl[xmlImportList.Count];
-            
+
+            if (_viewMain.FlowPanelObject.Controls.Count > 0)
+            {
+                _viewMain.FlowPanelObject.Controls.Clear();
+            }
+
             for (int i = 0; i < listItems.Length; i++)
             {
                 listItems[i] = new ListItemUserControl
@@ -115,21 +120,17 @@ namespace SpotifySearch_SWENG861.Presenters
                     IconBackGround = Color.Black
                 };
 
-                foreach (SpotifySearchPO po in xmlImportList)
+                if (!string.IsNullOrEmpty(listItems[i].Title))
                 {
-                    listItems[i].Title = po.Title;
-                    listItems[i].Message = $"Artist Spotify ID: {po.Message}"
-                                           + Environment.NewLine + "Click to view metadata.";
+                    listItems[i].Title = xmlImportList[i].Title;
+                }
+
+                if (!string.IsNullOrEmpty(listItems[i].Message))
+                {
+                    listItems[i].Message = xmlImportList[i].Message;
                 }
                 
-                if (_viewMain.FlowPanelObject.Controls.Count > 0)
-                {
-                    _viewMain.FlowPanelObject.Controls.Clear();
-                }
-                else
-                {
-                    this._viewMain.FlowPanelObject.Controls.Add(listItems[i]);
-                }
+                this._viewMain.FlowPanelObject.Controls.Add(listItems[i]);
             }
         }
 
