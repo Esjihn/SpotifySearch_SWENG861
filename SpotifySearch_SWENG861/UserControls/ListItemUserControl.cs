@@ -292,7 +292,9 @@ namespace SpotifySearch_SWENG861.UserControls
                 else if (!view.IsOnlineSearch)
                 {
                     ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(view.ImportResults[selectedIndex].PreviewUrl));
+                    listenView.Text = @"Listen On Spotify Preview! " + '"' + view.ImportResults[selectedIndex].Name + '"' + @" playing!";
                     listenView.Refresh();
+                    view.TopMost = false;
                     listenView.ShowDialog();
                     listenView.TopMost = true;
                     listenView.BringToFront();
