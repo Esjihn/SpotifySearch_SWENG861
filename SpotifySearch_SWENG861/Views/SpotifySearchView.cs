@@ -395,9 +395,9 @@ namespace SpotifySearch_SWENG861.Views
                             .Element(SpotifySearchXMLPDFConstants.Message)
                             .Value;
 
-                        //po.NewLineImport = spotifySearchResults
-                            //.Element(SpotifySearchXMLPDFConstants.EmptyLine)
-                            //.Value;
+                        po.NewLineImport = item
+                            .Element(SpotifySearchXMLPDFConstants.EmptyLine)
+                            .Value;
 
                         po.Name = item
                             .Element(SpotifySearchXMLPDFConstants.Name)
