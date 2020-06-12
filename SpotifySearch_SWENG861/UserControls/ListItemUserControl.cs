@@ -279,12 +279,19 @@ namespace SpotifySearch_SWENG861.UserControls
                     }
                 }
 
-                if (view.TracksResults != null)
+                // todo Preview should support import. .....
+                if (view.TracksResults != null && view.IsOnlineSearch)
                 {
                     ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(
                         view.TracksResults.Tracks.Items[selectedIndex].Preview_url));
                     
                     listenView.Text = @"Listen On Spotify Preview! " + '"' + view.TracksResults.Tracks.Items[selectedIndex].Name + '"' + @" playing!";
+                    listenView.Refresh();
+                    listenView.ShowDialog();
+                }
+                else if (!view.IsOnlineSearch)
+                {
+                    ListenOnSpotifyView listenView = new ListenOnSpotifyView(new ChromiumWebBrowser(view.ImportResults[selectedIndex].PreviewUrl));
                     listenView.Refresh();
                     listenView.ShowDialog();
                 }
