@@ -287,7 +287,10 @@ namespace SpotifySearch_SWENG861.UserControls
                     
                     listenView.Text = @"Listen On Spotify Preview! " + '"' + view.TracksResults.Tracks.Items[selectedIndex].Name + '"' + @" playing!";
                     listenView.Refresh();
+                    view.TopMost = false;
                     listenView.ShowDialog();
+                    listenView.TopMost = true;
+                    listenView.BringToFront();
                 }
                 else if (!view.IsOnlineSearch)
                 {

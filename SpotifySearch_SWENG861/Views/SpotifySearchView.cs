@@ -136,7 +136,7 @@ namespace SpotifySearch_SWENG861.Views
                     else
                     {
                         MessageBox.Show(
-                            @"The selected file is not compatible for import. *.xml files only.", @"File Error",
+                            @"The selected file is not compatible for import. SpotifySearch *.xml files only. See manual for more details.", @"File Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         KeepTopMostAndBringToFront();
@@ -800,9 +800,18 @@ namespace SpotifySearch_SWENG861.Views
                     this.flwSearchResultsFlowPanel.Controls.Add(listItems[i]);
                 }
             }
+            
+            if (flwSearchResultsFlowPanel.Controls.Count == 0)
+            {
+                MessageBox.Show(@"No results found. Please modify search text and / or parameters and try again.",
+                    @"Prompt",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly);
+            }
         }
 
         #endregion
-
     }
 }
