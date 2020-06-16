@@ -549,7 +549,6 @@ namespace SpotifySearch_SWENG861.Views
                                       + Environment.NewLine + "Click to view metadata.";
                     
                     // high level artists object
-                    
                     FillSpotifySearchPOWithMetaDataPortion(po, artistObject);
                 }
 
