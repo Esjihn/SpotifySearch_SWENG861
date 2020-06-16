@@ -111,7 +111,10 @@ namespace SpotifySearch_SWENG861.Presenters
         {
             if (IsValidPOList == false)
             {
-                MessageBox.Show(@"Exception: export could not be completed.", @"Warning",
+                MessageBox.Show(@"Export could not be completed due to the following possible causes:
+
+1) Only online Spotify search results can be exported. 
+2) An offline export file that was imported cannot be exported again.", @"Warning",
                     MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1,
                     MessageBoxOptions.DefaultDesktopOnly);
 
