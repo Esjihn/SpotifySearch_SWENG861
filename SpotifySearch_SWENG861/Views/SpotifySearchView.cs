@@ -726,8 +726,11 @@ namespace SpotifySearch_SWENG861.Views
             }
             catch (Exception e)
             {
-                MessageBox.Show(@"Invalid search parameters or user not authenticated. Relaunch app and sign into Spotify via the web browser that launches on applicaton startup. If you receive error again please contact admin @ 1-888-555-5555. Error Message: " 
-                                + e.Message, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Invalid search parameters or user not authenticated. 
+Relaunch app and sign into Spotify via the web browser that launches on application startup. 
+If you receive error again please contact admin @ 1-888-555-5555. 
+
+Error Message: " + e.Message, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 this.btnSearch.Enabled = false;
                 this.btnSearch.BackColor = Color.DimGray;
